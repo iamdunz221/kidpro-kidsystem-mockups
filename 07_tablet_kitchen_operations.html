@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trạm Tablet Bếp Ăn Bán Trú & ATVSTP - KIDPRO System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #275A4E;
+      --primary-deep: #1E4D40;
+      --primary-accent: #377E6D;
+      --accent-gold: #E5A93C;
+      --accent-mint: #78C2AD;
+      --bg-cream: #E5EBE8;
+      --border-color: #E2ECE7;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+      --alert-red: #EF4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body {
+      background-color: var(--bg-cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .top-nav { margin-bottom: 16px; display: flex; gap: 16px; }
+    .top-nav a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    /* TABLET LANDSCAPE FRAME */
+    .tablet-frame {
+      width: 980px;
+      height: 640px;
+      background: #FFFFFF;
+      border: 16px solid #1E293B;
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tablet-topbar {
+      height: 56px;
+      background: var(--primary-dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      flex-shrink: 0;
+    }
+
+    .brand-badge { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 14px; padding: 4px 8px; border-radius: 6px; }
+
+    .tablet-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .tablet-sidebar {
+      width: 220px;
+      background: #F9FAFB;
+      border-right: 1px solid var(--border-color);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .side-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+    }
+    .side-btn.active { background: var(--primary-dark); color: #fff; }
+
+    .tablet-content {
+      flex: 1;
+      padding: 20px 24px;
+      overflow-y: auto;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-item {
+      background: #F4F7F6;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat-n { font-size: 24px; font-weight: 800; color: var(--primary-dark); }
+    .stat-t { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+    .allergy-tag {
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      color: #B91C1C;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .step-box {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      align-items: center;
+      font-size: 13px;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--primary-dark);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-nav">
+    <a href="index.html">← Về Hub 153 Màn hình</a>
+    <a href="06_mobile_parent_app.html">👨‍👩‍👧 Xem App Phụ Huynh</a>
+    <a href="02_web_admin_dashboard.html">📊 Xem Dashboard Web</a>
+  </div>
+
+  <div class="tablet-frame">
+    <!-- Topbar -->
+    <header class="tablet-topbar">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="brand-badge">KIDPRO</span>
+        <span style="font-size: 15px; font-weight: 700;">Trạm Tablet Bếp Ăn Bán Trú • KIDPRO-CS01</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; font-size: 12px;">
+        <span style="background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: 20px;">
+          🔒 Đã khóa sĩ số lúc <strong>08:30:00</strong>
+        </span>
+        <span>Bếp trưởng: <strong>Nguyễn Thị Hoa</strong></span>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="tablet-body">
+      <!-- Tablet Sidebar -->
+      <nav class="tablet-sidebar">
+        <button class="side-btn active"><span>📊</span> Dashboard Suất Ăn</button>
+        <button class="side-btn"><span>⚠️</span> Suất Ăn Dị Ứng Riêng</button>
+        <button class="side-btn"><span>📋</span> Kiểm Thực 3 Bước</button>
+        <button class="side-btn"><span>🧊</span> Lưu Mẫu Thức Ăn 24H</button>
+        <button class="side-btn"><span>🍲</span> Thực Đơn Bán Trú Tuần</button>
+      </nav>
+
+      <!-- Content -->
+      <div class="tablet-content">
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-n">458</div>
+            <div class="stat-t">Tổng Suất Ăn Trưa</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-n" style="color: #2563EB;">320</div>
+            <div class="stat-t">Cơm Thường (Mẫu Giáo)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-n" style="color: #D97706;">126</div>
+            <div class="stat-t">Cháo / Súp (Nhà Trẻ)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-n" style="color: #DC2626;">12</div>
+            <div class="stat-t">Khay Ăn Dị Ứng Riêng</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <!-- Special Diet & Allergies -->
+          <div class="card">
+            <div class="card-title">
+              <span style="color: #DC2626;">⚠️</span> 12 Suất Bóc Tách Dị Ứng Đặc Biệt
+            </div>
+            <div class="allergy-tag">
+              <span>Bé Nguyễn Tuấn Khang (Mầm 1)</span>
+              <strong>Kiêng hoàn toàn ĐẬU PHỘNG</strong>
+            </div>
+            <div class="allergy-tag">
+              <span>Bé Trần Bảo An (Chồi 2)</span>
+              <strong>Kiêng TÔM, CUA BIỂN (Thay bằng thịt bò)</strong>
+            </div>
+            <div class="allergy-tag">
+              <span>Bé Đỗ Quỳnh Chi (Mầm 2)</span>
+              <strong>Kiêng SỮA BÒ (Dùng sữa hạt sen)</strong>
+            </div>
+          </div>
+
+          <!-- 3-Step Inspection (QĐ 1246/QĐ-BYT) -->
+          <div class="card">
+            <div class="card-title">
+              <span>✅</span> Sổ Kiểm Thực 3 Bước (QĐ 1246/QĐ-BYT)
+            </div>
+            <div class="step-box">
+              <div class="step-num">1</div>
+              <div style="flex: 1;">
+                <strong>Bước 1: Nhập nguyên liệu tươi sống (06:30)</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Thịt lợn CP, rau hữu cơ sạch, tôm tươi sống. Đạt 100%.</div>
+              </div>
+              <span style="color: #16A34A; font-weight: 700; font-size: 11px;">✓ Đã ký</span>
+            </div>
+            <div class="step-box">
+              <div class="step-num">2</div>
+              <div style="flex: 1;">
+                <strong>Bước 2: Trong chế biến (10:15)</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Nhiệt độ sôi > 100°C, dao thớt sống/chín phân tách màu.</div>
+              </div>
+              <span style="color: #16A34A; font-weight: 700; font-size: 11px;">✓ Đã ký</span>
+            </div>
+            <div class="step-box">
+              <div class="step-num">3</div>
+              <div style="flex: 1;">
+                <strong>Bước 3: Trước khi ăn & Lưu mẫu 24H (10:45)</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Mỗi món lưu >= 100g, niêm phong tủ mát 2°C - 8°C.</div>
+              </div>
+              <span style="color: #D97706; font-weight: 700; font-size: 11px;">⏳ Đang thực hiện</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

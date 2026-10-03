@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bàn Tài Chính & Quyết Toán Động VietQR - KIDPRO System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #275A4E;
+      --primary-deep: #1E4D40;
+      --primary-accent: #377E6D;
+      --accent-gold: #E5A93C;
+      --accent-mint: #78C2AD;
+      --bg-cream: #F4F7F6;
+      --sidebar-bg: #1A3E34;
+      --border-color: #E2ECE7;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-cream); color: var(--text-dark); display: flex; height: 100vh; overflow: hidden; }
+
+    .sidebar { width: 260px; background: var(--sidebar-bg); color: #fff; display: flex; flex-direction: column; flex-shrink: 0; border-right: 1px solid rgba(255, 255, 255, 0.08); }
+    .sidebar-brand { padding: 24px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .brand-badge { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 15px; padding: 6px 10px; border-radius: 8px; }
+    .nav-section { padding: 18px 12px; flex: 1; overflow-y: auto; }
+    .nav-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.45); padding: 0 10px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; color: rgba(255, 255, 255, 0.75); font-size: 13px; font-weight: 500; text-decoration: none; margin-bottom: 3px; }
+    .nav-item.active { background: var(--primary-accent); color: #fff; font-weight: 600; }
+
+    .main-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 68px; background: #fff; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; flex-shrink: 0; }
+    .content-body { flex: 1; overflow-y: auto; padding: 24px 28px; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .kpi-box { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; }
+    .kpi-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .kpi-num { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-top: 6px; }
+
+    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 22px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 24px; }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+
+    .table-custom { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table-custom th { text-align: left; padding: 10px 14px; background: #F9FAFB; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border-color); }
+    .table-custom td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; }
+
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+    .badge-green { background: #DCFCE7; color: #16A34A; }
+    .badge-yellow { background: #FEF3C7; color: #D97706; }
+    .badge-blue { background: #DBEAFE; color: #2563EB; }
+
+    .btn-action { padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: #fff; color: var(--primary-dark); }
+    .btn-primary { background: var(--primary-dark); color: #fff; border: none; }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-badge">KIDPRO</span>
+      <div>
+        <h1 style="font-size: 14px; font-weight: 700;">KIDPRO</h1>
+        <span style="font-size: 10px; color: var(--accent-mint);">BÀN TÀI CHÍNH KẾ TOÁN</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Nghiệp Vụ Tài Chính</div>
+      <a href="04_web_finance_billing.html" class="nav-item active">
+        <span>💰</span> Quyết toán Học phí Động
+      </a>
+      <a href="#" class="nav-item">
+        <span>⚡</span> Đối soát VietQR PayOS
+      </a>
+      <a href="#" class="nav-item">
+        <span>🍽️</span> Biểu phí & Hoàn Tiền Ăn
+      </a>
+      <a href="#" class="nav-item">
+        <span>🧾</span> Kho Biên lai Điện tử
+      </a>
+
+      <div class="nav-title" style="margin-top: 16px;">Chuyển Màn hình</div>
+      <a href="02_web_admin_dashboard.html" class="nav-item">
+        <span>📊</span> Dashboard Cấp cao
+      </a>
+      <a href="03_web_academic_workspace.html" class="nav-item">
+        <span>🎓</span> Cán bộ Giáo vụ
+      </a>
+      <a href="index.html" class="nav-item">
+        <span>📚</span> Mockup Hub (153 Màn)
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <header class="topbar">
+      <div style="font-size: 14px; font-weight: 700; color: var(--primary-dark);">
+        💳 Kỳ Quyết toán Tháng 10/2026 • Động cơ Tự động Trừ Tiền Ăn Vắng Phép
+      </div>
+      <div>
+        <button class="btn-action btn-primary" onclick="alert('Đã kích hoạt quét quyết toán học phí động!')">
+          ⚡ Chạy Quyết toán Động Tháng 10
+        </button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <div class="kpi-label">Tổng Phát hành Tháng 10</div>
+          <div class="kpi-num">2.45 tỷ</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Đã thanh toán (VietQR)</div>
+          <div class="kpi-num" style="color: #10B981;">2.18 tỷ (89%)</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Tiền ăn Hoàn trả Vắng phép</div>
+          <div class="kpi-num" style="color: #F59E0B;">- 38.4 triệu</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Phụ phí Đón muộn tích lũy</div>
+          <div class="kpi-num">+ 8.2 triệu</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>🧾</span> Hóa Đơn Học Phí Dự Thảo & Khấu Trừ Tự Động
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Quy tắc tự động: Học sinh nghỉ có phép (nộp đơn trước 08:00 sáng) được trừ <strong>45,000 đ/ngày</strong>; học sinh có anh chị em ruột cùng học được chiết khấu <strong>10% học phí</strong>.
+        </p>
+
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Mã Hóa Đơn</th>
+              <th>Học Sinh</th>
+              <th>Khối Lớp</th>
+              <th>Học Phí Gốc</th>
+              <th>Trừ Tiền Ăn Vắng Phép</th>
+              <th>Giảm trừ AE Ruột</th>
+              <th>Thực Thu</th>
+              <th>Trạng Thái VietQR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>HD-2026-10-001</strong></td>
+              <td>Nguyễn Tuấn Khang</td>
+              <td>Mầm 1</td>
+              <td>4,500,000 đ</td>
+              <td><span style="color: #16A34A; font-weight: 600;">- 90,000 đ (2 ngày)</span></td>
+              <td>-</td>
+              <td><strong>4,410,000 đ</strong></td>
+              <td><span class="badge badge-green">✓ Đã gạch nợ Webhook</span></td>
+            </tr>
+            <tr>
+              <td><strong>HD-2026-10-002</strong></td>
+              <td>Trần Bảo An</td>
+              <td>Chồi 2</td>
+              <td>4,500,000 đ</td>
+              <td><span style="color: #16A34A; font-weight: 600;">- 135,000 đ (3 ngày)</span></td>
+              <td>- 450,000 đ (10%)</td>
+              <td><strong>3,915,000 đ</strong></td>
+              <td><span class="badge badge-green">✓ Đã gạch nợ Webhook</span></td>
+            </tr>
+            <tr>
+              <td><strong>HD-2026-10-003</strong></td>
+              <td>Vũ Minh Quân</td>
+              <td>Lá 1</td>
+              <td>4,500,000 đ</td>
+              <td>0 đ (Đi đủ)</td>
+              <td>-</td>
+              <td><strong>4,500,000 đ</strong></td>
+              <td><span class="badge badge-yellow">Chờ quét VietQR</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập Quản trị Hệ thống - Mầm non KIDPRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #275A4E;
+      --primary-deep: #1E4D40;
+      --primary-forest: #173B31;
+      --primary-accent: #377E6D;
+      --accent-gold: #E5A93C;
+      --accent-mint: #78C2AD;
+      --bg-cream: #F8FAF9;
+      --border-color: #E2ECE7;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+      --card-glass: rgba(255, 255, 255, 0.08);
+      --card-glass-border: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      background-color: var(--bg-cream);
+      overflow-x: hidden;
+    }
+
+    .split-layout {
+      display: flex;
+      width: 100vw;
+      min-height: 100vh;
+    }
+
+    /* ================= LEFT BRAND PANEL ================= */
+    .brand-panel {
+      flex: 1.15;
+      background: linear-gradient(145deg, #275A4E 0%, #1E4D40 60%, #15372E 100%);
+      color: #ffffff;
+      padding: 60px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient Circles / Deco */
+    .ambient-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .circle-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(120, 194, 173, 0.12) 0%, rgba(39, 90, 78, 0) 70%);
+      top: -200px;
+      right: -150px;
+    }
+
+    .circle-2 {
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      bottom: -150px;
+      left: -100px;
+    }
+
+    .circle-3 {
+      width: 750px;
+      height: 750px;
+      border: 1px solid rgba(120, 194, 173, 0.08);
+      bottom: -280px;
+      left: -220px;
+    }
+
+    /* Brand Header Top */
+    .brand-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .kvv-badge {
+      background-color: var(--accent-gold);
+      color: #173B31;
+      font-weight: 800;
+      font-size: 17px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(229, 169, 60, 0.3);
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+
+    /* Brand Hero Middle */
+    .brand-hero {
+      position: relative;
+      z-index: 2;
+      margin: auto 0;
+      max-width: 580px;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-mint);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .hero-heading {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    /* 3 Feature Glass Cards */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--card-glass);
+      border: 1px solid var(--card-glass-border);
+      backdrop-filter: blur(12px);
+      padding: 18px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-mint);
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Brand Footer */
+    .brand-footer {
+      position: relative;
+      z-index: 2;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ================= RIGHT FORM PANEL ================= */
+    .form-panel {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+      position: relative;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    /* Role Switcher Pill Bar */
+    .role-tabs {
+      display: flex;
+      background: #F3F4F6;
+      padding: 4px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      gap: 4px;
+    }
+
+    .role-tab {
+      flex: 1;
+      padding: 8px 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text-muted);
+      border: none;
+      background: none;
+      transition: all 0.2s;
+    }
+
+    .role-tab.active {
+      background: #ffffff;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-accent);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .form-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+    }
+
+    .form-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    /* Inputs */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .form-input-wrap {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 13px 16px;
+      font-size: 14px;
+      border: 1px solid #D1D5DB;
+      border-radius: 10px;
+      outline: none;
+      color: var(--text-dark);
+      background: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.15);
+    }
+
+    .toggle-pwd {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #9CA3AF;
+      cursor: pointer;
+      display: flex;
+    }
+
+    .toggle-pwd:hover {
+      color: #4B5563;
+    }
+
+    /* Submit Button */
+    .btn-login {
+      width: 100%;
+      padding: 14px 20px;
+      background-color: var(--primary-dark);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+      box-shadow: 0 4px 14px rgba(39, 90, 78, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .btn-login:hover {
+      background-color: var(--primary-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(39, 90, 78, 0.35);
+    }
+
+    /* Security Note */
+    .security-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #F0FDF4;
+      border: 1px solid rgba(39, 90, 78, 0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 28px;
+      font-size: 12px;
+      color: #166534;
+      line-height: 1.4;
+    }
+
+    .security-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--primary-dark);
+    }
+
+    /* Quick Links Bar */
+    .quick-nav {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .quick-nav a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .quick-nav a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .split-layout { flex-direction: column; }
+      .brand-panel { padding: 40px; }
+      .hero-heading { font-size: 32px; }
+      .feature-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="split-layout">
+    <!-- LEFT BRAND PANEL -->
+    <section class="brand-panel">
+      <!-- Ambient Circles -->
+      <div class="ambient-circle circle-1"></div>
+      <div class="ambient-circle circle-2"></div>
+      <div class="ambient-circle circle-3"></div>
+
+      <!-- Top Logo -->
+      <div class="brand-top">
+        <span class="kvv-badge">KIDPRO</span>
+        <div class="brand-title-wrap">
+          <span class="brand-title">Mầm non KIDPRO</span>
+          <span class="brand-sub" id="brandSub">QUẢN TRỊ HỆ THỐNG</span>
+        </div>
+      </div>
+
+      <!-- Center Hero -->
+      <div class="brand-hero">
+        <span class="hero-tag">NỀN TẢNG QUẢN TRỊ TRƯỜNG HỌC</span>
+        <h1 class="hero-heading">Mọi trường học.<br>Một hệ thống.</h1>
+        <p class="hero-desc">
+          Quản lý cơ sở, tài khoản, sản phẩm, hợp đồng và vận hành của toàn hệ thống Mầm non KIDPRO trong một không gian an toàn, minh bạch.
+        </p>
+
+        <!-- 3 Feature Cards -->
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <div class="card-title">Đa cơ sở</div>
+            <div class="card-sub">Quản trị tập trung</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div class="card-title">Phân quyền</div>
+            <div class="card-sub">Kiểm soát truy cập</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <div class="card-title">Vận hành</div>
+            <div class="card-sub">Dữ liệu tức thời</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="brand-footer">
+        © 2026 Mầm non KIDPRO
+      </footer>
+    </section>
+
+    <!-- RIGHT FORM PANEL -->
+    <section class="form-panel">
+      <div class="form-container">
+        
+        <!-- Role Quick Switcher -->
+        <div class="role-tabs">
+          <button class="role-tab active" onclick="switchRole('super_admin')">Super Admin</button>
+          <button class="role-tab" onclick="switchRole('principal')">Hiệu trưởng</button>
+          <button class="role-tab" onclick="switchRole('academic')">Giáo vụ</button>
+          <button class="role-tab" onclick="switchRole('accountant')">Kế toán</button>
+        </div>
+
+        <span class="form-badge" id="formRoleBadge">DÀNH CHO QUẢN TRỊ HỆ THỐNG</span>
+        <h2 class="form-title">Chào mừng trở lại</h2>
+        <p class="form-sub" id="formSubtitle">Đăng nhập để tiếp tục quản lý hệ thống Mầm non KIDPRO.</p>
+
+        <form id="loginForm" onsubmit="event.preventDefault(); submitLogin();">
+          <div class="form-group">
+            <label class="form-label" for="username">Tên đăng nhập hoặc Email *</label>
+            <div class="form-input-wrap">
+              <input type="text" id="username" class="form-input" required value="admin@kidpro.edu.vn">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Mật khẩu *</label>
+            <div class="form-input-wrap">
+              <input type="password" id="password" class="form-input" placeholder="Nhập mật khẩu" required value="kvvAdmin2026@Secure">
+              <button type="button" class="toggle-pwd" id="toggleEye" aria-label="Toggle password">
+                <svg id="eyeSvg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-login" id="submitBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Đăng nhập hệ thống</span>
+          </button>
+        </form>
+
+        <div class="security-note" id="securityBadge">
+          <svg class="security-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span id="securityText">Phiên đăng nhập được bảo vệ bằng JWT và giới hạn theo vai trò Super Admin.</span>
+        </div>
+      </div>
+
+      <!-- Floating quick link back to Hub -->
+      <div class="quick-nav">
+        <a href="index.html">← Trở về Mockup Hub 153 Màn hình</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const roleData = {
+      super_admin: {
+        badge: 'DÀNH CHO QUẢN TRỊ HỆ THỐNG',
+        brandSub: 'QUẢN TRỊ HỆ THỐNG',
+        email: 'admin@kidpro.edu.vn',
+        sec: 'Phiên đăng nhập được bảo vệ bằng JWT và giới hạn theo vai trò Super Admin.',
+        dest: '02_web_admin_dashboard.html'
+      },
+      principal: {
+        badge: 'DÀNH CHO BAN GIÁM HIỆU',
+        brandSub: 'BAN GIÁM HIỆU',
+        email: 'hieutruong@kidpro.edu.vn',
+        sec: 'Bảo mật 2FA cấp cao dành cho Ban Giám Hiệu điều hành toàn trường.',
+        dest: '02_web_admin_dashboard.html'
+      },
+      academic: {
+        badge: 'DÀNH CHO CÁN BỘ GIÁO VỤ',
+        brandSub: 'CÁN BỘ GIÁO VỤ',
+        email: 'giaovu@kidpro.edu.vn',
+        sec: 'Phân quyền kiểm duyệt hồ sơ học sinh, xếp lớp & thời khóa biểu Bộ GD&ĐT.',
+        dest: '03_web_academic_workspace.html'
+      },
+      accountant: {
+        badge: 'DÀNH CHO KẾ TOÁN TRƯỜNG',
+        brandSub: 'KẾ TOÁN TRƯỜNG',
+        email: 'ketoan@kidpro.edu.vn',
+        sec: 'Kiểm toán tài chính thời gian thực, tích hợp cổng PayOS VietQR động.',
+        dest: '04_web_finance_billing.html'
+      }
+    };
+
+    let currentRole = 'super_admin';
+
+    function switchRole(roleKey) {
+      currentRole = roleKey;
+      document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const data = roleData[roleKey];
+      document.getElementById('formRoleBadge').innerText = data.badge;
+      document.getElementById('brandSub').innerText = data.brandSub;
+      document.getElementById('username').value = data.email;
+      document.getElementById('securityText').innerText = data.sec;
+    }
+
+    // Password visibility toggle
+    const toggleEye = document.getElementById('toggleEye');
+    const pwdInput = document.getElementById('password');
+    const eyeSvg = document.getElementById('eyeSvg');
+
+    toggleEye.addEventListener('click', () => {
+      const isPwd = pwdInput.type === 'password';
+      pwdInput.type = isPwd ? 'text' : 'password';
+      eyeSvg.innerHTML = isPwd 
+        ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>'
+        : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+    });
+
+    function submitLogin() {
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = '<span>Đang xác thực JWT...</span>';
+      btn.style.opacity = '0.85';
+      setTimeout(() => {
+        window.location.href = roleData[currentRole].dest;
+      }, 700);
+    }
+  </script>
+</body>
+</html>

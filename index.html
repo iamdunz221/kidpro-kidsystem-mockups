@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIDPRO System - Mockup Suite 153 Màn Hình Quản Trị Mầm Non</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #275A4E;
+      --primary-deep: #1E4D40;
+      --primary-forest: #173B31;
+      --primary-accent: #377E6D;
+      --accent-gold: #E5A93C;
+      --accent-mint: #78C2AD;
+      --bg-cream: #F4F7F6;
+      --border-color: #E2ECE7;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-cream); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* HEADER */
+    .master-header {
+      background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-forest) 100%);
+      color: #fff;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid rgba(229, 169, 60, 0.4);
+      flex-shrink: 0;
+    }
+
+    .header-brand { display: flex; align-items: center; gap: 14px; }
+    .kvv-badge { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 18px; padding: 8px 14px; border-radius: 10px; }
+    .header-titles h1 { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .header-titles p { font-size: 11px; text-transform: uppercase; color: var(--accent-mint); letter-spacing: 1px; }
+
+    .header-stats { display: flex; gap: 24px; align-items: center; }
+    .stat-badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 6px 14px;
+      text-align: center;
+    }
+    .stat-badge .num { font-size: 18px; font-weight: 800; color: var(--accent-gold); }
+    .stat-badge .txt { font-size: 10px; text-transform: uppercase; opacity: 0.8; }
+
+    /* NAVIGATION TABS */
+    .main-nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      padding: 0 32px;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .nav-tab-btn {
+      padding: 16px 8px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-tab-btn.active { color: var(--primary-dark); border-bottom-color: var(--primary-dark); }
+
+    /* CONTENT LAYOUT */
+    .page-container {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      height: calc(100vh - 145px);
+    }
+
+    /* LEFT SCREEN LIST */
+    .screen-sidebar {
+      width: 420px;
+      background: #fff;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .filter-bar {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-color);
+      background: #FAFBFB;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #D1D5DB;
+      border-radius: 10px;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 12px;
+    }
+    .search-input:focus { border-color: var(--primary-dark); }
+
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .filter-pill.active { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+
+    .screen-list-scroll { flex: 1; overflow-y: auto; padding: 12px; }
+
+    .screen-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .screen-item:hover { border-color: var(--primary-accent); transform: translateY(-1px); }
+    .screen-item.active {
+      border-color: var(--primary-dark);
+      background: #F0F6F4;
+      border-left: 5px solid var(--primary-dark);
+    }
+
+    .screen-header-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .stt-badge { font-size: 11px; font-weight: 800; color: var(--primary-dark); background: #E2ECE7; padding: 2px 8px; border-radius: 6px; }
+    .platform-badge { font-size: 10px; font-weight: 700; color: #4B5563; }
+    .screen-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .screen-subsystem { font-size: 11px; color: var(--primary-accent); font-weight: 600; margin-bottom: 6px; }
+    .screen-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: #EBF7F2; color: #166534; }
+
+    /* RIGHT DEVICE VIEWPORT */
+    .device-viewport-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #E5EBE8;
+      overflow-y: auto;
+      padding: 24px;
+      align-items: center;
+    }
+
+    .viewport-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 960px;
+      margin-bottom: 18px;
+    }
+
+    .device-switcher { display: flex; background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 4px; gap: 4px; }
+    .dev-btn { padding: 6px 14px; border: none; background: transparent; font-size: 12px; font-weight: 700; border-radius: 6px; cursor: pointer; color: var(--text-muted); }
+    .dev-btn.active { background: var(--primary-dark); color: #fff; }
+
+    /* MOCK FRAMES */
+    /* 1. Desktop Browser Frame */
+    .frame-desktop {
+      width: 100%;
+      max-width: 960px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .browser-bar {
+      height: 38px;
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 12px;
+    }
+    .dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.red { background: #EF4444; }
+    .dot.yellow { background: #F59E0B; }
+    .dot.green { background: #10B981; }
+    .address-bar {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 3px 12px;
+      font-size: 11px;
+      color: #64748B;
+      font-family: monospace;
+    }
+
+    /* 2. Phone Frame */
+    .frame-phone {
+      width: 380px;
+      min-height: 720px;
+      background: #fff;
+      border: 10px solid #1E293B;
+      border-radius: 44px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+      overflow: hidden;
+      margin-bottom: 24px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .phone-notch {
+      height: 28px;
+      background: #1E293B;
+      width: 120px;
+      margin: 0 auto;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+
+    /* DETAILS CARD */
+    .screen-details-card {
+      width: 100%;
+      max-width: 960px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .detail-tag {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    /* CORE PROTOTYPES GRID VIEW (TAB 2) */
+    .prototypes-tab-view {
+      display: none;
+      padding: 32px;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    .proto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .proto-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proto-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+
+    .proto-header {
+      padding: 20px;
+      background: linear-gradient(135deg, #1E4D40 0%, #275A4E 100%);
+      color: #fff;
+    }
+
+    .proto-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .btn-launch {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      background: var(--primary-dark);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 10px;
+      margin-top: 16px;
+      transition: all 0.2s;
+    }
+    .btn-launch:hover { background: var(--primary-deep); }
+  </style>
+</head>
+<body>
+
+  <!-- MASTER HEADER -->
+  <header class="master-header">
+    <div class="header-brand">
+      <span class="kvv-badge">KIDPRO</span>
+      <div class="header-titles">
+        <h1>Mầm non KIDPRO • Mockup Kidsystem Hub</h1>
+        <p>Hệ thống Quản trị Giáo dục & Vận hành Bán trú Toàn diện (SRS 1.4.2)</p>
+      </div>
+    </div>
+
+    <div class="header-stats">
+      <div class="stat-badge">
+        <div class="num" id="statTotalScreens">153</div>
+        <div class="txt">Tổng Màn Hình</div>
+      </div>
+      <div class="stat-badge">
+        <div class="num">7</div>
+        <div class="txt">Phân Hệ Vai Trò</div>
+      </div>
+      <div class="stat-badge">
+        <div class="num">69</div>
+        <div class="txt">Use Cases (SRS)</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="main-nav">
+    <button class="nav-tab-btn active" onclick="switchMainTab('explorer')">
+      <span>📱💻</span> Khám Phá Chi Tiết 153 Màn Hình (Interactive Explorer)
+    </button>
+    <button class="nav-tab-btn" onclick="switchMainTab('prototypes')">
+      <span>🚀</span> 7 Phân Hệ Chạy Mẫu Trực Tiếp (Core Prototypes)
+    </button>
+    <button class="nav-tab-btn" onclick="switchMainTab('design_system')">
+      <span>🎨</span> Bảng Mã Màu & Design System KIDPRO
+    </button>
+  </nav>
+
+  <!-- TAB 1: INTERACTIVE EXPLORER -->
+  <div class="page-container" id="tabExplorer">
+    <!-- LEFT SIDEBAR: LIST OF SCREENS -->
+    <aside class="screen-sidebar">
+      <div class="filter-bar">
+        <input type="text" id="screenSearch" class="search-input" placeholder="🔍 Tìm kiếm theo tên màn hình, từ khóa..." oninput="handleSearch()">
+        
+        <div class="filter-pills">
+          <button class="filter-pill active" onclick="filterByPlatform('all')">Tất cả (153)</button>
+          <button class="filter-pill" onclick="filterByPlatform('Web Desktop')">💻 Web (74)</button>
+          <button class="filter-pill" onclick="filterByPlatform('Mobile App')">📱 Mobile (68)</button>
+          <button class="filter-pill" onclick="filterByPlatform('Tablet')">📟 Tablet Bếp (11)</button>
+        </div>
+      </div>
+
+      <div class="screen-list-scroll" id="screenListContainer">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </aside>
+
+    <!-- RIGHT: DEVICE VIEWPORT PREVIEW -->
+    <main class="device-viewport-area">
+      <div class="viewport-controls">
+        <div style="font-size: 13px; font-weight: 700; color: var(--primary-dark);" id="viewportTitle">
+          💻 Cổng Web Quản Trị Hệ Thống (Desktop 1440px)
+        </div>
+        <div class="device-switcher">
+          <button class="dev-btn active" id="btnDevDesktop" onclick="setDeviceView('desktop')">💻 Desktop</button>
+          <button class="dev-btn" id="btnDevMobile" onclick="setDeviceView('mobile')">📱 Mobile</button>
+        </div>
+      </div>
+
+      <!-- DESKTOP FRAME -->
+      <div class="frame-desktop" id="frameDesktop">
+        <div class="browser-bar">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="address-bar" id="mockBrowserUrl">https://admin.kidpro.edu.vn/auth/login</div>
+        </div>
+        <div id="desktopFrameContent" style="min-height: 480px; padding: 30px; background: #fff;">
+          <!-- Mock content rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- MOBILE PHONE FRAME -->
+      <div class="frame-phone" id="frameMobile">
+        <div class="phone-notch"></div>
+        <div id="mobileFrameContent" style="flex: 1; padding: 20px; background: #fff; overflow-y: auto;">
+          <!-- Mobile mock content rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- SCREEN DETAILS INFO -->
+      <div class="screen-details-card">
+        <span class="detail-tag" id="detailActorTag">Quản trị viên Nền tảng (Platform Super Admin)</span>
+        <h2 style="font-size: 20px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px;" id="detailScreenName">
+          1. Login Screen (Cổng Web Quản trị Nền tảng)
+        </h2>
+        <p style="font-size: 13px; line-height: 1.6; color: #4B5563; margin-bottom: 16px;" id="detailDescription">
+          Màn hình đăng nhập tập trung dành cho Quản trị viên Nền tảng (Super Admin), hỗ trợ xác thực tài khoản qua Email/Số điện thoại và mật khẩu mã hóa Argon2id, tích hợp mã CAPTCHA chống tấn công brute-force và cơ chế cấp phát cặp mã thông báo JWT.
+        </p>
+
+        <div style="display: flex; gap: 12px; align-items: center;" id="detailActionRow">
+          <a href="01_web_login.html" class="btn-launch" style="width: auto; padding: 10px 18px; margin: 0;" id="detailOpenBtn" target="_blank">
+            🔗 Mở Bản Prototype Tương Tác Sống
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- TAB 2: PROTOTYPES HUB -->
+  <div class="prototypes-tab-view" id="tabPrototypes">
+    <div style="max-width: 1300px; margin: 0 auto 28px;">
+      <h2 style="font-size: 26px; font-weight: 800; color: var(--primary-dark);">7 Phân Hệ Chạy Mẫu Trực Tiếp</h2>
+      <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">
+        Được thiết kế dựa trên chính xác hình mẫu cơ sở của bạn (Thương hiệu KIDPRO, xanh rừng sâu #275A4E, vàng ấm, thẻ bo tròn, tương tác sống).
+      </p>
+    </div>
+
+    <div class="proto-grid">
+      <!-- 1 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">MÀN HÌNH CHÍNH</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">01. Đăng Nhập Quản Trị Hệ Thống</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Web Desktop • Bám sát 100% hình mẫu cơ sở</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Tái hiện chuẩn xác layout split-screen: Panel thương hiệu "Mọi trường học. Một hệ thống." bên trái và Form đăng nhập chuyển đổi 4 vai trò bên phải.
+          </p>
+          <a href="01_web_login.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">QUẢN TRỊ VIÊN & BGH</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">02. Dashboard Điều Hành Cấp Cao</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Web Desktop • Super Admin & Hiệu trưởng</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Theo dõi KPI 12 cơ sở mầm non, quản lý tenant đa trường, giám sát độ trễ vi dịch vụ AI nhận diện khuôn mặt và an ninh Nghị định 13.
+          </p>
+          <a href="02_web_admin_dashboard.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">CÁN BỘ GIÁO VỤ</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">03. Không Gian Học Vụ & Tuyển Sinh</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Web Desktop • Cán bộ Giáo vụ Trường</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Quản lý hồ sơ điện tử học sinh với cảnh báo đỏ dị ứng thực phẩm nặng (đậu phộng, hải sản), thẩm tra CCCD người đón và xuất Sổ TT 28.
+          </p>
+          <a href="03_web_academic_workspace.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">KẾ TOÁN TRƯỜNG</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">04. Bàn Tài Chính & Quyết Toán VietQR</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Web Desktop • Kế toán viên</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Quyết toán học phí động tự động trừ tiền ăn ngày nghỉ có phép trước 08:00 (-45k/ngày), giảm trừ anh em ruột và đối soát PayOS webhook.
+          </p>
+          <a href="04_web_finance_billing.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">GIÁO VIÊN MẦM NON</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">05. App Giáo Viên (Điểm Danh AI)</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Mobile Phone • iOS & Android Frame</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Mô phỏng quét camera AI đón trẻ buổi sáng (khung nhận diện YOLOv11, độ khớp 95.8%), xác thực người đón an toàn và nhắc dặn thuốc trưa.
+          </p>
+          <a href="05_mobile_teacher_app.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">PHỤ HUYNH HỌC SINH</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">06. App Phụ Huynh (Timeline & VietQR)</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Mobile Phone • iOS & Android Frame</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Xem ảnh check-in thực tế của bé lúc đến lớp, báo cáo ăn ngủ bán trú, quét VietQR 1-chạm đóng học phí và nộp đơn xin nghỉ học tự động hoàn tiền ăn.
+          </p>
+          <a href="06_mobile_parent_app.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="proto-card">
+        <div class="proto-header">
+          <span style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px;">BẾP BÁN TRÚ</span>
+          <h3 style="font-size: 17px; font-weight: 700; margin-top: 8px;">07. Trạm Tablet Bếp Ăn & ATVSTP</h3>
+          <p style="font-size: 12px; opacity: 0.85;">Tablet iPad Frame • Nhân viên Bếp</p>
+        </div>
+        <div class="proto-body">
+          <p style="font-size: 13px; color: #4B5563; line-height: 1.5;">
+            Khóa số suất ăn lúc 08:30 sáng, phân tách 12 khay ăn dị ứng riêng biệt, Sổ Kiểm thực 3 bước theo QĐ 1246/QĐ-BYT và quản lý lưu mẫu thức ăn 24H.
+          </p>
+          <a href="07_tablet_kitchen_operations.html" class="btn-launch" target="_blank">Mở Bản Chạy Mẫu →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: DESIGN SYSTEM -->
+  <div class="prototypes-tab-view" id="tabDesignSystem">
+    <div style="max-width: 1000px; margin: 0 auto; background: #fff; padding: 36px; border-radius: 20px; border: 1px solid var(--border-color);">
+      <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 8px;">KIDPRO System - Bộ Quy Chuẩn Thiết Kế (Design System)</h2>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 28px;">
+        Được xây dựng đồng bộ với bản mẫu giao diện đăng nhập Mầm non KIDPRO của bạn.
+      </p>
+
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px;">1. Bảng Màu Thương Hiệu (Color Palette)</h3>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px;">
+        <div style="background: #275A4E; color: #fff; padding: 18px; border-radius: 12px;">
+          <div style="font-weight: 800; font-size: 16px;">#275A4E</div>
+          <div style="font-size: 12px; opacity: 0.85;">Primary Forest Green</div>
+        </div>
+        <div style="background: #1E4D40; color: #fff; padding: 18px; border-radius: 12px;">
+          <div style="font-weight: 800; font-size: 16px;">#1E4D40</div>
+          <div style="font-size: 12px; opacity: 0.85;">Deep Brand Green</div>
+        </div>
+        <div style="background: #E5A93C; color: #173B31; padding: 18px; border-radius: 12px;">
+          <div style="font-weight: 800; font-size: 16px;">#E5A93C</div>
+          <div style="font-size: 12px; opacity: 0.85;">Warm Gold Accent</div>
+        </div>
+        <div style="background: #78C2AD; color: #173B31; padding: 18px; border-radius: 12px;">
+          <div style="font-weight: 800; font-size: 16px;">#78C2AD</div>
+          <div style="font-size: 12px; opacity: 0.85;">Mint Green Highlight</div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px;">2. Nguyên Tắc Trải Nghiệm Giáo Dục (UX Principles)</h3>
+      <ul style="font-size: 14px; line-height: 1.8; color: #4B5563; padding-left: 20px;">
+        <li><strong>Đơn giản & Dễ sử dụng cho người mới:</strong> Giao diện rõ ràng, font chữ Plus Jakarta Sans hiện đại dễ đọc, hạn chế thuật ngữ kỹ thuật phức tạp.</li>
+        <li><strong>An toàn & Minh bạch thông tin:</strong> Tự động bóc tách cảnh báo đỏ cho trẻ dị ứng thực phẩm nặng, kiểm thực ATVSTP 3 bước và quyền riêng tư sinh trắc học theo Nghị định 13/2023/NĐ-CP.</li>
+        <li><strong>Phản hồi thị giác thời gian thực:</strong> Khung nhận diện AI camera báo xanh khi khớp danh tính, thông báo đẩy kèm ảnh con đến lớp tức thì cho phụ huynh.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LOAD SCREENS DATASET -->
+  <script src="screens_data.js"></script>
+  <script>
+    let currentScreens = SCREENS_DATA;
+    let selectedScreenIndex = 0;
+    let activePlatform = 'all';
+
+    function renderScreenList() {
+      const container = document.getElementById('screenListContainer');
+      container.innerHTML = '';
+
+      currentScreens.forEach((s, idx) => {
+        const item = document.createElement('div');
+        item.className = `screen-item ${idx === selectedScreenIndex ? 'active' : ''}`;
+        item.onclick = () => selectScreen(idx);
+
+        item.innerHTML = `
+          <div class="screen-header-line">
+            <span class="stt-badge">#${s.stt}</span>
+            <span class="platform-badge">${s.platform === 'Web Desktop' ? '💻 Web' : s.platform === 'Tablet' ? '📟 Tablet' : '📱 Mobile'}</span>
+          </div>
+          <div class="screen-title">${s.name}</div>
+          <div class="screen-subsystem">${s.subsystem.split('(')[0]}</div>
+          <div>${s.tags.map(t => `<span class="screen-tag">${t}</span>`).join(' ')}</div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function selectScreen(index) {
+      selectedScreenIndex = index;
+      const s = currentScreens[index];
+      renderScreenList();
+
+      // Update Details
+      document.getElementById('detailActorTag').innerText = s.role;
+      document.getElementById('detailScreenName').innerText = `${s.stt}. ${s.name}`;
+      document.getElementById('detailDescription').innerText = s.description;
+
+      // Link to appropriate prototype
+      const btn = document.getElementById('detailOpenBtn');
+      if (s.stt <= 2 || s.subsystem.includes('Quản trị Nền tảng')) {
+        btn.href = '01_web_login.html';
+      } else if (s.subsystem.includes('Ban Giám Hiệu') || s.stt <= 16) {
+        btn.href = '02_web_admin_dashboard.html';
+      } else if (s.subsystem.includes('Giáo vụ')) {
+        btn.href = '03_web_academic_workspace.html';
+      } else if (s.subsystem.includes('Kế toán')) {
+        btn.href = '04_web_finance_billing.html';
+      } else if (s.subsystem.includes('Giáo viên')) {
+        btn.href = '05_mobile_teacher_app.html';
+      } else if (s.subsystem.includes('Phụ huynh')) {
+        btn.href = '06_mobile_parent_app.html';
+      } else if (s.subsystem.includes('Bếp')) {
+        btn.href = '07_tablet_kitchen_operations.html';
+      }
+
+      // Automatically switch device frame
+      if (s.platform === 'Mobile App') {
+        setDeviceView('mobile');
+        renderMobileMockContent(s);
+      } else {
+        setDeviceView('desktop');
+        renderDesktopMockContent(s);
+      }
+    }
+
+    function renderDesktopMockContent(s) {
+      document.getElementById('mockBrowserUrl').innerText = `https://kidpro.kidpro.edu.vn/app/${s.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+      const content = document.getElementById('desktopFrameContent');
+      content.innerHTML = `
+        <div style="border-bottom: 1px solid #E2ECE7; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 11px; background: #EBF7F2; color: #1E4D40; padding: 4px 10px; border-radius: 8px; font-weight: 700;">KIDPRO KIDPRO • PHÂN HỆ WEB</span>
+            <h2 style="font-size: 20px; font-weight: 800; color: #1E4D40; margin-top: 6px;">${s.name}</h2>
+          </div>
+          <span style="font-size: 12px; color: #6B7280; font-weight: 600;">Vai trò: ${s.role}</span>
+        </div>
+
+        <div style="background: #F8FAF9; border: 1px solid #E2ECE7; border-radius: 12px; padding: 18px; margin-bottom: 20px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: #275A4E; margin-bottom: 6px;">Mục Đích & Đặc Tả Nghiệp Vụ (SRS 1.4.2):</h4>
+          <p style="font-size: 13px; line-height: 1.6; color: #374151;">${s.description}</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 18px;">
+          <div style="border: 1px dashed #CBD5E1; border-radius: 12px; padding: 20px; background: #FAFBFB;">
+            <div style="font-size: 12px; font-weight: 700; color: #64748B; text-transform: uppercase; margin-bottom: 12px;">Các Thành Phần & Tương Tác Chính</div>
+            <div style="font-size: 13px; color: #334155; line-height: 1.8;">
+              • Bộ lọc dữ liệu nâng cao theo cơ sở trường học & niên khóa.<br>
+              • Bảng dữ liệu tương tác hỗ trợ phân trang, xuất file Excel/PDF.<br>
+              • Nút thao tác nhanh với quyền truy cập RBAC được kiểm soát.<br>
+              • Cơ chế xác thực hai lớp (2FA) bảo vệ dữ liệu nhạy cảm.
+            </div>
+          </div>
+
+          <div style="border: 1px solid #E2ECE7; border-radius: 12px; padding: 18px; background: #fff;">
+            <div style="font-size: 12px; font-weight: 700; color: #1E4D40; margin-bottom: 10px;">Thẻ Tác Vụ Nhanh</div>
+            <button style="width: 100%; padding: 10px; background: #275A4E; color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; margin-bottom: 8px;" onclick="window.open(document.getElementById('detailOpenBtn').href, '_blank')">
+              ⚡ Xem Bản Prototype Thực Tế
+            </button>
+            <div style="font-size: 11px; color: #6B7280; text-align: center;">Đã tích hợp vào bộ KIDPRO Prototype</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMobileMockContent(s) {
+      const content = document.getElementById('mobileFrameContent');
+      content.innerHTML = `
+        <div style="background: #275A4E; color: #fff; padding: 14px; border-radius: 14px; margin-bottom: 16px;">
+          <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85;">Mầm non KIDPRO</div>
+          <div style="font-size: 15px; font-weight: 800; margin-top: 4px;">${s.name}</div>
+        </div>
+
+        <div style="background: #F4F7F6; border-radius: 12px; padding: 14px; font-size: 12px; color: #374151; line-height: 1.5; margin-bottom: 16px;">
+          <strong>Đặc tả giao diện:</strong><br>
+          ${s.description}
+        </div>
+
+        <button style="width: 100%; padding: 12px; background: #275A4E; color: #fff; border: none; border-radius: 12px; font-weight: 700; font-size: 13px; cursor: pointer;" onclick="window.open(document.getElementById('detailOpenBtn').href, '_blank')">
+          📱 Chạy Mẫu Trên Điện Thoại
+        </button>
+      `;
+    }
+
+    function setDeviceView(dev) {
+      const fd = document.getElementById('frameDesktop');
+      const fm = document.getElementById('frameMobile');
+      const bd = document.getElementById('btnDevDesktop');
+      const bm = document.getElementById('btnDevMobile');
+      const title = document.getElementById('viewportTitle');
+
+      if (dev === 'mobile') {
+        fd.style.display = 'none';
+        fm.style.display = 'flex';
+        bd.classList.remove('active');
+        bm.classList.add('active');
+        title.innerText = '📱 Giao Diện Ứng Dụng Di Động (iPhone Frame 390px)';
+      } else {
+        fd.style.display = 'block';
+        fm.style.display = 'none';
+        bd.classList.add('active');
+        bm.classList.remove('active');
+        title.innerText = '💻 Cổng Web Quản Trị Hệ Thống (Desktop 1440px)';
+      }
+    }
+
+    function filterByPlatform(plat) {
+      activePlatform = plat;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (plat === 'all') {
+        currentScreens = SCREENS_DATA;
+      } else {
+        currentScreens = SCREENS_DATA.filter(s => s.platform === plat);
+      }
+      selectedScreenIndex = 0;
+      renderScreenList();
+      selectScreen(0);
+    }
+
+    function handleSearch() {
+      const q = document.getElementById('screenSearch').value.toLowerCase().trim();
+      currentScreens = SCREENS_DATA.filter(s => 
+        (activePlatform === 'all' || s.platform === activePlatform) &&
+        (s.name.toLowerCase().includes(q) || s.description.toLowerCase().includes(q) || s.subsystem.toLowerCase().includes(q))
+      );
+      selectedScreenIndex = 0;
+      renderScreenList();
+      if (currentScreens.length > 0) {
+        selectScreen(0);
+      }
+    }
+
+    function switchMainTab(tab) {
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      document.getElementById('tabExplorer').style.display = tab === 'explorer' ? 'flex' : 'none';
+      document.getElementById('tabPrototypes').style.display = tab === 'prototypes' ? 'block' : 'none';
+      document.getElementById('tabDesignSystem').style.display = tab === 'design_system' ? 'block' : 'none';
+    }
+
+    // Initialize
+    renderScreenList();
+    selectScreen(0);
+  </script>
+</body>
+</html>
