@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Màn #004: View & Edit Profile - KIDPRO KidSystem</title>
+  <title>Màn #04: View & Edit Profile - KIDPRO SuperAdmin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    
     :root {
       --primary-dark: #275A4E;
       --primary-deep: #1E4D40;
@@ -21,9 +20,32 @@
       --text-dark: #111827;
       --text-muted: #6B7280;
       --card-bg: #FFFFFF;
+      --danger: #EF4444;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --info: #3B82F6;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-dark); }
+    body { background-color: var(--bg-cream); color: var(--text-dark); min-height: 100vh; }
+    
+    .admin-layout { display: flex; min-height: 100vh; }
+    .admin-sidebar { width: 260px; background: var(--primary-forest); color: #fff; flex-shrink: 0; display: flex; flex-direction: column; }
+    .sidebar-header { padding: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .brand-badge { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 14px; padding: 5px 10px; border-radius: 8px; letter-spacing: 0.5px; }
+    .sidebar-nav { padding: 14px 10px; flex: 1; overflow-y: auto; }
+    .nav-group-title { font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px; padding: 10px 12px 6px; font-weight: 700; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); text-decoration: none; margin-bottom: 2px; transition: all 0.2s; }
+    .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav-item.active { background: var(--primary-accent); color: #fff; font-weight: 700; }
+    .nav-item .stt-pill { font-size: 9px; padding: 2px 5px; border-radius: 4px; background: rgba(255,255,255,0.15); }
+    
+    .sidebar-footer { padding: 14px 16px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 10px; font-size: 12px; }
+    .user-avatar-mini { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-gold); color: #173B31; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
+
+    .admin-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
+    .admin-topbar { height: 64px; background: #fff; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; flex-shrink: 0; }
+    .admin-content { padding: 28px; flex: 1; }
+
     .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
     .badge-green { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
     .badge-yellow { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
@@ -52,117 +74,265 @@
     .data-tbl tr:last-child td { border-bottom: none; }
     .data-tbl tr:hover { background: #FAFDFB; }
 
-    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 18px; }
+    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 20px; }
     .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
     .card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
 
-    .web-layout { display: flex; min-height: 100vh; }
-    .web-sidebar { width: 250px; background: var(--primary-forest); color: #fff; flex-shrink: 0; display: flex; flex-direction: column; }
-    .web-brand { padding: 20px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .brand-tag { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 13px; padding: 4px 8px; border-radius: 6px; }
-    .nav-links { padding: 16px 10px; flex: 1; }
-    .nav-sec-title { font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px; padding: 0 10px 6px; margin-top: 10px; }
-    .nav-link { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 2px; }
-    .nav-link.active { background: var(--primary-accent); color: #fff; font-weight: 700; }
-    .web-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
-    .web-topbar { height: 60px; background: #fff; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
-    .web-content { padding: 24px; flex: 1; }
-    .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
-    .screen-heading { font-size: 20px; font-weight: 800; color: var(--text-dark); }
-    .srs-info-box { background: #ECFDF5; border-left: 4px solid var(--primary-accent); padding: 12px 16px; border-radius: 8px; margin: 16px 0 24px; font-size: 12px; color: #065F46; line-height: 1.5; }
+    .srs-banner { background: #ECFDF5; border-left: 4px solid var(--primary-accent); padding: 12px 16px; border-radius: 8px; margin-bottom: 22px; font-size: 12px; color: #065F46; line-height: 1.5; }
   </style>
 </head>
 <body>
-  <div class="web-layout">
-    <aside class="web-sidebar">
-      <div class="web-brand">
-        <span class="brand-tag">KIDPRO</span>
+  <div class="admin-layout">
+    
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <span class="brand-badge">KIDPRO</span>
         <div>
-          <div style="font-size: 13px; font-weight: 700;">Mầm non KIDPRO</div>
-          <div style="font-size: 10px; color: var(--accent-mint); text-transform: uppercase;">Quản trị Nền tảng</div>
+          <div style="font-weight: 800; font-size: 14px; letter-spacing: -0.2px;">KIDPRO System</div>
+          <div style="font-size: 10px; color: var(--accent-mint); font-weight: 700;">SUPERADMIN CONSOLE</div>
         </div>
       </div>
-      <div class="nav-links">
-        <div class="nav-sec-title">Phân hệ nghiệp vụ</div>
-        <a href="#" class="nav-link active"><span>●</span> Màn #004 (Đang xem)</a>
-        <a href="#" class="nav-link"><span>📊</span> Bàn làm việc chính</a>
-        <a href="#" class="nav-link"><span>📋</span> Hồ sơ & Danh mục</a>
-        <a href="#" class="nav-link"><span>⚙️</span> Cấu hình & Báo cáo</a>
-        <div class="nav-sec-title" style="margin-top: 20px;">Hệ thống</div>
-        <a href="../index.html" class="nav-link" style="color: var(--accent-gold);"><span>←</span> Về Hub 153 Màn hình</a>
+      <div class="sidebar-nav">
+        <div class="nav-group-title">16 Màn Hình Super Admin</div>
+    
+        <a href="screen_001.html" class="nav-item ">
+          <span class="stt-pill">#01</span>
+          <span>Login Screen</span>
+        </a>
+        
+        <a href="screen_002.html" class="nav-item ">
+          <span class="stt-pill">#02</span>
+          <span>Forgot Password</span>
+        </a>
+        
+        <a href="screen_003.html" class="nav-item ">
+          <span class="stt-pill">#03</span>
+          <span>Admin Dashboard</span>
+        </a>
+        
+        <a href="screen_004.html" class="nav-item active">
+          <span class="stt-pill">#04</span>
+          <span>View & Edit Profile</span>
+        </a>
+        
+        <a href="screen_005.html" class="nav-item ">
+          <span class="stt-pill">#05</span>
+          <span>Change Password</span>
+        </a>
+        
+        <a href="screen_006.html" class="nav-item ">
+          <span class="stt-pill">#06</span>
+          <span>Notification Center</span>
+        </a>
+        
+        <a href="screen_007.html" class="nav-item ">
+          <span class="stt-pill">#07</span>
+          <span>User Accounts Mgmt</span>
+        </a>
+        
+        <a href="screen_008.html" class="nav-item ">
+          <span class="stt-pill">#08</span>
+          <span>Create User Form</span>
+        </a>
+        
+        <a href="screen_009.html" class="nav-item ">
+          <span class="stt-pill">#09</span>
+          <span>School Tenants</span>
+        </a>
+        
+        <a href="screen_010.html" class="nav-item ">
+          <span class="stt-pill">#10</span>
+          <span>Create School Form</span>
+        </a>
+        
+        <a href="screen_011.html" class="nav-item ">
+          <span class="stt-pill">#11</span>
+          <span>Approve School</span>
+        </a>
+        
+        <a href="screen_012.html" class="nav-item ">
+          <span class="stt-pill">#12</span>
+          <span>Role Management</span>
+        </a>
+        
+        <a href="screen_013.html" class="nav-item ">
+          <span class="stt-pill">#13</span>
+          <span>Role Matrix 2D</span>
+        </a>
+        
+        <a href="screen_014.html" class="nav-item ">
+          <span class="stt-pill">#14</span>
+          <span>Integrations & API</span>
+        </a>
+        
+        <a href="screen_015.html" class="nav-item ">
+          <span class="stt-pill">#15</span>
+          <span>AI Monitoring</span>
+        </a>
+        
+        <a href="screen_016.html" class="nav-item ">
+          <span class="stt-pill">#16</span>
+          <span>Security & Backup</span>
+        </a>
+        
+        <div class="nav-group-title" style="margin-top: 16px;">Liên kết điều hướng</div>
+        <a href="../index.html" class="nav-item" style="color: var(--accent-gold);">
+          <span>←</span> <span>Về Mockup Hub 153 Màn</span>
+        </a>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-avatar-mini">SA</div>
+        <div style="flex: 1; overflow: hidden;">
+          <div style="font-weight: 700; white-space: nowrap; text-overflow: ellipsis;">Nguyễn Văn An</div>
+          <div style="font-size: 10px; color: var(--accent-mint);">Platform Super Admin</div>
+        </div>
+        <a href="screen_001.html" title="Đăng xuất" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px;">🚪</a>
       </div>
     </aside>
-
-    <main class="web-main">
-      <header class="web-topbar">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span class="badge badge-green">● Cơ sở KIDPRO Cầu Giấy (CS01)</span>
-          <span style="font-size: 12px; color: var(--text-muted);">Niên khóa: 2026 - 2027</span>
+    
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Quản trị Nền tảng &gt; Màn #04</span>
+          <span class="badge badge-green">Production v2.4 (Live)</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 12px; font-weight: 600;">Quản trị Nền tảng (Super Admin)</span>
-          <span class="badge badge-gold">JWT Active</span>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); background: var(--bg-cream); padding: 5px 12px; border-radius: 20px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block;"></span>
+            <span>Cụm máy chủ sẵn sàng: <strong>99.98%</strong></span>
+          </div>
+          <a href="screen_006.html" style="position: relative; text-decoration: none; font-size: 16px;">
+            🔔<span style="position: absolute; top: -4px; right: -6px; background: var(--danger); color: #fff; font-size: 9px; font-weight: 800; border-radius: 10px; padding: 1px 5px;">3</span>
+          </a>
         </div>
       </header>
 
-      <div class="web-content">
-        <div class="breadcrumb">KIDPRO System &gt; Quản trị Nền tảng (System Admin) (Xác thực & Bàn Điều hành Cấp cao) &gt; Màn #004</div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div class="admin-content">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px;">
           <div>
-            <h1 class="screen-heading">#004. View & Edit Profile</h1>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Vai trò truy cập: <strong>Quản trị Nền tảng (Super Admin)</strong></div>
+            <h1 style="font-size: 24px; font-weight: 800; color: var(--text-dark); letter-spacing: -0.5px;">#04. View & Edit Profile</h1>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Phân hệ: Quản trị Nền tảng (Platform Super Admin) • Xác thực Argon2id & RBAC</div>
           </div>
           <div style="display: flex; gap: 8px;">
-            <button class="btn btn-primary" onclick="alert('Đã kích hoạt thao tác nghiệp vụ trên màn hình #4!')">⚡ Thực hiện tác vụ</button>
-            <button class="btn" onclick="window.print()">🖨️ In / Kết xuất</button>
+            <a href="../index.html" class="btn"><span>📋</span> Danh mục 153 Màn</a>
+            <button class="btn btn-primary" onclick="alert('Đã kích hoạt hành động nghiệp vụ trên màn #04!')"><span>⚡</span> Tác Vụ Chính</button>
           </div>
         </div>
 
-        <div class="srs-info-box">
-          <strong>Đặc tả nghiệp vụ (SRS 1.4.2):</strong> Màn hình xem và cập nhật hồ sơ cá nhân của Quản trị viên: hiển thị mã định danh, vai trò phân quyền Super Admin, lịch sử phiên đăng nhập, đồng thời cho phép chỉnh sửa thông tin liên hệ cá nhân, ảnh đại diện và thiết lập giao diện tùy chỉnh (Dark/Light mode) sau khi xác thực mật khẩu.
+        <div class="srs-banner">
+          <strong>Đặc tả nghiệp vụ chuẩn (Mục 1.4.2 SRS):</strong> Màn hình xem và cập nhật hồ sơ cá nhân của Quản trị viên: hiển thị mã định danh, vai trò phân quyền Super Admin, lịch sử phiên đăng nhập, đồng thời cho phép chỉnh sửa thông tin liên hệ cá nhân, ảnh đại diện và thiết lập giao diện tùy chỉnh (Dark/Light mode) sau khi xác thực mật khẩu.
         </div>
 
         
-        <div class="card">
-          <div class="card-title">Biểu Mẫu Nhập Liệu Nghiệp Vụ</div>
-          <form onsubmit="event.preventDefault(); alert('Đã ghi nhận dữ liệu biểu mẫu thành công!');">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-              <div class="form-group">
-                <label class="form-label">Tên đối tượng / Tiêu đề hồ sơ *</label>
-                <input type="text" class="input-control" value="Hồ sơ quản lý #4" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Mã định danh hệ thống (ID) *</label>
-                <input type="text" class="input-control" value="KIDPRO-004-2026" readonly>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Phân loại danh mục / Nhóm *</label>
-                <select class="input-control">
-                  <option>Khối Mầm (3 - 4 tuổi)</option>
-                  <option>Khối Chồi (4 - 5 tuổi)</option>
-                  <option>Khối Lá (5 - 6 tuổi)</option>
-                  <option>Quản trị cấp cơ sở</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Ngày hiệu lực / Áp dụng</label>
-                <input type="date" class="input-control" value="2026-10-05">
-              </div>
-            </div>
+<div style="display: grid; grid-template-columns: 320px 1fr; gap: 24px;">
+  <!-- Left Column: Identity & Status -->
+  <div>
+    <div class="card" style="text-align: center;">
+      <div style="position: relative; width: 90px; height: 90px; margin: 0 auto 16px;">
+        <div style="width: 90px; height: 90px; border-radius: 50%; background: var(--accent-gold); color: #173B31; font-size: 32px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.1);">SA</div>
+        <button style="position: absolute; bottom: 0; right: 0; background: var(--primary-dark); color: #fff; border: 2px solid #fff; border-radius: 50%; width: 28px; height: 28px; font-size: 12px; cursor: pointer;">📷</button>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--text-dark);">Nguyễn Văn An</h3>
+      <div style="font-size: 12px; color: var(--primary-accent); font-weight: 700; margin-top: 2px;">Mã Quản Trị: SA-2026-001</div>
+      <div style="margin-top: 10px;"><span class="badge badge-gold">Platform Super Admin</span></div>
 
-            <div class="form-group">
-              <label class="form-label">Nội dung ghi chú & Đặc tả chi tiết</label>
-              <textarea class="input-control" rows="3" placeholder="Nhập ghi chú nghiệp vụ...">Màn hình xem và cập nhật hồ sơ cá nhân của Quản trị viên: hiển thị mã định danh, vai trò phân quyền Super Admin, lịch sử phiên đăng nhập, đồng thời cho phép chỉnh sửa thông tin liên hệ cá nhân, ảnh đại diện và thiết lập giao diện tùy chỉnh (Dark/Light mode) sau khi xác thực mật khẩu.</textarea>
-              <div class="form-help">Dữ liệu được mã hóa và đồng bộ tức thời với cơ sở dữ liệu PostgreSQL.</div>
-            </div>
+      <div style="border-top: 1px solid var(--border-color); margin-top: 20px; padding-top: 16px; text-align: left; font-size: 12px; line-height: 2;">
+        <div>Trạng thái: <span class="badge badge-green">Active (Đang trực tuyến)</span></div>
+        <div>Xác thực 2 bước (2FA): <span class="badge badge-green">Đã kích hoạt TOTP</span></div>
+        <div>Ngày khởi tạo: <strong>01/01/2026</strong></div>
+        <div>Phiên đăng nhập cuối: <strong>Hôm nay, 08:30:12</strong></div>
+      </div>
+    </div>
 
-            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-              <button type="button" class="btn">Lưu Bản Nháp</button>
-              <button type="submit" class="btn btn-primary">Xác Nhận & Cập Nhật</button>
-            </div>
-          </form>
+    <!-- Theme Preferences -->
+    <div class="card">
+      <div class="card-title">Tùy Chọn Giao Diện</div>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 12px;">☀️ Sáng (Mặc định)</button>
+        <button class="btn" style="flex: 1; justify-content: center; font-size: 12px;" onclick="alert('Chế độ Tối (Dark Mode) sẽ khả dụng trong phiên bản v2.5!')">🌙 Tối (Dark)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Edit Profile & Sessions -->
+  <div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Cập Nhật Thông Tin Liên Hệ & Quản Trị</span>
+        <span style="font-size: 12px; color: var(--text-muted);">Yêu cầu xác nhận mật khẩu để lưu</span>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Cập nhật thông tin hồ sơ Quản trị viên thành công!');">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label">Họ và tên đầy đủ *</label>
+            <input type="text" class="input-control" value="Nguyễn Văn An" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mã định danh Super Admin</label>
+            <input type="text" class="input-control" value="SA-2026-001" readonly style="background: #F3F4F6;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email cơ vụ (Đăng nhập) *</label>
+            <input type="email" class="input-control" value="admin@kidpro.edu.vn" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Số điện thoại liên hệ *</label>
+            <input type="tel" class="input-control" value="0988.888.999" required>
+          </div>
         </div>
-        
+
+        <div class="form-group" style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 14px; border-radius: 10px; margin-top: 10px;">
+          <label class="form-label" style="color: #92400E;">Xác thực mật khẩu hiện tại để phê duyệt thay đổi *</label>
+          <input type="password" class="input-control" placeholder="Nhập mật khẩu hiện tại của bạn" required style="border-color: #FCD34D;">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="btn">Hủy bỏ</button>
+          <button type="submit" class="btn btn-primary">Lưu Thay Đổi Hồ Sơ</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Active Sessions Table -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Lịch Sử Phiên Đăng Nhập & Thiết Bị Hoạt Động</span>
+        <button class="btn btn-danger" style="padding: 6px 12px; font-size: 11px;" onclick="alert('Đã thu hồi tất cả các phiên làm việc khác!')">Đăng xuất khỏi tất cả phiên khác</button>
+      </div>
+      <table class="data-tbl">
+        <thead>
+          <tr>
+            <th>Thiết Bị / Trình Duyệt</th>
+            <th>Địa Chỉ IP</th>
+            <th>Vị Trí</th>
+            <th>Mốc Thời Gian</th>
+            <th>Trạng Thái</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chrome 122 on Windows 11</strong></td>
+            <td>14.162.140.22</td>
+            <td>Hà Nội, VN</td>
+            <td>Hôm nay, 08:30 (Hiện tại)</td>
+            <td><span class="badge badge-green">Phiên này</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>Safari on iPhone 15 Pro</strong></td>
+            <td>113.190.45.18</td>
+            <td>Hà Nội, VN</td>
+            <td>Hôm qua, 21:15</td>
+            <td><span class="badge badge-blue">Hợp lệ</span></td>
+            <td><button class="btn btn-danger" style="padding: 4px 8px; font-size: 10px;">Thu hồi</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
       </div>
     </main>
   </div>
