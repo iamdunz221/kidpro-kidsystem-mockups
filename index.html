@@ -363,10 +363,20 @@
         <input type="text" id="screenSearch" class="search-input" placeholder="🔍 Tìm kiếm theo tên màn hình, từ khóa..." oninput="handleSearch()">
         
         <div class="filter-pills">
-          <button class="filter-pill active" onclick="filterByPlatform('all')">Tất cả (153)</button>
-          <button class="filter-pill" onclick="filterByPlatform('Web Desktop')">💻 Web (74)</button>
-          <button class="filter-pill" onclick="filterByPlatform('Mobile App')">📱 Mobile (68)</button>
-          <button class="filter-pill" onclick="filterByPlatform('Tablet')">📟 Tablet Bếp (11)</button>
+          <button class="filter-pill active plat-pill" onclick="filterByPlatform('all')">Tất cả (153)</button>
+          <button class="filter-pill plat-pill" onclick="filterByPlatform('Web Desktop')">💻 Web (74)</button>
+          <button class="filter-pill plat-pill" onclick="filterByPlatform('Mobile App')">📱 Mobile (68)</button>
+          <button class="filter-pill plat-pill" onclick="filterByPlatform('Tablet')">📟 Tablet Bếp (11)</button>
+        </div>
+        <div class="filter-pills" style="margin-top: 8px;">
+          <button class="filter-pill active role-pill" onclick="filterByRole('all')">Tất cả vai trò (7)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('super_admin')">Super Admin (16)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('principal')">Hiệu trưởng (14)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('academic')">Giáo vụ (26)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('accountant')">Kế toán (18)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('teacher')">Giáo viên (35)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('parent')">Phụ huynh (33)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('kitchen')">Bếp ăn (11)</button>
         </div>
       </div>
 
@@ -397,17 +407,13 @@
           </div>
           <div class="address-bar" id="mockBrowserUrl">https://admin.kidpro.edu.vn/auth/login</div>
         </div>
-        <div id="desktopFrameContent" style="min-height: 480px; padding: 30px; background: #fff;">
-          <!-- Mock content rendered dynamically -->
-        </div>
+        <iframe id="desktopIframe" src="screens/screen_001.html" style="width: 100%; height: 680px; border: none; background: #fff; display: block;"></iframe>
       </div>
 
       <!-- MOBILE PHONE FRAME -->
       <div class="frame-phone" id="frameMobile">
         <div class="phone-notch"></div>
-        <div id="mobileFrameContent" style="flex: 1; padding: 20px; background: #fff; overflow-y: auto;">
-          <!-- Mobile mock content rendered dynamically -->
-        </div>
+        <iframe id="mobileIframe" src="screens/screen_075.html" style="width: 100%; height: 680px; border: none; background: #fff; display: block;"></iframe>
       </div>
 
       <!-- SCREEN DETAILS INFO -->
@@ -589,10 +595,16 @@
     let currentScreens = SCREENS_DATA;
     let selectedScreenIndex = 0;
     let activePlatform = 'all';
+    let activeRole = 'all';
 
     function renderScreenList() {
       const container = document.getElementById('screenListContainer');
       container.innerHTML = '';
+
+      if (currentScreens.length === 0) {
+        container.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px;">Không tìm thấy màn hình phù hợp bộ lọc.</div>';
+        return;
+      }
 
       currentScreens.forEach((s, idx) => {
         const item = document.createElement('div');
@@ -613,6 +625,7 @@
     }
 
     function selectScreen(index) {
+      if (!currentScreens[index]) return;
       selectedScreenIndex = index;
       const s = currentScreens[index];
       renderScreenList();
@@ -622,90 +635,20 @@
       document.getElementById('detailScreenName').innerText = `${s.stt}. ${s.name}`;
       document.getElementById('detailDescription').innerText = s.description;
 
-      // Link to appropriate prototype
-      const btn = document.getElementById('detailOpenBtn');
-      if (s.stt <= 2 || s.subsystem.includes('Quản trị Nền tảng')) {
-        btn.href = '01_web_login.html';
-      } else if (s.subsystem.includes('Ban Giám Hiệu') || s.stt <= 16) {
-        btn.href = '02_web_admin_dashboard.html';
-      } else if (s.subsystem.includes('Giáo vụ')) {
-        btn.href = '03_web_academic_workspace.html';
-      } else if (s.subsystem.includes('Kế toán')) {
-        btn.href = '04_web_finance_billing.html';
-      } else if (s.subsystem.includes('Giáo viên')) {
-        btn.href = '05_mobile_teacher_app.html';
-      } else if (s.subsystem.includes('Phụ huynh')) {
-        btn.href = '06_mobile_parent_app.html';
-      } else if (s.subsystem.includes('Bếp')) {
-        btn.href = '07_tablet_kitchen_operations.html';
-      }
+      const screenUrl = s.mockup_file || `screens/screen_${String(s.stt).padStart(3, '0')}.html`;
+      document.getElementById('detailOpenBtn').href = screenUrl;
+      document.getElementById('mockBrowserUrl').innerText = `https://admin.kidpro.edu.vn/${screenUrl}`;
 
-      // Automatically switch device frame
+      // Automatically switch device frame & update iframe src
       if (s.platform === 'Mobile App') {
         setDeviceView('mobile');
-        renderMobileMockContent(s);
+        const mIframe = document.getElementById('mobileIframe');
+        if (mIframe) mIframe.src = screenUrl;
       } else {
         setDeviceView('desktop');
-        renderDesktopMockContent(s);
+        const dIframe = document.getElementById('desktopIframe');
+        if (dIframe) dIframe.src = screenUrl;
       }
-    }
-
-    function renderDesktopMockContent(s) {
-      document.getElementById('mockBrowserUrl').innerText = `https://kidpro.kidpro.edu.vn/app/${s.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
-      const content = document.getElementById('desktopFrameContent');
-      content.innerHTML = `
-        <div style="border-bottom: 1px solid #E2ECE7; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <span style="font-size: 11px; background: #EBF7F2; color: #1E4D40; padding: 4px 10px; border-radius: 8px; font-weight: 700;">KIDPRO KIDPRO • PHÂN HỆ WEB</span>
-            <h2 style="font-size: 20px; font-weight: 800; color: #1E4D40; margin-top: 6px;">${s.name}</h2>
-          </div>
-          <span style="font-size: 12px; color: #6B7280; font-weight: 600;">Vai trò: ${s.role}</span>
-        </div>
-
-        <div style="background: #F8FAF9; border: 1px solid #E2ECE7; border-radius: 12px; padding: 18px; margin-bottom: 20px;">
-          <h4 style="font-size: 13px; font-weight: 700; color: #275A4E; margin-bottom: 6px;">Mục Đích & Đặc Tả Nghiệp Vụ (SRS 1.4.2):</h4>
-          <p style="font-size: 13px; line-height: 1.6; color: #374151;">${s.description}</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 18px;">
-          <div style="border: 1px dashed #CBD5E1; border-radius: 12px; padding: 20px; background: #FAFBFB;">
-            <div style="font-size: 12px; font-weight: 700; color: #64748B; text-transform: uppercase; margin-bottom: 12px;">Các Thành Phần & Tương Tác Chính</div>
-            <div style="font-size: 13px; color: #334155; line-height: 1.8;">
-              • Bộ lọc dữ liệu nâng cao theo cơ sở trường học & niên khóa.<br>
-              • Bảng dữ liệu tương tác hỗ trợ phân trang, xuất file Excel/PDF.<br>
-              • Nút thao tác nhanh với quyền truy cập RBAC được kiểm soát.<br>
-              • Cơ chế xác thực hai lớp (2FA) bảo vệ dữ liệu nhạy cảm.
-            </div>
-          </div>
-
-          <div style="border: 1px solid #E2ECE7; border-radius: 12px; padding: 18px; background: #fff;">
-            <div style="font-size: 12px; font-weight: 700; color: #1E4D40; margin-bottom: 10px;">Thẻ Tác Vụ Nhanh</div>
-            <button style="width: 100%; padding: 10px; background: #275A4E; color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; margin-bottom: 8px;" onclick="window.open(document.getElementById('detailOpenBtn').href, '_blank')">
-              ⚡ Xem Bản Prototype Thực Tế
-            </button>
-            <div style="font-size: 11px; color: #6B7280; text-align: center;">Đã tích hợp vào bộ KIDPRO Prototype</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderMobileMockContent(s) {
-      const content = document.getElementById('mobileFrameContent');
-      content.innerHTML = `
-        <div style="background: #275A4E; color: #fff; padding: 14px; border-radius: 14px; margin-bottom: 16px;">
-          <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85;">Mầm non KIDPRO</div>
-          <div style="font-size: 15px; font-weight: 800; margin-top: 4px;">${s.name}</div>
-        </div>
-
-        <div style="background: #F4F7F6; border-radius: 12px; padding: 14px; font-size: 12px; color: #374151; line-height: 1.5; margin-bottom: 16px;">
-          <strong>Đặc tả giao diện:</strong><br>
-          ${s.description}
-        </div>
-
-        <button style="width: 100%; padding: 12px; background: #275A4E; color: #fff; border: none; border-radius: 12px; font-weight: 700; font-size: 13px; cursor: pointer;" onclick="window.open(document.getElementById('detailOpenBtn').href, '_blank')">
-          📱 Chạy Mẫu Trên Điện Thoại
-        </button>
-      `;
     }
 
     function setDeviceView(dev) {
@@ -720,7 +663,7 @@
         fm.style.display = 'flex';
         bd.classList.remove('active');
         bm.classList.add('active');
-        title.innerText = '📱 Giao Diện Ứng Dụng Di Động (iPhone Frame 390px)';
+        title.innerText = '📱 Giao Diện Ứng Dụng Di Động (iPhone 15 Frame)';
       } else {
         fd.style.display = 'block';
         fm.style.display = 'none';
@@ -732,25 +675,30 @@
 
     function filterByPlatform(plat) {
       activePlatform = plat;
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.plat-pill').forEach(p => p.classList.remove('active'));
       event.target.classList.add('active');
+      applyFilters();
+    }
 
-      if (plat === 'all') {
-        currentScreens = SCREENS_DATA;
-      } else {
-        currentScreens = SCREENS_DATA.filter(s => s.platform === plat);
-      }
-      selectedScreenIndex = 0;
-      renderScreenList();
-      selectScreen(0);
+    function filterByRole(roleKey) {
+      activeRole = roleKey;
+      document.querySelectorAll('.role-pill').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      applyFilters();
     }
 
     function handleSearch() {
+      applyFilters();
+    }
+
+    function applyFilters() {
       const q = document.getElementById('screenSearch').value.toLowerCase().trim();
-      currentScreens = SCREENS_DATA.filter(s => 
-        (activePlatform === 'all' || s.platform === activePlatform) &&
-        (s.name.toLowerCase().includes(q) || s.description.toLowerCase().includes(q) || s.subsystem.toLowerCase().includes(q))
-      );
+      currentScreens = SCREENS_DATA.filter(s => {
+        const matchPlat = (activePlatform === 'all' || s.platform === activePlatform);
+        const matchRole = (activeRole === 'all' || s.role_key === activeRole);
+        const matchQuery = !q || (s.name.toLowerCase().includes(q) || s.description.toLowerCase().includes(q) || s.subsystem.toLowerCase().includes(q));
+        return matchPlat && matchRole && matchQuery;
+      });
       selectedScreenIndex = 0;
       renderScreenList();
       if (currentScreens.length > 0) {

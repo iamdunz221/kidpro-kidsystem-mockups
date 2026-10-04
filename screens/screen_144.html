@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Màn #144: Catering & Kitchen Dashboard - Trạm Tablet Bếp KIDPRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    
+    :root {
+      --primary-dark: #275A4E;
+      --primary-deep: #1E4D40;
+      --primary-forest: #173B31;
+      --primary-accent: #377E6D;
+      --accent-gold: #E5A93C;
+      --accent-mint: #78C2AD;
+      --bg-cream: #F4F7F6;
+      --border-color: #E2ECE7;
+      --text-dark: #111827;
+      --text-muted: #6B7280;
+      --card-bg: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-cream); color: var(--text-dark); }
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+    .badge-green { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
+    .badge-yellow { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .badge-blue { background: #DBEAFE; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-red { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
+    .badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    .badge-purple { background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; }
+
+    .btn { padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: #fff; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; text-decoration: none; }
+    .btn:hover { background: #F9FAFB; border-color: #CBD5E1; }
+    .btn-primary { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+    .btn-primary:hover { background: var(--primary-deep); }
+    .btn-danger { background: #EF4444; color: #fff; border-color: #EF4444; }
+    .btn-gold { background: var(--accent-gold); color: #173B31; border: none; font-weight: 700; }
+
+    .input-control { width: 100%; padding: 10px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 13px; outline: none; background: #fff; color: var(--text-dark); }
+    .input-control:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.15); }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #374151; }
+    .form-help { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+    .table-responsive { width: 100%; overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid var(--border-color); }
+    .data-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-tbl th { text-align: left; padding: 12px 14px; background: #F8FAF9; color: var(--text-muted); font-weight: 700; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+    .data-tbl td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
+    .data-tbl tr:last-child td { border-bottom: none; }
+    .data-tbl tr:hover { background: #FAFDFB; }
+
+    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 18px; }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+    .card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+
+    body { padding: 20px; }
+    .tablet-shell { max-width: 1040px; margin: 0 auto; background: #fff; border: 10px solid #1E293B; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .tablet-top { background: var(--primary-forest); color: #fff; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .tablet-content { padding: 22px; }
+  </style>
+</head>
+<body>
+  <div class="tablet-shell">
+    <div class="tablet-top">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="badge badge-gold">KIDPRO BẾP BÁN TRÚ</span>
+        <strong style="font-size: 14px;">Màn #144: Catering & Kitchen Dashboard</strong>
+      </div>
+      <div style="font-size: 12px; color: var(--accent-mint);">Khóa số lúc 08:30 • QĐ 1246/QĐ-BYT</div>
+    </div>
+    <div class="tablet-content">
+      <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 10px 14px; border-radius: 8px; font-size: 12px; color: #166534; margin-bottom: 16px;">
+        <strong>Đặc tả (SRS 1.4.2):</strong> Bàn điều hành trung tâm bếp ăn bán trú: hiển thị tổng số suất ăn cần chuẩn bị trong ngày dựa trên số lượng trẻ có mặt sau giờ điểm danh 08:30 sáng, số suất ăn kiêng dị ứng đặc biệt, trạng thái kho nguyên liệu và tiến độ kiểm thực 3 bước.
+      </div>
+      
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+          <div class="card" style="padding: 16px; margin: 0;">
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Chỉ số hoạt động</div>
+            <div style="font-size: 24px; font-weight: 800; color: var(--primary-dark); margin: 6px 0;">98.6%</div>
+            <span class="badge badge-green">↑ Đạt chỉ tiêu</span>
+          </div>
+          <div class="card" style="padding: 16px; margin: 0;">
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Số lượng ghi nhận</div>
+            <div style="font-size: 24px; font-weight: 800; color: #2563EB; margin: 6px 0;">480 bé</div>
+            <span class="badge badge-blue">Toàn cơ sở</span>
+          </div>
+          <div class="card" style="padding: 16px; margin: 0;">
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Hồ sơ chờ xử lý</div>
+            <div style="font-size: 24px; font-weight: 800; color: #D97706; margin: 6px 0;">05 đơn</div>
+            <span class="badge badge-yellow">Cần duyệt ngay</span>
+          </div>
+          <div class="card" style="padding: 16px; margin: 0;">
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">An toàn & ATVSTP</div>
+            <div style="font-size: 24px; font-weight: 800; color: #16A34A; margin: 6px 0;">100%</div>
+            <span class="badge badge-green">Chuẩn QĐ 1246</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Bảng Phân Tích & Theo Dõi Thời Gian Thực</span>
+            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">Xuất Báo Cáo</button>
+          </div>
+          <table class="data-tbl">
+            <thead>
+              <tr>
+                <th>Hạng Mục Theo Dõi</th>
+                <th>Phân Khối</th>
+                <th>Giá Trị Đo Lường</th>
+                <th>Tiêu Chuẩn</th>
+                <th>Trạng Thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tỷ lệ chuyên cần sáng</td><td>Khối Mầm</td><td>96.8%</td><td>&gt;= 95%</td><td><span class="badge badge-green">Tốt</span></td></tr>
+              <tr><td>Khay ăn dị ứng riêng</td><td>Khối Chồi</td><td>12 suất</td><td>Kiểm soát 100%</td><td><span class="badge badge-red">Đã bóc tách</span></td></tr>
+              <tr><td>Thu học phí qua VietQR</td><td>Toàn trường</td><td>89.4%</td><td>Theo hạn nợ</td><td><span class="badge badge-green">Đúng hạn</span></td></tr>
+              <tr><td>Độ trễ AI nhận diện</td><td>Cổng trường</td><td>0.24 giây</td><td>&lt; 0.5s</td><td><span class="badge badge-blue">Tối ưu</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+    </div>
+  </div>
+</body>
+</html>

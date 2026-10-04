@@ -1,4 +1,4 @@
-// Dataset 153 Màn hình Hệ thống Quản trị Mầm non KIDPRO (KIDPRO System)
+// Dataset 153 Màn hình Hệ thống Quản trị Mầm non KIDPRO (KIDPRO KidSystem)
 // Trích xuất từ Mục 1.4.2 Báo cáo SEP490_G23_Report3_SRS_updated_ready
 const SCREENS_DATA = [
   {
@@ -12,7 +12,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_001.html"
   },
   {
     "stt": 2,
@@ -25,7 +26,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_002.html"
   },
   {
     "stt": 3,
@@ -38,7 +40,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_003.html"
   },
   {
     "stt": 4,
@@ -51,7 +54,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_004.html"
   },
   {
     "stt": 5,
@@ -64,7 +68,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_005.html"
   },
   {
     "stt": 6,
@@ -77,7 +82,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_006.html"
   },
   {
     "stt": 7,
@@ -90,7 +96,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_007.html"
   },
   {
     "stt": 8,
@@ -103,7 +110,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_008.html"
   },
   {
     "stt": 9,
@@ -116,7 +124,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_009.html"
   },
   {
     "stt": 10,
@@ -129,7 +138,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_010.html"
   },
   {
     "stt": 11,
@@ -142,7 +152,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_011.html"
   },
   {
     "stt": 12,
@@ -155,7 +166,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_012.html"
   },
   {
     "stt": 13,
@@ -168,7 +180,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_013.html"
   },
   {
     "stt": 14,
@@ -182,7 +195,8 @@ const SCREENS_DATA = [
     "tags": [
       "AI Sinh trắc học",
       "PayOS VietQR"
-    ]
+    ],
+    "mockup_file": "screens/screen_014.html"
   },
   {
     "stt": 15,
@@ -195,7 +209,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "AI Sinh trắc học"
-    ]
+    ],
+    "mockup_file": "screens/screen_015.html"
   },
   {
     "stt": 16,
@@ -208,7 +223,8 @@ const SCREENS_DATA = [
     "role_key": "super_admin",
     "tags": [
       "Nghị định 13"
-    ]
+    ],
+    "mockup_file": "screens/screen_016.html"
   },
   {
     "stt": 17,
@@ -221,7 +237,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghị định 13"
-    ]
+    ],
+    "mockup_file": "screens/screen_017.html"
   },
   {
     "stt": 18,
@@ -234,7 +251,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_018.html"
   },
   {
     "stt": 19,
@@ -247,7 +265,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_019.html"
   },
   {
     "stt": 20,
@@ -260,7 +279,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_020.html"
   },
   {
     "stt": 21,
@@ -273,7 +293,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_021.html"
   },
   {
     "stt": 22,
@@ -286,7 +307,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_022.html"
   },
   {
     "stt": 23,
@@ -299,7 +321,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_023.html"
   },
   {
     "stt": 24,
@@ -312,7 +335,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_024.html"
   },
   {
     "stt": 25,
@@ -325,7 +349,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_025.html"
   },
   {
     "stt": 26,
@@ -338,7 +363,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_026.html"
   },
   {
     "stt": 27,
@@ -351,7 +377,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_027.html"
   },
   {
     "stt": 28,
@@ -364,7 +391,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_028.html"
   },
   {
     "stt": 29,
@@ -377,7 +405,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghị định 13"
-    ]
+    ],
+    "mockup_file": "screens/screen_029.html"
   },
   {
     "stt": 30,
@@ -390,7 +419,8 @@ const SCREENS_DATA = [
     "role_key": "principal",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_030.html"
   },
   {
     "stt": 31,
@@ -403,7 +433,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_031.html"
   },
   {
     "stt": 32,
@@ -416,7 +447,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_032.html"
   },
   {
     "stt": 33,
@@ -429,7 +461,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_033.html"
   },
   {
     "stt": 34,
@@ -442,7 +475,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_034.html"
   },
   {
     "stt": 35,
@@ -455,7 +489,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_035.html"
   },
   {
     "stt": 36,
@@ -468,7 +503,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_036.html"
   },
   {
     "stt": 37,
@@ -481,7 +517,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_037.html"
   },
   {
     "stt": 38,
@@ -494,7 +531,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_038.html"
   },
   {
     "stt": 39,
@@ -507,7 +545,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_039.html"
   },
   {
     "stt": 40,
@@ -520,7 +559,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_040.html"
   },
   {
     "stt": 41,
@@ -533,7 +573,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_041.html"
   },
   {
     "stt": 42,
@@ -546,7 +587,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_042.html"
   },
   {
     "stt": 43,
@@ -559,7 +601,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_043.html"
   },
   {
     "stt": 44,
@@ -572,7 +615,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_044.html"
   },
   {
     "stt": 45,
@@ -585,7 +629,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_045.html"
   },
   {
     "stt": 46,
@@ -598,7 +643,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_046.html"
   },
   {
     "stt": 47,
@@ -611,7 +657,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_047.html"
   },
   {
     "stt": 48,
@@ -624,7 +671,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_048.html"
   },
   {
     "stt": 49,
@@ -637,7 +685,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_049.html"
   },
   {
     "stt": 50,
@@ -650,7 +699,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_050.html"
   },
   {
     "stt": 51,
@@ -663,7 +713,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_051.html"
   },
   {
     "stt": 52,
@@ -676,7 +727,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_052.html"
   },
   {
     "stt": 53,
@@ -689,7 +741,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Bộ GD&ĐT"
-    ]
+    ],
+    "mockup_file": "screens/screen_053.html"
   },
   {
     "stt": 54,
@@ -702,7 +755,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_054.html"
   },
   {
     "stt": 55,
@@ -715,7 +769,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Bộ GD&ĐT"
-    ]
+    ],
+    "mockup_file": "screens/screen_055.html"
   },
   {
     "stt": 56,
@@ -728,7 +783,8 @@ const SCREENS_DATA = [
     "role_key": "academic",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_056.html"
   },
   {
     "stt": 57,
@@ -741,7 +797,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_057.html"
   },
   {
     "stt": 58,
@@ -754,7 +811,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_058.html"
   },
   {
     "stt": 59,
@@ -767,7 +825,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_059.html"
   },
   {
     "stt": 60,
@@ -780,7 +839,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_060.html"
   },
   {
     "stt": 61,
@@ -793,7 +853,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_061.html"
   },
   {
     "stt": 62,
@@ -806,7 +867,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_062.html"
   },
   {
     "stt": 63,
@@ -819,7 +881,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_063.html"
   },
   {
     "stt": 64,
@@ -832,7 +895,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_064.html"
   },
   {
     "stt": 65,
@@ -845,7 +909,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_065.html"
   },
   {
     "stt": 66,
@@ -858,7 +923,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_066.html"
   },
   {
     "stt": 67,
@@ -871,7 +937,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_067.html"
   },
   {
     "stt": 68,
@@ -884,7 +951,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_068.html"
   },
   {
     "stt": 69,
@@ -897,7 +965,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_069.html"
   },
   {
     "stt": 70,
@@ -910,7 +979,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "PayOS VietQR"
-    ]
+    ],
+    "mockup_file": "screens/screen_070.html"
   },
   {
     "stt": 71,
@@ -923,7 +993,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_071.html"
   },
   {
     "stt": 72,
@@ -936,7 +1007,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_072.html"
   },
   {
     "stt": 73,
@@ -949,7 +1021,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_073.html"
   },
   {
     "stt": 74,
@@ -962,7 +1035,8 @@ const SCREENS_DATA = [
     "role_key": "accountant",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_074.html"
   },
   {
     "stt": 75,
@@ -976,7 +1050,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_075.html"
   },
   {
     "stt": 76,
@@ -990,7 +1065,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_076.html"
   },
   {
     "stt": 77,
@@ -1004,7 +1080,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_077.html"
   },
   {
     "stt": 78,
@@ -1018,7 +1095,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_078.html"
   },
   {
     "stt": 79,
@@ -1032,7 +1110,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_079.html"
   },
   {
     "stt": 80,
@@ -1046,7 +1125,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_080.html"
   },
   {
     "stt": 81,
@@ -1060,7 +1140,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_081.html"
   },
   {
     "stt": 82,
@@ -1074,7 +1155,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_082.html"
   },
   {
     "stt": 83,
@@ -1088,7 +1170,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "AI Sinh trắc học"
-    ]
+    ],
+    "mockup_file": "screens/screen_083.html"
   },
   {
     "stt": 84,
@@ -1102,7 +1185,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_084.html"
   },
   {
     "stt": 85,
@@ -1116,7 +1200,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_085.html"
   },
   {
     "stt": 86,
@@ -1130,7 +1215,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_086.html"
   },
   {
     "stt": 87,
@@ -1144,7 +1230,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_087.html"
   },
   {
     "stt": 88,
@@ -1158,7 +1245,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "AI Sinh trắc học"
-    ]
+    ],
+    "mockup_file": "screens/screen_088.html"
   },
   {
     "stt": 89,
@@ -1172,7 +1260,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_089.html"
   },
   {
     "stt": 90,
@@ -1186,7 +1275,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_090.html"
   },
   {
     "stt": 91,
@@ -1200,7 +1290,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_091.html"
   },
   {
     "stt": 92,
@@ -1214,7 +1305,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_092.html"
   },
   {
     "stt": 93,
@@ -1228,7 +1320,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_093.html"
   },
   {
     "stt": 94,
@@ -1242,7 +1335,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_094.html"
   },
   {
     "stt": 95,
@@ -1256,7 +1350,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_095.html"
   },
   {
     "stt": 96,
@@ -1270,7 +1365,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_096.html"
   },
   {
     "stt": 97,
@@ -1284,7 +1380,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_097.html"
   },
   {
     "stt": 98,
@@ -1298,7 +1395,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_098.html"
   },
   {
     "stt": 99,
@@ -1312,7 +1410,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_099.html"
   },
   {
     "stt": 100,
@@ -1326,7 +1425,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_100.html"
   },
   {
     "stt": 101,
@@ -1340,7 +1440,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_101.html"
   },
   {
     "stt": 102,
@@ -1354,7 +1455,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_102.html"
   },
   {
     "stt": 103,
@@ -1368,7 +1470,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Bộ GD&ĐT"
-    ]
+    ],
+    "mockup_file": "screens/screen_103.html"
   },
   {
     "stt": 104,
@@ -1382,7 +1485,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_104.html"
   },
   {
     "stt": 105,
@@ -1396,7 +1500,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_105.html"
   },
   {
     "stt": 106,
@@ -1410,7 +1515,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_106.html"
   },
   {
     "stt": 107,
@@ -1424,7 +1530,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_107.html"
   },
   {
     "stt": 108,
@@ -1438,7 +1545,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_108.html"
   },
   {
     "stt": 109,
@@ -1452,7 +1560,8 @@ const SCREENS_DATA = [
     "role_key": "teacher",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_109.html"
   },
   {
     "stt": 110,
@@ -1466,7 +1575,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_110.html"
   },
   {
     "stt": 111,
@@ -1480,7 +1590,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_111.html"
   },
   {
     "stt": 112,
@@ -1494,7 +1605,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_112.html"
   },
   {
     "stt": 113,
@@ -1508,7 +1620,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_113.html"
   },
   {
     "stt": 114,
@@ -1522,7 +1635,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_114.html"
   },
   {
     "stt": 115,
@@ -1536,7 +1650,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_115.html"
   },
   {
     "stt": 116,
@@ -1550,7 +1665,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_116.html"
   },
   {
     "stt": 117,
@@ -1564,7 +1680,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_117.html"
   },
   {
     "stt": 118,
@@ -1578,7 +1695,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_118.html"
   },
   {
     "stt": 119,
@@ -1592,7 +1710,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_119.html"
   },
   {
     "stt": 120,
@@ -1606,7 +1725,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "AI Sinh trắc học"
-    ]
+    ],
+    "mockup_file": "screens/screen_120.html"
   },
   {
     "stt": 121,
@@ -1620,7 +1740,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_121.html"
   },
   {
     "stt": 122,
@@ -1634,7 +1755,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_122.html"
   },
   {
     "stt": 123,
@@ -1648,7 +1770,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "AI Sinh trắc học"
-    ]
+    ],
+    "mockup_file": "screens/screen_123.html"
   },
   {
     "stt": 124,
@@ -1662,7 +1785,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_124.html"
   },
   {
     "stt": 125,
@@ -1676,7 +1800,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_125.html"
   },
   {
     "stt": 126,
@@ -1690,7 +1815,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_126.html"
   },
   {
     "stt": 127,
@@ -1704,7 +1830,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_127.html"
   },
   {
     "stt": 128,
@@ -1718,7 +1845,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_128.html"
   },
   {
     "stt": 129,
@@ -1732,7 +1860,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_129.html"
   },
   {
     "stt": 130,
@@ -1746,7 +1875,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_130.html"
   },
   {
     "stt": 131,
@@ -1760,7 +1890,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_131.html"
   },
   {
     "stt": 132,
@@ -1774,7 +1905,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_132.html"
   },
   {
     "stt": 133,
@@ -1788,7 +1920,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_133.html"
   },
   {
     "stt": 134,
@@ -1802,7 +1935,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_134.html"
   },
   {
     "stt": 135,
@@ -1816,7 +1950,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_135.html"
   },
   {
     "stt": 136,
@@ -1830,7 +1965,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "PayOS VietQR"
-    ]
+    ],
+    "mockup_file": "screens/screen_136.html"
   },
   {
     "stt": 137,
@@ -1844,7 +1980,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_137.html"
   },
   {
     "stt": 138,
@@ -1858,7 +1995,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_138.html"
   },
   {
     "stt": 139,
@@ -1872,7 +2010,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_139.html"
   },
   {
     "stt": 140,
@@ -1886,7 +2025,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_140.html"
   },
   {
     "stt": 141,
@@ -1900,7 +2040,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_141.html"
   },
   {
     "stt": 142,
@@ -1914,7 +2055,8 @@ const SCREENS_DATA = [
     "role_key": "parent",
     "tags": [
       "Nghị định 13"
-    ]
+    ],
+    "mockup_file": "screens/screen_142.html"
   },
   {
     "stt": 143,
@@ -1928,7 +2070,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_143.html"
   },
   {
     "stt": 144,
@@ -1942,7 +2085,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Chốt suất ăn 08:30"
-    ]
+    ],
+    "mockup_file": "screens/screen_144.html"
   },
   {
     "stt": 145,
@@ -1956,7 +2100,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Chuẩn ATVSTP"
-    ]
+    ],
+    "mockup_file": "screens/screen_145.html"
   },
   {
     "stt": 146,
@@ -1970,7 +2115,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_146.html"
   },
   {
     "stt": 147,
@@ -1984,7 +2130,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_147.html"
   },
   {
     "stt": 148,
@@ -1998,7 +2145,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_148.html"
   },
   {
     "stt": 149,
@@ -2012,7 +2160,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_149.html"
   },
   {
     "stt": 150,
@@ -2026,7 +2175,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_150.html"
   },
   {
     "stt": 151,
@@ -2040,7 +2190,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Chuẩn ATVSTP"
-    ]
+    ],
+    "mockup_file": "screens/screen_151.html"
   },
   {
     "stt": 152,
@@ -2054,7 +2205,8 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_152.html"
   },
   {
     "stt": 153,
@@ -2068,6 +2220,7 @@ const SCREENS_DATA = [
     "role_key": "kitchen",
     "tags": [
       "Nghiệp vụ KIDPRO"
-    ]
+    ],
+    "mockup_file": "screens/screen_153.html"
   }
 ];
