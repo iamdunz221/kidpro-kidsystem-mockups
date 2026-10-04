@@ -1,134 +1,138 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Màn #085: Manual Fallback Form (Manual Check-in & Notes) - App Di Động KIDPRO</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    
-    :root {
-      --primary-dark: #275A4E;
-      --primary-deep: #1E4D40;
-      --primary-forest: #173B31;
-      --primary-accent: #377E6D;
-      --accent-gold: #E5A93C;
-      --accent-mint: #78C2AD;
-      --bg-cream: #F4F7F6;
-      --border-color: #E2ECE7;
-      --text-dark: #111827;
-      --text-muted: #6B7280;
-      --card-bg: #FFFFFF;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-dark); }
-    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
-    .badge-green { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
-    .badge-yellow { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-    .badge-blue { background: #DBEAFE; color: #1D4ED8; border: 1px solid #BFDBFE; }
-    .badge-red { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
-    .badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
-    .badge-purple { background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; }
-
-    .btn { padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: #fff; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; text-decoration: none; }
-    .btn:hover { background: #F9FAFB; border-color: #CBD5E1; }
-    .btn-primary { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
-    .btn-primary:hover { background: var(--primary-deep); }
-    .btn-danger { background: #EF4444; color: #fff; border-color: #EF4444; }
-    .btn-gold { background: var(--accent-gold); color: #173B31; border: none; font-weight: 700; }
-
-    .input-control { width: 100%; padding: 10px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 13px; outline: none; background: #fff; color: var(--text-dark); }
-    .input-control:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.15); }
-    .form-group { margin-bottom: 16px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #374151; }
-    .form-help { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-    .table-responsive { width: 100%; overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid var(--border-color); }
-    .data-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .data-tbl th { text-align: left; padding: 12px 14px; background: #F8FAF9; color: var(--text-muted); font-weight: 700; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
-    .data-tbl td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .data-tbl tr:last-child td { border-bottom: none; }
-    .data-tbl tr:hover { background: #FAFDFB; }
-
-    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 18px; }
-    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-    .card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
-
-    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px 10px; background: #E2ECE7; }
-    .phone-mockup { width: 390px; height: 844px; background: #fff; border: 10px solid #1E293B; border-radius: 46px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.25); display: flex; flex-direction: column; position: relative; }
-    .phone-top-bar { height: 44px; background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; font-size: 12px; font-weight: 700; flex-shrink: 0; }
-    .phone-notch { width: 110px; height: 26px; background: #1E293B; border-radius: 14px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 100; }
-    .phone-header { background: var(--primary-dark); color: #fff; padding: 14px 18px; flex-shrink: 0; }
-    .phone-body { flex: 1; overflow-y: auto; padding: 16px; background: #FAFBFB; }
-    .phone-bottom-nav { height: 60px; background: #fff; border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; align-items: center; font-size: 10px; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
-    .p-nav-item.active { color: var(--primary-dark); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Điểm Danh Thủ Công - KIDPRO Teacher Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary: #275A4E; --primary-dark: #1E4D40; --accent: #E5A93C;
+            --mint: #78C2AD; --bg: #F4F7F6; --card: #FFFFFF;
+            --text-main: #1C2D27; --text-muted: #64748B;
+            --danger: #DC3545; --success: #10B981; --warning: #F59E0B;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body {
+            background: #E2E8F0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px 0;
+        }
+        .mobile-container {
+            width: 100%; max-width: 420px; min-height: 844px; background: var(--bg);
+            border-radius: 36px; box-shadow: 0 16px 40px rgba(0,0,0,0.15); border: 8px solid #1E293B;
+            display: flex; flex-direction: column; overflow: hidden; position: relative;
+        }
+        .status-bar {
+            height: 44px; background: var(--card); display: flex; justify-content: space-between; align-items: center;
+            padding: 0 24px; font-size: 13px; font-weight: 700; color: var(--text-main); flex-shrink: 0;
+        }
+        .app-header {
+            height: 54px; background: var(--card); border-bottom: 1px solid #EEF3F0;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 16px; flex-shrink: 0;
+        }
+        .app-body {
+            flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px;
+        }
+        .bottom-nav {
+            height: 64px; background: var(--card); border-top: 1px solid #EEF3F0;
+            display: flex; align-items: center; justify-content: space-around; flex-shrink: 0;
+        }
+        .m-card {
+            background: #FFF; border-radius: 16px; padding: 16px; border: 1px solid #E1E8E5; box-shadow: 0 2px 6px rgba(39,90,78,0.04);
+        }
+        .btn-m {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 10px 16px; font-size: 13px; font-weight: 700; border-radius: 10px; border: none; cursor: pointer; text-decoration: none;
+        }
+        .btn-m-primary { background: var(--primary); color: #FFF; }
+        .btn-m-outline { background: transparent; border: 1px solid #CBD5E1; color: var(--text-main); }
+        .btn-m-danger { background: var(--danger); color: #FFF; }
+        .status-pill {
+            padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;
+        }
+        .status-pill.success { background: #D1FAE5; color: #065F46; }
+        .status-pill.warning { background: #FEF3C7; color: #92400E; }
+        .status-pill.danger { background: #FDE8E9; color: #991B1B; }
+        .status-pill.info { background: #E0F2FE; color: #075985; }
+        @media(max-width: 480px) {
+            body { padding: 0; }
+            .mobile-container { border: none; border-radius: 0; min-height: 100vh; }
+        }
+    </style>
 </head>
 <body>
-  <div class="phone-mockup">
-    <div class="phone-notch"></div>
-    <div class="phone-top-bar">
-      <span>09:41</span>
-      <span>5G 100% 🔋</span>
-    </div>
-    <div class="phone-header">
-      <div style="font-size: 10px; text-transform: uppercase; color: var(--accent-mint); font-weight: 700;">KIDPRO • Giáo viên Mầm non </div>
-      <div style="font-size: 15px; font-weight: 800; margin-top: 2px;">#085. Manual Fallback Form (Manual Check-in & Notes)</div>
-    </div>
-    <div class="phone-body">
-      <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 10px; font-size: 11px; color: #166534; line-height: 1.4; margin-bottom: 14px;">
-        <strong>Nghiệp vụ:</strong> Biểu mẫu điểm danh thủ công dự phòng: dành cho giáo viên tích chọn điểm danh bằng tay trong các trường hợp mất kết nối mạng hoặc trẻ đeo kính/băng che mặt không nhận diện tự động được.
-      </div>
-      
-        <div class="card">
-          <div class="card-title">Biểu Mẫu Nhập Liệu Nghiệp Vụ</div>
-          <form onsubmit="event.preventDefault(); alert('Đã ghi nhận dữ liệu biểu mẫu thành công!');">
-            <div style="display: grid; grid-template-columns: 1fr; gap: 14px;">
-              <div class="form-group">
-                <label class="form-label">Tên đối tượng / Tiêu đề hồ sơ *</label>
-                <input type="text" class="input-control" value="Hồ sơ quản lý #85" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Mã định danh hệ thống (ID) *</label>
-                <input type="text" class="input-control" value="KIDPRO-085-2026" readonly>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Phân loại danh mục / Nhóm *</label>
-                <select class="input-control">
-                  <option>Khối Mầm (3 - 4 tuổi)</option>
-                  <option>Khối Chồi (4 - 5 tuổi)</option>
-                  <option>Khối Lá (5 - 6 tuổi)</option>
-                  <option>Quản trị cấp cơ sở</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Ngày hiệu lực / Áp dụng</label>
-                <input type="date" class="input-control" value="2026-10-05">
-              </div>
+    <div class="mobile-container">
+        <!-- STATUS BAR -->
+        <div class="status-bar">
+            <span>9:41</span>
+            <div style="display: flex; gap: 6px; align-items: center;">
+                <i class="bi bi-reception-4"></i>
+                <i class="bi bi-wifi"></i>
+                <i class="bi bi-battery-full" style="font-size: 16px;"></i>
             </div>
-
-            <div class="form-group">
-              <label class="form-label">Nội dung ghi chú & Đặc tả chi tiết</label>
-              <textarea class="input-control" rows="3" placeholder="Nhập ghi chú nghiệp vụ...">Biểu mẫu điểm danh thủ công dự phòng: dành cho giáo viên tích chọn điểm danh bằng tay trong các trường hợp mất kết nối mạng hoặc trẻ đeo kính/băng che mặt không nhận diện tự động được.</textarea>
-              <div class="form-help">Dữ liệu được mã hóa và đồng bộ tức thời với cơ sở dữ liệu PostgreSQL.</div>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-              <button type="button" class="btn">Lưu Bản Nháp</button>
-              <button type="submit" class="btn btn-primary">Xác Nhận & Cập Nhật</button>
-            </div>
-          </form>
         </div>
+
+        <!-- APP HEADER -->
+        <div class="app-header">
+            <a href="screen_077.html" style="color: var(--text-main); text-decoration: none; font-size: 18px; width: 32px;"><i class="bi bi-chevron-left"></i></a>
+            <div style="text-align: center;">
+                <div style="font-size: 15px; font-weight: 800; color: var(--text-main);">Điểm Danh Thủ Công</div>
+                <div style="font-size: 10.5px; color: var(--primary); font-weight: 700;">Lớp Mầm 1 • Cô Mai Anh</div>
+            </div>
+            <a href="screen_081.html" style="color: var(--text-main); text-decoration: none; font-size: 18px; position: relative; width: 32px; text-align: right;">
+                <i class="bi bi-bell"></i>
+                <span style="position: absolute; top: -2px; right: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--danger);"></span>
+            </a>
+        </div>
+
+        <!-- MAIN BODY CONTENT -->
+        <div class="app-body">
+            
+    <div class="m-card">
+        <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 12px;">Điểm danh thủ công (Dự phòng)</h4>
+        <form action="screen_082.html">
+            <div style="margin-bottom: 12px;"><label style="font-size:12px; font-weight:600;">Chọn học sinh</label><select style="width:100%; padding:9px; border:1px solid #CBD5E1; border-radius:8px;"><option>Bùi Gia Huy</option><option>Vũ Hoàng Yến</option></select></div>
+            <div style="margin-bottom: 12px;"><label style="font-size:12px; font-weight:600;">Lý do không quét được FaceID</label><select style="width:100%; padding:9px; border:1px solid #CBD5E1; border-radius:8px;"><option>Bé đeo kính / mũ che trán</option><option>Camera bận / mất mạng tạm thời</option></select></div>
+            <button type="submit" class="btn-m btn-m-primary" style="width: 100%;">Lưu điểm danh thủ công</button>
+        </form>
+    </div>
+    
+        </div>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            
+        <a href="screen_077.html" style="flex: 1; text-align: center; text-decoration: none; padding: 8px 0; font-size: 10.5px; position: relative; color: #8B9E96;">
+            <i class="bi bi-grid-fill" style="font-size: 19px; display: block; margin-bottom: 2px;"></i>
+            Lớp học
+            
+        </a>
         
+        <a href="screen_082.html" style="flex: 1; text-align: center; text-decoration: none; padding: 8px 0; font-size: 10.5px; position: relative; color: #275A4E; font-weight: 700;">
+            <i class="bi bi-camera-fill" style="font-size: 19px; display: block; margin-bottom: 2px;"></i>
+            Điểm danh AI
+            
+        </a>
+        
+        <a href="screen_087.html" style="flex: 1; text-align: center; text-decoration: none; padding: 8px 0; font-size: 10.5px; position: relative; color: #8B9E96;">
+            <i class="bi bi-person-check-fill" style="font-size: 19px; display: block; margin-bottom: 2px;"></i>
+            Trả trẻ
+            
+        </a>
+        
+        <a href="screen_097.html" style="flex: 1; text-align: center; text-decoration: none; padding: 8px 0; font-size: 10.5px; position: relative; color: #8B9E96;">
+            <i class="bi bi-cup-hot-fill" style="font-size: 19px; display: block; margin-bottom: 2px;"></i>
+            Bán trú
+            
+        </a>
+        
+        <a href="screen_106.html" style="flex: 1; text-align: center; text-decoration: none; padding: 8px 0; font-size: 10.5px; position: relative; color: #8B9E96;">
+            <i class="bi bi-chat-dots-fill" style="font-size: 19px; display: block; margin-bottom: 2px;"></i>
+            Tin nhắn
+            <span style="position: absolute; top: 4px; right: 22px; background: #DC3545; color: #FFF; width: 15px; height: 15px; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 800;">3</span>
+        </a>
+        
+        </nav>
     </div>
-    <div class="phone-bottom-nav">
-      <div class="p-nav-item active">🏠 Trang chính</div>
-      <div class="p-nav-item">📋 Tính năng</div>
-      <div class="p-nav-item">🔔 Thông báo</div>
-      <div class="p-nav-item">👤 Cá nhân</div>
-    </div>
-  </div>
 </body>
 </html>

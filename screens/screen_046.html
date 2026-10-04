@@ -1,181 +1,324 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Màn #046: Timetable Scheduler Workspace (Drag & Drop) - KIDPRO KidSystem</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xếp Thời Khóa Biểu Kéo - Thả - KIDPRO Academic Affairs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary: #275A4E;
+            --primary-dark: #1E4D40;
+            --accent: #E5A93C;
+            --mint: #78C2AD;
+            --mint-light: #EBF7F4;
+            --bg-page: #F4F7F6;
+            --border: #E1E8E5;
+            --border-light: #EEF3F0;
+            --danger: #DC3545;
+            --warning: #F59E0B;
+            --success: #10B981;
+            --info: #0284C7;
+            --shadow-sm: 0 1px 3px rgba(39, 90, 78, 0.06);
+            --shadow-md: 0 4px 12px rgba(39, 90, 78, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-page); color: #1C2D27; min-height: 100vh; display: flex; }
+        .sidebar {
+            width: 280px; background: #FFFFFF; border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0; z-index: 100;
+        }
+        .sidebar-brand { padding: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-light); }
+        .brand-logo-icon {
+            width: 42px; height: 42px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 20px; font-weight: 800;
+        }
+        .brand-text-name { font-size: 18px; font-weight: 800; color: var(--primary); line-height: 1.1; }
+        .brand-text-sub { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; margin-top: 3px; }
+        .school-badge-box {
+            margin: 12px 14px; padding: 10px 12px; background: var(--mint-light);
+            border-radius: var(--radius-sm); display: flex; align-items: center; gap: 10px;
+        }
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 12px 20px; }
+        .nav-section-label { font-size: 10px; font-weight: 700; color: #8B9E96; padding: 14px 10px 4px; text-transform: uppercase; }
+        .nav-link {
+            display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px;
+            color: #5D7268; text-decoration: none; font-size: 13px; font-weight: 500; margin-bottom: 2px;
+            transition: all 0.15s;
+        }
+        .nav-link:hover { background: #F4F7F6; color: var(--primary); }
+        .nav-link.active { background: var(--primary); color: #FFF; font-weight: 600; }
+        .nav-link.active .nav-icon { color: var(--accent); }
+        .nav-icon { font-size: 15px; width: 18px; text-align: center; }
+        .nav-text { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .nav-badge { font-size: 10px; padding: 2px 6px; border-radius: 8px; font-weight: 700; }
+        .badge-pill { background: rgba(39, 90, 78, 0.1); color: var(--primary); }
+        .nav-link.active .badge-pill { background: rgba(255,255,255,0.25); color: #FFF; }
+        .badge-danger { background: #FDE8E9; color: var(--danger); }
+        .badge-warning { background: #FEF3C7; color: var(--warning); }
+
+        .main-wrapper { margin-left: 280px; flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .topbar {
+            height: 64px; background: #FFF; border-bottom: 1px solid var(--border); padding: 0 32px;
+            display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90;
+        }
+        .content-area { padding: 26px 32px; flex: 1; }
+
+        .card { background: #FFF; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 22px; }
+        .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; }
+        .card-title { font-size: 15px; font-weight: 700; color: #1C2D27; display: flex; align-items: center; gap: 8px; }
+        .card-body { padding: 20px; }
+
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm); border: none; cursor: pointer; text-decoration: none; }
+        .btn-primary { background: var(--primary); color: #FFF; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: #1C2D27; }
+        .btn-outline:hover { background: var(--bg-page); }
+        .btn-danger { background: var(--danger); color: #FFF; }
+        .btn-sm { padding: 5px 10px; font-size: 12px; border-radius: 6px; }
+
+        .status-pill { padding: 3px 8px; border-radius: 12px; font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+        .status-pill.success { background: #D1FAE5; color: #065F46; }
+        .status-pill.warning { background: #FEF3C7; color: #92400E; }
+        .status-pill.danger { background: #FDE8E9; color: #991B1B; }
+        .status-pill.info { background: #E0F2FE; color: #075985; }
+
+        .table-custom { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .table-custom th { background: #F8FAF9; color: #5D7268; font-weight: 600; font-size: 11px; text-transform: uppercase; padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+        .table-custom td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+        .table-custom tr:hover td { background: #FAFDFB; }
+
+        .form-label { display: block; font-size: 12.5px; font-weight: 600; color: #1C2D27; margin-bottom: 5px; }
+        .form-control { width: 100%; padding: 9px 12px; font-size: 13px; border: 1px solid var(--border); border-radius: var(--radius-sm); outline: none; }
+        .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.1); }
+
+        @media(max-width: 992px) {
+            .sidebar { display: none; }
+            .main-wrapper { margin-left: 0; }
+            .topbar { padding: 0 16px; }
+            .content-area { padding: 16px; }
+        }
+    </style>
     
-    :root {
-      --primary-dark: #275A4E;
-      --primary-deep: #1E4D40;
-      --primary-forest: #173B31;
-      --primary-accent: #377E6D;
-      --accent-gold: #E5A93C;
-      --accent-mint: #78C2AD;
-      --bg-cream: #F4F7F6;
-      --border-color: #E2ECE7;
-      --text-dark: #111827;
-      --text-muted: #6B7280;
-      --card-bg: #FFFFFF;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-dark); }
-    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
-    .badge-green { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
-    .badge-yellow { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-    .badge-blue { background: #DBEAFE; color: #1D4ED8; border: 1px solid #BFDBFE; }
-    .badge-red { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
-    .badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
-    .badge-purple { background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; }
-
-    .btn { padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: #fff; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; text-decoration: none; }
-    .btn:hover { background: #F9FAFB; border-color: #CBD5E1; }
-    .btn-primary { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
-    .btn-primary:hover { background: var(--primary-deep); }
-    .btn-danger { background: #EF4444; color: #fff; border-color: #EF4444; }
-    .btn-gold { background: var(--accent-gold); color: #173B31; border: none; font-weight: 700; }
-
-    .input-control { width: 100%; padding: 10px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 13px; outline: none; background: #fff; color: var(--text-dark); }
-    .input-control:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.15); }
-    .form-group { margin-bottom: 16px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #374151; }
-    .form-help { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-    .table-responsive { width: 100%; overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid var(--border-color); }
-    .data-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .data-tbl th { text-align: left; padding: 12px 14px; background: #F8FAF9; color: var(--text-muted); font-weight: 700; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
-    .data-tbl td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .data-tbl tr:last-child td { border-bottom: none; }
-    .data-tbl tr:hover { background: #FAFDFB; }
-
-    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 18px; }
-    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-    .card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
-
-    .web-layout { display: flex; min-height: 100vh; }
-    .web-sidebar { width: 250px; background: var(--primary-forest); color: #fff; flex-shrink: 0; display: flex; flex-direction: column; }
-    .web-brand { padding: 20px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .brand-tag { background: var(--accent-gold); color: #173B31; font-weight: 800; font-size: 13px; padding: 4px 8px; border-radius: 6px; }
-    .nav-links { padding: 16px 10px; flex: 1; }
-    .nav-sec-title { font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px; padding: 0 10px 6px; margin-top: 10px; }
-    .nav-link { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 2px; }
-    .nav-link.active { background: var(--primary-accent); color: #fff; font-weight: 700; }
-    .web-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
-    .web-topbar { height: 60px; background: #fff; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
-    .web-content { padding: 24px; flex: 1; }
-    .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
-    .screen-heading { font-size: 20px; font-weight: 800; color: var(--text-dark); }
-    .srs-info-box { background: #ECFDF5; border-left: 4px solid var(--primary-accent); padding: 12px 16px; border-radius: 8px; margin: 16px 0 24px; font-size: 12px; color: #065F46; line-height: 1.5; }
-  </style>
 </head>
 <body>
-  <div class="web-layout">
-    <aside class="web-sidebar">
-      <div class="web-brand">
-        <span class="brand-tag">KIDPRO</span>
-        <div>
-          <div style="font-size: 13px; font-weight: 700;">Mầm non KIDPRO</div>
-          <div style="font-size: 10px; color: var(--accent-mint); text-transform: uppercase;">Cán bộ Giáo vụ</div>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo-icon">K</div>
+            <div>
+                <div class="brand-text-name">KIDPRO</div>
+                <div class="brand-text-sub">Academic Affairs</div>
+            </div>
         </div>
-      </div>
-      <div class="nav-links">
-        <div class="nav-sec-title">Phân hệ nghiệp vụ</div>
-        <a href="#" class="nav-link active"><span>●</span> Màn #046 (Đang xem)</a>
-        <a href="#" class="nav-link"><span>📊</span> Bàn làm việc chính</a>
-        <a href="#" class="nav-link"><span>📋</span> Hồ sơ & Danh mục</a>
-        <a href="#" class="nav-link"><span>⚙️</span> Cấu hình & Báo cáo</a>
-        <div class="nav-sec-title" style="margin-top: 20px;">Hệ thống</div>
-        <a href="../index.html" class="nav-link" style="color: var(--accent-gold);"><span>←</span> Về Hub 153 Màn hình</a>
-      </div>
-    </aside>
+        <div class="school-badge-box">
+            <i class="bi bi-building-check" style="font-size: 20px; color: var(--primary);"></i>
+            <div>
+                <div style="font-size: 12px; font-weight: 700; color: var(--primary-dark);">MN Thực Nghiệm Tân Bình</div>
+                <div style="font-size: 10.5px; color: #5D7268;">450 Học sinh • 16 Lớp học</div>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <div class="nav-section-label">BÀN LÀM VIỆC GIÁO VỤ</div>
+            <a href="screen_033.html" class="nav-link ">
+                <i class="bi bi-grid-1x2-fill nav-icon"></i>
+                <span class="nav-text">Bàn làm việc Giáo vụ</span>
+                
+            </a>
+            
+            <a href="screen_036.html" class="nav-link ">
+                <i class="bi bi-bell-fill nav-icon"></i>
+                <span class="nav-text">Trung tâm thông báo</span>
+                <span class="nav-badge badge-danger">5 mới</span>
+            </a>
+            <div class="nav-section-label">TUYỂN SINH & HỒ SƠ HỌC SINH</div>
+            <a href="screen_037.html" class="nav-link ">
+                <i class="bi bi-person-plus-fill nav-icon"></i>
+                <span class="nav-text">Hàng đợi tuyển sinh</span>
+                <span class="nav-badge badge-pill">12 chờ</span>
+            </a>
+            
+            <a href="screen_038.html" class="nav-link ">
+                <i class="bi bi-folder2-open nav-icon"></i>
+                <span class="nav-text">Quản lý hồ sơ học sinh</span>
+                
+            </a>
+            
+            <a href="screen_039.html" class="nav-link ">
+                <i class="bi bi-file-earmark-plus nav-icon"></i>
+                <span class="nav-text">Tiếp nhận hồ sơ mới</span>
+                
+            </a>
+            
+            <a href="screen_040.html" class="nav-link ">
+                <i class="bi bi-person-vcard-fill nav-icon"></i>
+                <span class="nav-text">Hồ sơ học sinh toàn diện</span>
+                
+            </a>
+            
+            <a href="screen_041.html" class="nav-link ">
+                <i class="bi bi-diagram-3-fill nav-icon"></i>
+                <span class="nav-text">Không gian xếp lớp</span>
+                
+            </a>
+            <div class="nav-section-label">TỔ CHỨC LỚP & ĐỘI NGŨ GV</div>
+            <a href="screen_042.html" class="nav-link ">
+                <i class="bi bi-building nav-icon"></i>
+                <span class="nav-text">Danh mục lớp học</span>
+                
+            </a>
+            
+            <a href="screen_043.html" class="nav-link ">
+                <i class="bi bi-card-list nav-icon"></i>
+                <span class="nav-text">Danh sách học sinh theo lớp</span>
+                
+            </a>
+            
+            <a href="screen_044.html" class="nav-link ">
+                <i class="bi bi-person-badge nav-icon"></i>
+                <span class="nav-text">Phân công giáo viên</span>
+                
+            </a>
+            
+            <a href="screen_045.html" class="nav-link ">
+                <i class="bi bi-arrow-left-right nav-icon"></i>
+                <span class="nav-text">Chuyển lớp & Bảo lưu</span>
+                
+            </a>
+            <div class="nav-section-label">THỜI KHÓA BIỂU HOẠT ĐỘNG</div>
+            <a href="screen_046.html" class="nav-link active">
+                <i class="bi bi-calendar-week nav-icon"></i>
+                <span class="nav-text">Xếp TKB kéo - thả</span>
+                
+            </a>
+            
+            <a href="screen_047.html" class="nav-link ">
+                <i class="bi bi-exclamation-octagon nav-icon"></i>
+                <span class="nav-text">Rà soát xung đột lịch</span>
+                
+            </a>
+            
+            <a href="screen_048.html" class="nav-link ">
+                <i class="bi bi-send-check nav-icon"></i>
+                <span class="nav-text">Ban hành TKB chính thức</span>
+                
+            </a>
+            <div class="nav-section-label">THẨM TRA NGƯỜI ĐÓN ỦY QUYỀN</div>
+            <a href="screen_049.html" class="nav-link ">
+                <i class="bi bi-person-check-fill nav-icon"></i>
+                <span class="nav-text">Hàng đợi thẩm tra người đón</span>
+                <span class="nav-badge badge-warning">6 hồ sơ</span>
+            </a>
+            
+            <a href="screen_050.html" class="nav-link ">
+                <i class="bi bi-shield-check nav-icon"></i>
+                <span class="nav-text">Đối soát CCCD & Chân dung</span>
+                
+            </a>
+            
+            <a href="screen_051.html" class="nav-link ">
+                <i class="bi bi-x-octagon nav-icon"></i>
+                <span class="nav-text">Từ chối hồ sơ người đón</span>
+                
+            </a>
+            <div class="nav-section-label">CHUYÊN MÔN & HỒ SƠ LƯU TRỮ</div>
+            <a href="screen_052.html" class="nav-link ">
+                <i class="bi bi-journal-check nav-icon"></i>
+                <span class="nav-text">Thẩm định giáo án tuần</span>
+                
+            </a>
+            
+            <a href="screen_053.html" class="nav-link ">
+                <i class="bi bi-stars nav-icon"></i>
+                <span class="nav-text">5 Lĩnh vực phát triển TT51</span>
+                
+            </a>
+            
+            <a href="screen_054.html" class="nav-link ">
+                <i class="bi bi-box-seam nav-icon"></i>
+                <span class="nav-text">Thiết bị & Đồ dùng STEAM</span>
+                
+            </a>
+            
+            <a href="screen_055.html" class="nav-link ">
+                <i class="bi bi-file-earmark-excel nav-icon"></i>
+                <span class="nav-text">Xuất sổ điểm danh TT28</span>
+                
+            </a>
+            
+            <a href="screen_056.html" class="nav-link ">
+                <i class="bi bi-archive-fill nav-icon"></i>
+                <span class="nav-text">Khóa sổ lưu trữ cuối năm</span>
+                
+            </a>
+            <div class="nav-section-label">TÀI KHOẢN CÔNG VỤ</div>
+            <a href="screen_034.html" class="nav-link ">
+                <i class="bi bi-person-circle nav-icon"></i>
+                <span class="nav-text">Hồ sơ cán bộ giáo vụ</span>
+                
+            </a>
+            
+            <a href="screen_035.html" class="nav-link ">
+                <i class="bi bi-key-fill nav-icon"></i>
+                <span class="nav-text">Đổi mật khẩu bảo mật</span>
+                
+            </a>
+            
+            <a href="screen_031.html" class="nav-link ">
+                <i class="bi bi-box-arrow-right nav-icon"></i>
+                <span class="nav-text">Đăng xuất hệ thống</span>
+                
+            </a>
+            
+        </div>
+    </div>
 
-    <main class="web-main">
-      <header class="web-topbar">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span class="badge badge-green">● Cơ sở KIDPRO Cầu Giấy (CS01)</span>
-          <span style="font-size: 12px; color: var(--text-muted);">Niên khóa: 2026 - 2027</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 12px; font-weight: 600;">Cán bộ Giáo vụ (Academic Affairs)</span>
-          <span class="badge badge-gold">JWT Active</span>
-        </div>
-      </header>
+    <div class="main-wrapper">
+        <header class="topbar">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <h1 style="font-size: 17px; font-weight: 800;">Xếp Thời Khóa Biểu Kéo - Thả</h1>
+                <span class="status-pill info">Niên khóa: 2026 - 2027</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <a href="screen_049.html" class="btn btn-outline btn-sm" style="position: relative;">
+                    <i class="bi bi-person-check"></i> Thẩm tra người đón
+                    <span style="position: absolute; top: -4px; right: -4px; background: var(--warning); color: #FFF; width: 16px; height: 16px; border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800;">6</span>
+                </a>
+                <div style="display: flex; align-items: center; gap: 10px; padding-left: 12px; border-left: 1px solid var(--border);">
+                    <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--primary); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px;">TT</div>
+                    <div>
+                        <div style="font-size: 13px; font-weight: 700;">Cô Hoàng Thu Thủy</div>
+                        <div style="font-size: 10.5px; color: var(--primary); font-weight: 600;">Cán Bộ Giáo Vụ</div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-      <div class="web-content">
-        <div class="breadcrumb">KIDPRO System &gt; Cán bộ Giáo vụ (Academic Affairs) (Thời khóa biểu & Lập lịch Hoạt động) &gt; Màn #046</div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-          <div>
-            <h1 class="screen-heading">#046. Timetable Scheduler Workspace (Drag & Drop)</h1>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Vai trò truy cập: <strong>Cán bộ Giáo vụ (Academic Affairs)</strong></div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn btn-primary" onclick="alert('Đã kích hoạt thao tác nghiệp vụ trên màn hình #46!')">⚡ Thực hiện tác vụ</button>
-            <button class="btn" onclick="window.print()">🖨️ In / Kết xuất</button>
-          </div>
+        <main class="content-area">
+            
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Thời khóa biểu Tuần - Lớp Lá 1 (Chương trình chuẩn Bộ GD&ĐT)</div>
+            <button class="btn btn-primary btn-sm"><i class="bi bi-save"></i> Lưu TKB</button>
         </div>
-
-        <div class="srs-info-box">
-          <strong>Đặc tả nghiệp vụ (SRS 1.4.2):</strong> Giao diện xếp thời khóa biểu thông minh dạng kéo - thả (Drag & Drop): phân bổ các môn học (Làm quen chữ viết, Toán, Âm nhạc, STEAM, Thể dục) vào các khung giờ theo phân phối chương trình mầm non.
-        </div>
-
-        
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Thời Khóa Biểu & Thực Đơn Bán Trú Tuần</span>
-            <span class="badge badge-blue">Áp dụng: Khối Mầm & Chồi</span>
-          </div>
-          <div class="table-responsive">
-            <table class="data-tbl">
-              <thead>
-                <tr>
-                  <th>Khung Giờ</th>
-                  <th>Thứ Hai</th>
-                  <th>Thứ Ba</th>
-                  <th>Thứ Tư</th>
-                  <th>Thứ Năm</th>
-                  <th>Thứ Sáu</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>08:30 - 09:15</strong></td>
-                  <td><span class="badge badge-purple">Làm quen Chữ cái</span></td>
-                  <td><span class="badge badge-blue">Toán mầm non</span></td>
-                  <td><span class="badge badge-green">STEAM Khám phá</span></td>
-                  <td><span class="badge badge-yellow">Âm nhạc & Múa</span></td>
-                  <td><span class="badge badge-green">Thể dục phát triển</span></td>
-                </tr>
-                <tr>
-                  <td><strong>11:00 - 11:45 (Ăn trưa)</strong></td>
-                  <td>Cơm tấm thịt băm, canh bí tôm</td>
-                  <td>Cá hồi sốt cam, canh cải bó xôi</td>
-                  <td>Thịt bò xào rau củ, canh ngao</td>
-                  <td>Gà om nấm, canh chua thịt</td>
-                  <td>Súp gà ngô ngọt, bánh flan</td>
-                </tr>
-                <tr>
-                  <td><strong>14:00 - 14:30</strong></td>
-                  <td>Thức dậy, uống sữa hạt sen</td>
-                  <td>Thức dậy, ăn chè đậu xanh</td>
-                  <td>Thức dậy, uống sữa chua uống</td>
-                  <td>Thức dậy, ăn bánh bông lan</td>
-                  <td>Thức dậy, uống nước cam ép</td>
-                </tr>
-              </tbody>
+        <div class="card-body" style="padding: 0;">
+            <table class="table-custom" style="text-align:center;">
+                <thead><tr><th>Khung giờ</th><th>Thứ Hai</th><th>Thứ Ba</th><th>Thứ Tư</th><th>Thứ Năm</th><th>Thứ Sáu</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700;">08:00 - 08:45</td><td>Vận động sáng</td><td>Thể dục thể chất</td><td>Âm nhạc & Nhịp điệu</td><td>Phát triển ngôn ngữ</td><td>Kỹ năng sống</td></tr>
+                    <tr><td style="font-weight:700;">09:00 - 09:45</td><td>Làm quen chữ cái</td><td>STEAM: Robot vui vẻ</td><td>Toán tư duy mầm non</td><td>Tạo hình hội họa</td><td>Khám phá khoa học</td></tr>
+                    <tr><td style="font-weight:700;">11:00 - 14:30</td><td colspan="5" style="background:#FAFDFB; font-weight:700; color:var(--primary);">Ăn trưa bán trú & Ngủ trưa phòng mát</td></tr>
+                </tbody>
             </table>
-          </div>
-          <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 12px; color: #166534; font-weight: 600;">✓ Không phát hiện xung đột lịch phòng học chuyên năng</span>
-            <button class="btn btn-primary" onclick="alert('Đã lưu & ban hành lịch biểu!')">Ký Phê Duyệt & Phát Hành</button>
-          </div>
         </div>
-        
-      </div>
-    </main>
-  </div>
+    </div>
+    
+        </main>
+    </div>
 </body>
 </html>

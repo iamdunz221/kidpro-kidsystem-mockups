@@ -1,133 +1,144 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Màn #149: Clone Previous Menu Modal - Trạm Tablet Bếp KIDPRO</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    
-    :root {
-      --primary-dark: #275A4E;
-      --primary-deep: #1E4D40;
-      --primary-forest: #173B31;
-      --primary-accent: #377E6D;
-      --accent-gold: #E5A93C;
-      --accent-mint: #78C2AD;
-      --bg-cream: #F4F7F6;
-      --border-color: #E2ECE7;
-      --text-dark: #111827;
-      --text-muted: #6B7280;
-      --card-bg: #FFFFFF;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-dark); }
-    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
-    .badge-green { background: #DCFCE7; color: #15803D; border: 1px solid #BBF7D0; }
-    .badge-yellow { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
-    .badge-blue { background: #DBEAFE; color: #1D4ED8; border: 1px solid #BFDBFE; }
-    .badge-red { background: #FEE2E2; color: #B91C1C; border: 1px solid #FECACA; }
-    .badge-gold { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
-    .badge-purple { background: #F3E8FF; color: #7E22CE; border: 1px solid #E9D5FF; }
-
-    .btn { padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border-color); background: #fff; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; text-decoration: none; }
-    .btn:hover { background: #F9FAFB; border-color: #CBD5E1; }
-    .btn-primary { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
-    .btn-primary:hover { background: var(--primary-deep); }
-    .btn-danger { background: #EF4444; color: #fff; border-color: #EF4444; }
-    .btn-gold { background: var(--accent-gold); color: #173B31; border: none; font-weight: 700; }
-
-    .input-control { width: 100%; padding: 10px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 13px; outline: none; background: #fff; color: var(--text-dark); }
-    .input-control:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(39, 90, 78, 0.15); }
-    .form-group { margin-bottom: 16px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #374151; }
-    .form-help { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-    .table-responsive { width: 100%; overflow-x: auto; background: #fff; border-radius: 12px; border: 1px solid var(--border-color); }
-    .data-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .data-tbl th { text-align: left; padding: 12px 14px; background: #F8FAF9; color: var(--text-muted); font-weight: 700; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
-    .data-tbl td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .data-tbl tr:last-child td { border-bottom: none; }
-    .data-tbl tr:hover { background: #FAFDFB; }
-
-    .card { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); margin-bottom: 18px; }
-    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
-    .card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
-
-    body { padding: 20px; }
-    .tablet-shell { max-width: 1040px; margin: 0 auto; background: #fff; border: 10px solid #1E293B; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-    .tablet-top { background: var(--primary-forest); color: #fff; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
-    .tablet-content { padding: 22px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sao Chép Thực Đơn Tuần Trước - KIDPRO Kitchen Tablet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary: #275A4E; --primary-dark: #1E4D40; --accent: #E5A93C;
+            --mint: #78C2AD; --bg-page: #F4F7F6; --border: #E1E8E5;
+            --danger: #DC3545; --warning: #F59E0B; --success: #10B981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #E2E8F0; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .tablet-container {
+            width: 100%; max-width: 1080px; min-height: 720px; background: #FFF; border-radius: 28px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12); border: 8px solid #1E293B; display: flex; overflow: hidden;
+        }
+        .tablet-sidebar {
+            width: 280px; background: #F8FAF9; border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; padding: 20px 16px;
+        }
+        .tablet-main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: var(--bg-page); }
+        .tablet-header {
+            height: 64px; background: #FFF; border-bottom: 1px solid var(--border); padding: 0 28px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .tablet-content { padding: 24px 28px; flex: 1; overflow-y: auto; }
+        .card { background: #FFF; border-radius: 14px; border: 1px solid var(--border); padding: 20px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(39,90,78,0.05); }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 13.5px; font-weight: 700; border-radius: 10px; border: none; cursor: pointer; text-decoration: none; }
+        .btn-primary { background: var(--primary); color: #FFF; }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: #1C2D27; }
+        .btn-danger { background: var(--danger); color: #FFF; }
+        .status-pill { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+        .status-pill.success { background: #D1FAE5; color: #065F46; }
+        .status-pill.warning { background: #FEF3C7; color: #92400E; }
+        .status-pill.danger { background: #FEE2E2; color: #991B1B; }
+        .table-custom { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        .table-custom th { background: #F8FAF9; color: #5D7268; font-weight: 700; font-size: 11.5px; text-transform: uppercase; padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+        .table-custom td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        @media(max-width: 900px) {
+            .tablet-container { flex-direction: column; border: none; border-radius: 0; min-height: 100vh; }
+            .tablet-sidebar { width: 100%; }
+        }
+    </style>
 </head>
 <body>
-  <div class="tablet-shell">
-    <div class="tablet-top">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span class="badge badge-gold">KIDPRO BẾP BÁN TRÚ</span>
-        <strong style="font-size: 14px;">Màn #149: Clone Previous Menu Modal</strong>
-      </div>
-      <div style="font-size: 12px; color: var(--accent-mint);">Khóa số lúc 08:30 • QĐ 1246/QĐ-BYT</div>
-    </div>
-    <div class="tablet-content">
-      <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 10px 14px; border-radius: 8px; font-size: 12px; color: #166534; margin-bottom: 16px;">
-        <strong>Đặc tả (SRS 1.4.2):</strong> Hộp thoại sao chép thực đơn tuần trước: cho phép nhân viên bếp chọn nhanh thực đơn của tuần học trước đó đã được Hiệu trưởng phê duyệt để áp dụng cho tuần mới, tiết kiệm thời gian nhập liệu.
-      </div>
-      
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Thời Khóa Biểu & Thực Đơn Bán Trú Tuần</span>
-            <span class="badge badge-blue">Áp dụng: Khối Mầm & Chồi</span>
-          </div>
-          <div class="table-responsive">
-            <table class="data-tbl">
-              <thead>
-                <tr>
-                  <th>Khung Giờ</th>
-                  <th>Thứ Hai</th>
-                  <th>Thứ Ba</th>
-                  <th>Thứ Tư</th>
-                  <th>Thứ Năm</th>
-                  <th>Thứ Sáu</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>08:30 - 09:15</strong></td>
-                  <td><span class="badge badge-purple">Làm quen Chữ cái</span></td>
-                  <td><span class="badge badge-blue">Toán mầm non</span></td>
-                  <td><span class="badge badge-green">STEAM Khám phá</span></td>
-                  <td><span class="badge badge-yellow">Âm nhạc & Múa</span></td>
-                  <td><span class="badge badge-green">Thể dục phát triển</span></td>
-                </tr>
-                <tr>
-                  <td><strong>11:00 - 11:45 (Ăn trưa)</strong></td>
-                  <td>Cơm tấm thịt băm, canh bí tôm</td>
-                  <td>Cá hồi sốt cam, canh cải bó xôi</td>
-                  <td>Thịt bò xào rau củ, canh ngao</td>
-                  <td>Gà om nấm, canh chua thịt</td>
-                  <td>Súp gà ngô ngọt, bánh flan</td>
-                </tr>
-                <tr>
-                  <td><strong>14:00 - 14:30</strong></td>
-                  <td>Thức dậy, uống sữa hạt sen</td>
-                  <td>Thức dậy, ăn chè đậu xanh</td>
-                  <td>Thức dậy, uống sữa chua uống</td>
-                  <td>Thức dậy, ăn bánh bông lan</td>
-                  <td>Thức dậy, uống nước cam ép</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 12px; color: #166534; font-weight: 600;">✓ Không phát hiện xung đột lịch phòng học chuyên năng</span>
-            <button class="btn btn-primary" onclick="alert('Đã lưu & ban hành lịch biểu!')">Ký Phê Duyệt & Phát Hành</button>
-          </div>
-        </div>
+    <div class="tablet-container">
+        <!-- TABLET SIDEBAR -->
+        <div class="tablet-sidebar">
+            <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 20px; padding: 0 6px;">
+                <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--primary); color: #FFF; display:flex; align-items:center; justify-content:center; font-size: 20px; font-weight: 800;">K</div>
+                <div>
+                    <div style="font-size: 17px; font-weight: 800; color: var(--primary);">KIDPRO</div>
+                    <div style="font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase;">Bếp Ăn Bán Trú</div>
+                </div>
+            </div>
+            <div style="padding: 10px; background: #EBF7F4; border-radius: 10px; margin-bottom: 16px; font-size: 12px;">
+                <div style="font-weight: 700; color: var(--primary-dark);">MN Thực Nghiệm Tân Bình</div>
+                <div style="color: #64748B; margin-top: 2px;">Trực trưa: Bếp trưởng Lan</div>
+            </div>
+            <div style="flex: 1;">
+                
+        <a href="screen_144.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-grid-1x2-fill" style="font-size: 18px;"></i>
+            <span>Bàn Điều Hành Bếp</span>
+            
+        </a>
         
+        <a href="screen_147.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-calendar-week" style="font-size: 18px;"></i>
+            <span>Thực Đơn Tuần</span>
+            
+        </a>
+        
+        <a href="screen_150.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-exclamation-triangle-fill" style="font-size: 18px;"></i>
+            <span>Cảnh Báo Dị Ứng</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 800; background: #DC2626; color: #FFF; margin-left: auto;">2 Bé</span>
+        </a>
+        
+        <a href="screen_151.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-clipboard-check" style="font-size: 18px;"></i>
+            <span>Kiểm Thực 3 Bước</span>
+            
+        </a>
+        
+        <a href="screen_152.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-shield-check" style="font-size: 18px;"></i>
+            <span>Lưu Mẫu Thức Ăn 24H</span>
+            
+        </a>
+        
+        <a href="screen_153.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-pie-chart-fill" style="font-size: 18px;"></i>
+            <span>Báo Cáo Tiêu Hao</span>
+            
+        </a>
+        
+        <a href="screen_145.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-person-badge" style="font-size: 18px;"></i>
+            <span>Hồ Sơ An Toàn VSTP</span>
+            
+        </a>
+        
+        <a href="screen_143.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; text-decoration: none; font-size: 14px; margin-bottom: 4px; color: #5D7268;">
+            <i class="bi bi-box-arrow-right" style="font-size: 18px;"></i>
+            <span>Đăng Xuất</span>
+            
+        </a>
+        
+            </div>
+        </div>
+
+        <!-- TABLET MAIN CONTENT -->
+        <div class="tablet-main">
+            <div class="tablet-header">
+                <div style="display:flex; align-items:center; gap: 12px;">
+                    <h2 style="font-size: 17px; font-weight: 800; color: #1C2D27;">Sao Chép Thực Đơn Tuần Trước</h2>
+                    <span class="status-pill success"><i class="bi bi-clock"></i> 04/10/2026 • Ca Trưa</span>
+                </div>
+                <div style="display:flex; align-items:center; gap: 14px;">
+                    <a href="screen_150.html" class="status-pill danger" style="padding: 6px 12px; font-size: 12.5px; text-decoration:none;">
+                        <i class="bi bi-exclamation-triangle-fill"></i> 2 Suất ăn dị ứng cần tách riêng
+                    </a>
+                </div>
+            </div>
+
+            <div class="tablet-content">
+                
+    <div class="card" style="max-width: 550px; margin: 0 auto;">
+        <h4 style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">Sao Chép Thực Đơn</h4>
+        <p style="font-size: 12px; color: #64748B; margin-bottom: 14px;">Chọn tuần thực đơn chuẩn đã được thẩm định dinh dưỡng để áp dụng nhanh cho tuần tới.</p>
+        <select style="width:100%; padding:10px; border:1px solid #CBD5E1; border-radius:8px; margin-bottom: 16px;"><option>Thực đơn Tuần 5 (Đầy đủ năng lượng 650 Kcal)</option></select>
+        <a href="screen_147.html" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="bi bi-check2"></i> Xác nhận áp dụng</a>
     </div>
-  </div>
+    
+            </div>
+        </div>
+    </div>
 </body>
 </html>
