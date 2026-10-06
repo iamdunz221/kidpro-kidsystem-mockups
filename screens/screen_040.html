@@ -301,58 +301,132 @@
 
         <main class="content-area">
             
-<!-- ALLERGY BANNER -->
-<div style="background: #FEE2E2; border: 2px solid #EF4444; border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
-    <div style="display:flex; align-items:center; gap: 12px;">
-        <i class="bi bi-exclamation-octagon-fill" style="font-size: 26px; color: #DC2626;"></i>
-        <div>
-            <div style="font-weight: 800; font-size: 15px; color: #991B1B;">CẢNH BÁO DỊ ỨNG ĐẶC BIỆT: DỊ ỨNG HẢI SẢN & ĐẬU PHỘNG</div>
-            <div style="font-size: 12px; color: #7F1D1D;">Tuyệt đối không sử dụng tôm, cua, ghẹ và các loại hạt trong suất ăn bán trú. Đã đồng bộ sang máy tính bảng Bếp ăn.</div>
+<!-- UC-053 CRITICAL ALLERGY BANNER & PROTOCOL -->
+<div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 12px; padding: 16px 20px; margin-bottom: 22px; box-shadow: 0 4px 12px rgba(239,68,68,0.1);">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: #DC2626; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                <i class="bi bi-shield-fill-x"></i>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-weight: 800; font-size: 16px; color: #991B1B;">UC-053: CẢNH BÁO DỊ ỨNG TOÀN HỆ THỐNG - BÁO ĐỘNG ĐỎ</span>
+                    <span class="status-pill danger" style="font-size: 11px; font-weight: 800;">SEVERE_ANAPHYLAXIS</span>
+                </div>
+                <div style="font-size: 13px; color: #7F1D1D; margin-top: 4px; font-weight: 600;">
+                    Dị ứng nghiêm trọng: <span style="text-decoration: underline;">ĐẬU PHỘNG (LẠC)</span> & <span style="text-decoration: underline;">HẢI SẢN CÓ VỎ (TÔM, CUA, GHẸ)</span>. Nguy cơ sốc phản vệ cao!
+                </div>
+                <div style="font-size: 12px; color: #475569; margin-top: 4px;">
+                    Chỉ định y khoa: Bệnh án Bệnh viện Nhi Đồng 1 (Bác sĩ CKI Nguyễn Văn A ký ngày 28/08/2026 - BR-055).
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button class="btn btn-danger btn-sm" onclick="broadcastAllergyAlert()"><i class="bi bi-broadcast"></i> Phát lại Cảnh báo Bếp & Lớp</button>
+            <button class="btn btn-outline btn-sm" onclick="showEpipenGuide()"><i class="bi bi-capsule"></i> Phác đồ EpiPen</button>
         </div>
     </div>
-    <span class="status-pill danger" style="font-size: 12px; font-weight: 800;">Y TẾ BẾP ĂN LƯU Ý</span>
+
+    <!-- NOTIFICATION MSG-220 & MSG-221 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; font-size: 12px;">
+        <div style="background: #FFF; border-left: 3px solid #10B981; padding: 8px 12px; border-radius: 6px; color: #1B5E20;">
+            <i class="bi bi-check-circle-fill"></i> <strong>[MSG-220]:</strong> Đã đồng bộ thành công cảnh báo tới <strong>3 Tablet Bếp Ăn</strong> và <strong>2 Tablet Giáo viên Mầm 1</strong>. Suất ăn tự động dùng khay đỏ cách ly.
+        </div>
+        <div style="background: #FFF; border-left: 3px solid #F59E0B; padding: 8px 12px; border-radius: 6px; color: #92400E;">
+            <i class="bi bi-exclamation-circle-fill"></i> <strong>[MSG-221]:</strong> Bút tiêm EpiPen (0.15mg) tại <strong>Tủ Y Tế Tầng 1 - Hộc A2</strong> có hạn dùng đến <strong>15/12/2026</strong>. Đã hẹn lịch nhắc đổi mới.
+        </div>
+    </div>
+
+    <!-- CROSS-SYSTEM BROADCAST BADGES CHECKLIST -->
+    <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed #FECACA; display: flex; gap: 16px; flex-wrap: wrap; font-size: 11.5px; color: #991B1B;">
+        <span><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Màn hình Bếp (screen_144): Tự động loại trừ allergen</span>
+        <span><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Tablet Giáo viên (screen_077): Khiên đỏ nhấp nháy cạnh avatar</span>
+        <span><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Cổng AI FaceID Kiosk: Cảnh báo y tế tại cổng</span>
+        <span><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> App Phụ huynh: Xác nhận thực đơn an toàn</span>
+    </div>
 </div>
 
 <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+    <!-- STUDENT BASIC PROFILE -->
     <div class="card">
         <div class="card-body" style="text-align: center;">
-            <div style="width: 110px; height: 110px; border-radius: 50%; background: #E2E8F0; margin: 0 auto 14px; overflow: hidden; border: 3px solid var(--primary);">
-                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=200" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:var(--primary);\'>GK</div>'">
+            <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 14px;">
+                <div style="width: 110px; height: 110px; border-radius: 50%; background: #E2E8F0; overflow: hidden; border: 3px solid #DC2626;">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=200" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src=''; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:var(--primary);\'>GK</div>'">
+                </div>
+                <!-- UC-053 SYSTEM-WIDE RED SHIELD BADGE -->
+                <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; border-radius: 50%; background: #DC2626; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 2px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" title="Huy hiệu Cảnh báo Dị ứng Toàn hệ thống">
+                    <i class="bi bi-shield-fill-x"></i>
+                </div>
             </div>
+
             <h3 style="font-size: 18px; font-weight: 800;">Vũ Hoàng Gia Khiêm</h3>
             <div style="font-size: 13px; color: #64748B;">Mã học sinh: <strong>KID-2026-089</strong></div>
-            <div style="margin-top: 10px;"><span class="status-pill success">Lớp Mầm 1 • 3 Tuổi</span></div>
+            <div style="margin-top: 10px; display: flex; gap: 6px; justify-content: center;">
+                <span class="status-pill success">Lớp Mầm 1 • 3 Tuổi</span>
+                <span class="status-pill danger">Dị ứng cấp 1</span>
+            </div>
 
             <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-light); text-align: left; font-size: 12.5px;">
                 <div style="margin-bottom: 8px;"><strong>Nhóm máu:</strong> <span style="color: #DC2626; font-weight: 700;">O+</span></div>
                 <div style="margin-bottom: 8px;"><strong>Chiều cao:</strong> 96.5 cm • <strong>Cân nặng:</strong> 15.2 kg</div>
+                <div style="margin-bottom: 8px;"><strong>Vị trí bút tiêm:</strong> <span style="color: var(--primary); font-weight: 700;">Tủ y tế tầng 1 - Hộc A2</span></div>
                 <div style="margin-bottom: 8px;"><strong>Tình trạng tiêm chủng:</strong> Đầy đủ theo Bộ Y Tế</div>
                 <div><strong>Nghị định 13:</strong> Phụ huynh đã ký cam kết đồng thuận sinh trắc học ngày 01/09/2026</div>
             </div>
         </div>
     </div>
 
+    <!-- FAMILY & EMERGENCY CONTACTS -->
     <div class="card">
-        <div class="card-header"><div class="card-title">Thông tin Gia đình & Người đón được phê duyệt</div></div>
+        <div class="card-header">
+            <div class="card-title"><i class="bi bi-people-fill"></i> Thông Tin Liên Hệ Khẩn Cấp & Người Đón Được Ủy Quyền</div>
+            <button class="btn btn-outline btn-sm" onclick="alert('Đã cập nhật số điện thoại liên lạc khẩn cấp')"><i class="bi bi-pencil"></i> Chỉnh sửa</button>
+        </div>
         <div class="card-body">
             <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 10px;">Phụ huynh đăng ký chính thức:</h4>
-            <div style="padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; font-size: 13px;">
-                <div><strong>Cha:</strong> Vũ Thành Đạt • SĐT: 0909 333 789</div>
-                <div><strong>Mẹ:</strong> Lê Thu Thảo • SĐT: 0908 111 222</div>
+            <div style="padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; font-size: 13px; background: #FAFDFB;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <div><strong>Cha:</strong> Vũ Thành Đạt • SĐT: <strong style="color: var(--primary);">0909 333 789</strong></div>
+                    <span class="status-pill success">Liên hệ chính</span>
+                </div>
+                <div style="margin-bottom: 4px;"><strong>Mẹ:</strong> Lê Thu Thảo • SĐT: <strong>0908 111 222</strong></div>
                 <div><strong>Địa chỉ:</strong> 124 Hoàng Văn Thụ, Phường 2, Quận Tân Bình, TP.HCM</div>
             </div>
 
-            <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 10px;">Danh sách người đón ủy quyền (Đã được giáo vụ thẩm tra):</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 10px;">Danh sách người đón ủy quyền (Đã được giáo vụ thẩm tra FaceID):</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                 <div style="padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #F8FAF9; font-size: 12.5px;">
                     <div style="font-weight: 700; color: var(--primary);">Bà nội: Nguyễn Thị Mai</div>
                     <div style="color: #64748B;">CCCD: 079155001234 • Có ảnh FaceID</div>
-                    <div style="margin-top: 4px;"><span class="status-pill success">Đã cấp mã QR đón</span></div>
+                    <div style="margin-top: 6px;"><span class="status-pill success"><i class="bi bi-qr-code"></i> Đã cấp mã QR đón</span></div>
+                </div>
+                <div style="padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #F8FAF9; font-size: 12.5px;">
+                    <div style="font-weight: 700; color: var(--primary);">Bác ruột: Vũ Thành Nam</div>
+                    <div style="color: #64748B;">CCCD: 079166002345 • Có ảnh FaceID</div>
+                    <div style="margin-top: 6px;"><span class="status-pill success"><i class="bi bi-qr-code"></i> Đã cấp mã QR đón</span></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function broadcastAllergyAlert() {
+        alert('[MSG-220]: Đã kích hoạt lệnh PUSH khẩn cấp cảnh báo dị ứng!\n\n' +
+              '• Học sinh: Vũ Hoàng Gia Khiêm (Lớp Mầm 1)\n' +
+              '• Tác nhân: Đậu phộng & Hải sản có vỏ (Severe Anaphylaxis)\n' +
+              '• Đồng bộ ngay lập tức tới 3 máy tính bảng Bếp ăn và 2 Giáo viên lớp Mầm 1.');
+    }
+    function showEpipenGuide() {
+        alert('PHÁC ĐỒ CẤP CỨU SỐC PHẢN VỆ & VỊ TRÍ EPIPEN (BR-055)\n\n' +
+              '1. Vị trí bút: Tủ Y tế Tầng 1 - Hộc A2 & Túi y tế khẩn cấp Lớp Mầm 1.\n' +
+              '2. Liều lượng: EpiPen Jr 0.15mg.\n' +
+              '3. Cách dùng: Đặt đầu kim màu cam vào mặt trước ngoài đùi trẻ, ấn dứt khoát vuông góc 90 độ và giữ yên 5 giây.\n' +
+              '4. Gọi ngay 115 và thông báo phụ huynh (0909 333 789).\n' +
+              '5. Hạn sử dụng thuốc: 15/12/2026 (MSG-221).');
+    }
+</script>
 
         </main>
     </div>

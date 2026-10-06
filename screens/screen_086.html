@@ -87,15 +87,132 @@
 
         <!-- MAIN BODY CONTENT -->
         <div class="app-body">
-            
-    <div class="m-card" style="border: 2px solid var(--danger);">
-        <h4 style="font-size: 14px; font-weight: 800; color: var(--danger); margin-bottom: 8px;"><i class="bi bi-thermometer-high"></i> Báo Cáo Sốt / Y Tế Học Đường</h4>
-        <div style="margin-bottom: 12px;"><label style="font-size:12px; font-weight:600;">Học sinh</label><input type="text" value="Lê Hoàng Nam (Lớp Mầm 1)" readonly style="width:100%; padding:9px; background:#F8FAF9; border:1px solid #CBD5E1; border-radius:8px;"></div>
-        <div style="margin-bottom: 12px;"><label style="font-size:12px; font-weight:600;">Thân nhiệt đo được (°C)</label><input type="text" value="38.6" style="width:100%; padding:9px; border:2px solid var(--danger); border-radius:8px; font-weight:800; color:var(--danger); font-size:16px;"></div>
-        <div style="margin-bottom: 14px;"><label style="font-size:12px; font-weight:600;">Biện pháp xử lý tức thời</label><textarea style="width:100%; padding:9px; border:1px solid #CBD5E1; border-radius:8px; font-size:12px;">Đã cho bé nằm nghỉ phòng y tế, chườm trán bằng khăn ấm, gọi mẹ Trần Thu Hà đến đón sớm.</textarea></div>
-        <button class="btn-m btn-m-danger" style="width: 100%;"><i class="bi bi-broadcast"></i> Phát cảnh báo khẩn cấp tới PH & BGH</button>
-    </div>
-    
+            <!-- EMERGENCY ALERT BANNER MSG-218 -->
+            <div style="background: #FEE2E2; border: 2px solid #EF4444; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="bi bi-exclamation-triangle-fill" style="color: #DC2626; font-size: 20px;"></i>
+                        <span style="font-weight: 800; font-size: 13px; color: #991B1B;">[MSG-218] BÁO ĐỘNG SỐT CAO KHẨN CẤP</span>
+                    </div>
+                    <span class="status-pill danger" style="font-size: 10px; font-weight: 800;">ƯU TIÊN CẤP 1</span>
+                </div>
+                <div style="font-size: 11.5px; color: #7F1D1D; margin-top: 6px; line-height: 1.4;">
+                    Thân nhiệt bé <strong>38.6°C</strong> (vượt ngưỡng cảnh báo an toàn 38.5°C). Hệ thống đã tự động gửi thông báo PUSH ưu tiên cao tới Phụ huynh và Bác sĩ/Cán bộ Y tế học đường!
+                </div>
+            </div>
+
+            <!-- STUDENT IDENTIFICATION CARD -->
+            <div class="m-card" style="margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 44px; height: 44px; border-radius: 50%; background: #FEE2E2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800;">
+                            LN
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; font-weight: 800; color: #1C2D27;">Lê Hoàng Nam</div>
+                            <div style="font-size: 11px; color: #64748B;">Lớp Mầm 1 • Mã: KID-2024-015 • Nhóm máu: B+</div>
+                        </div>
+                    </div>
+                    <span class="status-pill danger">Tại phòng Y tế</span>
+                </div>
+                <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed #CBD5E1; display: flex; justify-content: space-between; align-items: center; font-size: 11.5px;">
+                    <div>Mẹ: <strong>Trần Thu Hà</strong> (0912.345.678)</div>
+                    <a href="tel:0912345678" class="btn-m btn-m-outline" style="padding: 4px 8px; font-size: 10.5px; text-decoration: none; color: #10B981; border-color: #10B981;">
+                        <i class="bi bi-telephone-fill"></i> Gọi Mẹ
+                    </a>
+                </div>
+            </div>
+
+            <!-- CLINICAL VITALS MEASUREMENTS -->
+            <div class="m-card" style="margin-bottom: 12px;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #1C2D27; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                    <i class="bi bi-activity" style="color: #DC2626;"></i> Dấu Hiệu Sinh Tồn Thời Gian Thực (Clinical Vitals)
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                    <div style="background: #FEF2F2; border: 1.5px solid #F87171; border-radius: 8px; padding: 10px 4px;">
+                        <div style="font-size: 10px; font-weight: 700; color: #991B1B;">Thân Nhiệt</div>
+                        <div style="font-size: 18px; font-weight: 900; color: #DC2626;">38.6°C</div>
+                        <div style="font-size: 9px; color: #DC2626; font-weight: 700;">Sốt vừa / cao</div>
+                    </div>
+                    <div style="background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; padding: 10px 4px;">
+                        <div style="font-size: 10px; font-weight: 700; color: #5D7268;">Nhịp Mạch</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #1C2D27;">105</div>
+                        <div style="font-size: 9px; color: #64748B;">Lần / Phút</div>
+                    </div>
+                    <div style="background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; padding: 10px 4px;">
+                        <div style="font-size: 10px; font-weight: 700; color: #5D7268;">Oxy SpO2</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #10B981;">98%</div>
+                        <div style="font-size: 9px; color: #10B981; font-weight: 700;">Chỉ số tốt</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLINICAL TRIAGE PROTOCOL & MEDICATION CONSENT (MSG-217) -->
+            <div class="m-card" style="margin-bottom: 12px;">
+                <h4 style="font-size: 12.5px; font-weight: 800; color: #1C2D27; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                    <i class="bi bi-clipboard2-pulse-fill" style="color: var(--primary);"></i> Phác Đồ Sơ Cứu Ban Đầu & Dặn Thuốc (BR-054)
+                </h4>
+                
+                <!-- MEDICATION CONSENT VERIFICATION STATUS -->
+                <div style="background: #E8F5E9; border-left: 3px solid #10B981; padding: 8px 10px; border-radius: 6px; font-size: 11px; color: #1B5E20; margin-bottom: 10px;">
+                    <i class="bi bi-check-circle-fill"></i> <strong>Ủy quyền thuốc hợp lệ:</strong> Phụ huynh đã gửi đơn dặn thuốc sáng nay (Hapacol 150mg, lúc 07:15). Đủ điều kiện cấp thuốc theo <strong>MSG-217</strong>.
+                </div>
+
+                <div style="font-size: 11.5px; display: flex; flex-direction: column; gap: 8px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" checked style="width: 15px; height: 15px; accent-color: var(--primary);">
+                        <span>Chườm khăn ấm vùng trán, nách, bẹn (15 phút)</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" checked style="width: 15px; height: 15px; accent-color: var(--primary);">
+                        <span>Uống 50ml nước Oresol bù nước & điện giải</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" checked style="width: 15px; height: 15px; accent-color: var(--primary);">
+                        <span>Cho uống 01 gói Hapacol 150mg theo đơn phụ huynh</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" checked style="width: 15px; height: 15px; accent-color: var(--primary);">
+                        <span>Nằm theo dõi tại giường số 02 - Phòng Y tế tầng 1</span>
+                    </label>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <label style="font-size: 11px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">Ghi chú diễn biến lâm sàng của cán bộ Y tế / Cô giáo</label>
+                    <textarea class="form-control" rows="2" style="font-size: 11.5px; line-height: 1.4; resize: none;">Trẻ tỉnh táo, không co giật, không có ban dị ứng. Đã thông báo mẹ đón sớm trước 10:30.</textarea>
+                </div>
+            </div>
+
+            <!-- EMERGENCY ACTIONS: DISPATCH 115 AMBULANCE (BRANCH A1) & SAVE (MSG-216) -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="btn-m btn-m-primary" style="width: 100%; font-size: 13px; font-weight: 800; justify-content: center;" onclick="saveHealthLog()">
+                    <i class="bi bi-floppy-fill"></i> Lưu Nhật Ký & Đồng Bộ Hồ Sơ Y Tế (MSG-216)
+                </button>
+                
+                <!-- DIRECT 115 EMERGENCY BUTTON (A1) -->
+                <button class="btn-m btn-m-danger" style="width: 100%; font-size: 12.5px; font-weight: 800; justify-content: center;" onclick="callAmbulance115()">
+                    <i class="bi bi-hospital-fill"></i> [A1] Điều Xe Cấp Cứu Khẩn Cấp 115 (Khi Co Giật / Báo Động)
+                </button>
+
+                <a href="screen_082.html" class="btn-m btn-m-outline" style="width: 100%; font-size: 11.5px; justify-content: center; text-decoration: none; color: #64748B;">
+                    <i class="bi bi-arrow-left"></i> Quay lại Danh sách Điểm danh Lớp
+                </a>
+            </div>
+
+            <script>
+                function saveHealthLog() {
+                    alert('[MSG-216]: Lưu nhật ký y tế thành công!\n\n' +
+                          '• Học sinh: Lê Hoàng Nam (Lớp Mầm 1)\n' +
+                          '• Thân nhiệt ghi nhận: 38.6°C\n' +
+                          '• Biện pháp: Đã chườm ấm, bù Oresol, uống Hapacol 150mg theo đơn ủy quyền hợp lệ.\n' +
+                          '• Hồ sơ y tế điện tử của học sinh đã được đồng bộ tới Phụ huynh và Bác sĩ trường.');
+                }
+                function callAmbulance115() {
+                    if (confirm('[A1 KHẨN CẤP]: Bạn có chắc chắn muốn phát lệnh khẩn cấp gọi Cấp cứu 115 và định vị gửi tới Bệnh viện Nhi Đồng?')) {
+                        alert('Đang kết nối Tổng đài Cấp cứu 115 TP.HCM và kích hoạt Quy trình Phản ứng Khẩn cấp Toàn trường (Code Red)!');
+                    }
+                }
+            </script>
         </div>
 
         <!-- BOTTOM NAVIGATION -->

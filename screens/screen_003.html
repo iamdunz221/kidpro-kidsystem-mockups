@@ -224,6 +224,71 @@
         </div>
 
         
+<!-- UC-008 PLATFORM HEALTH & UPTIME MONITORING SECTION (BR-007) -->
+<div class="card" style="border-left: 4px solid var(--success); margin-bottom: 24px;">
+  <div class="card-header" style="background: #FAFDFB;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 18px; color: var(--success);"><i class="bi bi-shield-check"></i></span>
+      <div>
+        <strong style="font-size: 14.5px; color: #1C2D27;">2.1.8 UC-008: Giám Sát Sức Khỏe & Uptime Nền Tảng (Platform Health & Uptime Monitoring)</strong>
+        <div style="font-size: 12px; color: var(--text-muted);">Hệ thống giám sát vi dịch vụ HA, tài nguyên máy chủ & phân vùng đa thực thể</div>
+      </div>
+    </div>
+    <span class="badge badge-green"><i class="bi bi-check-circle-fill"></i> MSG-029: Tất cả các dịch vụ cốt lõi đang vận hành bình thường (SLA 99.98%)</span>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 18px 20px;">
+    <!-- Service 1: API Gateway -->
+    <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size: 11px; font-weight: 700; color: #4B5563;">1. API Gateway</span>
+        <span class="badge badge-green" style="font-size: 9.5px; padding: 2px 6px;">UP</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-top: 6px;">24ms</div>
+      <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 2px;">Envoy • 342 req/s</div>
+    </div>
+
+    <!-- Service 2: PostgreSQL Multi-Tenant -->
+    <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size: 11px; font-weight: 700; color: #4B5563;">2. PostgreSQL Pool</span>
+        <span class="badge badge-green" style="font-size: 9.5px; padding: 2px 6px;">HEALTHY</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-top: 6px;">12ms</div>
+      <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 2px;">42 / 100 Conn • 0s Lag</div>
+    </div>
+
+    <!-- Service 3: Redis Cache -->
+    <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size: 11px; font-weight: 700; color: #4B5563;">3. Redis Token Store</span>
+        <span class="badge badge-green" style="font-size: 9.5px; padding: 2px 6px;">OPTIMAL</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-top: 6px;">94.2% Hit</div>
+      <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 2px;">1.8ms Latency • 1.2GB</div>
+    </div>
+
+    <!-- Service 4: InsightFace AI Cluster -->
+    <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size: 11px; font-weight: 700; color: #4B5563;">4. InsightFace AI</span>
+        <span class="badge badge-green" style="font-size: 9.5px; padding: 2px 6px;">READY</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-top: 6px;">0.22s Queue</div>
+      <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 2px;">4 GPU Pods • VRAM 48%</div>
+    </div>
+
+    <!-- Service 5: PayOS & FCM Queue -->
+    <div style="background: #F8FAF9; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size: 11px; font-weight: 700; color: #4B5563;">5. PayOS & FCM</span>
+        <span class="badge badge-green" style="font-size: 9.5px; padding: 2px 6px;">ACTIVE</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-top: 6px;">0 Delay</div>
+      <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 2px;">0.8s Push • Webhook OK</div>
+    </div>
+  </div>
+</div>
+
 <!-- KPI ROW -->
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
   <div class="card" style="padding: 18px; margin: 0;">

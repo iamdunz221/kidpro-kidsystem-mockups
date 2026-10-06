@@ -362,21 +362,34 @@
       <div class="filter-bar">
         <input type="text" id="screenSearch" class="search-input" placeholder="🔍 Tìm kiếm theo tên màn hình, từ khóa..." oninput="handleSearch()">
         
+        <!-- SPECIAL USE CASES QUICK-FILTER BANNER -->
+        <div style="background: #EBF7F4; border: 1.5px solid #78C2AD; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+          <div>
+            <div style="font-size: 11.5px; font-weight: 800; color: #1E4D40;">
+              ⭐ Màn hình Trọng tâm Theo Nhận xét:
+            </div>
+            <div style="font-size: 10px; font-weight: 600; color: #065F46; margin-top: 2px;">
+              UC 3, 8, 35, 36, 49, 50, 52, 53, 61, 68 & Bếp Forgot
+            </div>
+          </div>
+          <button class="filter-pill" style="background: #E5A93C; color: #173B31; border: none; font-weight: 800; font-size: 11px; padding: 5px 10px; cursor: pointer; flex-shrink: 0;" onclick="filterSpecialUCs()">Xem Ngay</button>
+        </div>
+
         <div class="filter-pills">
-          <button class="filter-pill active plat-pill" onclick="filterByPlatform('all')">Tất cả (153)</button>
-          <button class="filter-pill plat-pill" onclick="filterByPlatform('Web Desktop')">💻 Web (74)</button>
+          <button class="filter-pill active plat-pill" onclick="filterByPlatform('all')">Tất cả</button>
+          <button class="filter-pill plat-pill" onclick="filterByPlatform('Web Desktop')">💻 Web (75)</button>
           <button class="filter-pill plat-pill" onclick="filterByPlatform('Mobile App')">📱 Mobile (68)</button>
-          <button class="filter-pill plat-pill" onclick="filterByPlatform('Tablet')">📟 Tablet Bếp (11)</button>
+          <button class="filter-pill plat-pill" onclick="filterByPlatform('Tablet')">📟 Tablet Bếp (12)</button>
         </div>
         <div class="filter-pills" style="margin-top: 8px;">
           <button class="filter-pill active role-pill" onclick="filterByRole('all')">Tất cả vai trò (7)</button>
-          <button class="filter-pill role-pill" onclick="filterByRole('super_admin')">Super Admin (16)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('super_admin')">Super Admin (17)</button>
           <button class="filter-pill role-pill" onclick="filterByRole('principal')">Hiệu trưởng (14)</button>
           <button class="filter-pill role-pill" onclick="filterByRole('academic')">Giáo vụ (26)</button>
           <button class="filter-pill role-pill" onclick="filterByRole('accountant')">Kế toán (18)</button>
           <button class="filter-pill role-pill" onclick="filterByRole('teacher')">Giáo viên (35)</button>
           <button class="filter-pill role-pill" onclick="filterByRole('parent')">Phụ huynh (33)</button>
-          <button class="filter-pill role-pill" onclick="filterByRole('kitchen')">Bếp ăn (11)</button>
+          <button class="filter-pill role-pill" onclick="filterByRole('kitchen')">Bếp ăn (12)</button>
         </div>
       </div>
 
@@ -685,6 +698,22 @@
       document.querySelectorAll('.role-pill').forEach(p => p.classList.remove('active'));
       event.target.classList.add('active');
       applyFilters();
+    }
+
+    function filterSpecialUCs() {
+      document.getElementById('screenSearch').value = '';
+      activePlatform = 'all';
+      activeRole = 'all';
+      document.querySelectorAll('.plat-pill').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.role-pill').forEach(p => p.classList.remove('active'));
+      document.querySelector('.plat-pill').classList.add('active');
+      document.querySelector('.role-pill').classList.add('active');
+      currentScreens = SCREENS_DATA.filter(s => s.tags && s.tags.some(t => t.startsWith('⭐')));
+      selectedScreenIndex = 0;
+      renderScreenList();
+      if (currentScreens.length > 0) {
+        selectScreen(0);
+      }
     }
 
     function handleSearch() {

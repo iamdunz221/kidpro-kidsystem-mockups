@@ -87,15 +87,147 @@
 
         <!-- MAIN BODY CONTENT -->
         <div class="app-body">
-            
-    <div class="m-card">
-        <div style="display:flex; gap:10px;">
-            <a href="screen_131.html" class="btn-m btn-m-primary" style="flex:1; font-size:12px;">Đơn xin nghỉ</a>
-            <a href="screen_132.html" class="btn-m btn-m-outline" style="flex:1; font-size:12px;">Dặn thuốc</a>
-        </div>
-        <a href="screen_133.html" class="btn-m btn-m-outline" style="width:100%; margin-top:10px; font-size:12px;">Xem lịch sử các đơn đã nộp</a>
-    </div>
-    
+            <!-- QUICK HUB NAV TABS -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px;">
+                <a href="screen_131.html" class="btn-m btn-m-outline" style="text-decoration: none; text-align: center; font-size: 11px; padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                    <i class="bi bi-calendar2-x-fill" style="font-size: 18px; color: #DC2626;"></i>
+                    <span style="font-weight: 700; color: #1C2D27;">Xin nghỉ học</span>
+                </a>
+                <a href="screen_132.html" class="btn-m btn-m-outline" style="text-decoration: none; text-align: center; font-size: 11px; padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                    <i class="bi bi-capsule-pill" style="font-size: 18px; color: #0284C7;"></i>
+                    <span style="font-weight: 700; color: #1C2D27;">Dặn thuốc</span>
+                </a>
+                <a href="screen_133.html" class="btn-m btn-m-outline" style="text-decoration: none; text-align: center; font-size: 11px; padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                    <i class="bi bi-clock-history" style="font-size: 18px; color: #D97706;"></i>
+                    <span style="font-weight: 700; color: #1C2D27;">Lịch sử đơn</span>
+                </a>
+            </div>
+
+            <!-- UC-050 ACTIVE PETITION TRACKING CARD -->
+            <div class="m-card" style="border-left: 4px solid var(--primary); background: #FAFDFB;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 10px; font-weight: 800; color: var(--primary); text-transform: uppercase;">
+                        <i class="bi bi-hourglass-split"></i> ĐƠN ĐANG XỬ LÝ (SLA 48 GIỜ)
+                    </span>
+                    <span class="status-pill warning" style="font-size: 10px;"><i class="bi bi-arrow-repeat"></i> Đang duyệt hồ sơ</span>
+                </div>
+                <div style="font-size: 13.5px; font-weight: 800; color: #1C2D27;">Xin Cấp Giấy Xác Nhận Học Sinh (Làm Visa)</div>
+                <div style="font-size: 11px; color: #64748B; margin-top: 2px;">
+                    Mã hồ sơ: <strong>PET-2026-0842</strong> • Gửi lúc: 05/10 08:30
+                </div>
+
+                <!-- 4-STEP TIMELINE -->
+                <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #CBD5E1;">
+                    <div style="display: flex; justify-content: space-between; font-size: 9.5px; text-align: center; position: relative;">
+                        <div style="flex: 1;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #10B981; color: #FFF; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 10px;"><i class="bi bi-check"></i></div>
+                            <span style="font-weight: 700; color: #10B981;">Đã nộp</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #10B981; color: #FFF; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 10px;"><i class="bi bi-check"></i></div>
+                            <span style="font-weight: 700; color: #10B981;">BGH Tiếp nhận</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #FFF; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 10px;"><i class="bi bi-pencil"></i></div>
+                            <span style="font-weight: 800; color: #B45309;">Đang xử lý</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #E2E8F0; color: #94A3B8; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 10px;">4</div>
+                            <span style="color: #94A3B8;">Trả kết quả</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 10.5px; color: #5D7268; text-align: center; background: #FFF; padding: 6px; border-radius: 6px; border: 1px solid var(--border);">
+                        <i class="bi bi-shield-check" style="color: #10B981;"></i> Cam kết hoàn tất trước: <strong>07/10/2026 17:00 (Trong vòng 48h)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UC-050 CREATE NEW PETITION FORM -->
+            <div class="m-card">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <div style="width: 28px; height: 28px; border-radius: 8px; background: #EBF7F4; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 14px;">
+                        <i class="bi bi-file-earmark-text-fill"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 13.5px; font-weight: 800; color: #1C2D27;">Nộp Đơn Yêu Cầu Sự Vụ Mới</h4>
+                        <div style="font-size: 10.5px; color: #64748B;">Thủ tục hành chính số hóa (UC-050)</div>
+                    </div>
+                </div>
+
+                <form id="petitionForm" onsubmit="submitPetition(event)">
+                    <!-- PROCEDURE TYPE -->
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11.5px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">Loại thủ tục hành chính sự vụ <span style="color: #DC2626;">*</span></label>
+                        <select id="petitionType" class="form-control" style="font-size: 12px; padding: 8px 10px;" required>
+                            <option value="">-- Chọn thủ tục sự vụ --</option>
+                            <option value="visa" selected>1. Xin cấp Giấy xác nhận học sinh (Làm Visa / Hộ chiếu)</option>
+                            <option value="bus">2. Đăng ký đổi tuyến / điểm đón School Bus</option>
+                            <option value="card">3. Cấp lại thẻ đón bé vật lý / Cập nhật mã QR</option>
+                            <option value="record">4. Trích lục học bạ & Sổ theo dõi sức khỏe y tế</option>
+                            <option value="pause">5. Đơn bảo lưu học phí & Tạm dừng học tập</option>
+                            <option value="other">6. Ý kiến / Đề nghị sự vụ khác</option>
+                        </select>
+                    </div>
+
+                    <!-- REASON & DETAILS (MIN 10 CHARACTERS MSG-201) -->
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11.5px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">
+                            Lý do & Nội dung chi tiết yêu cầu <span style="color: #DC2626;">*</span>
+                        </label>
+                        <textarea id="petitionDetails" class="form-control" rows="3" style="font-size: 12px; line-height: 1.5; resize: none;" placeholder="Vui lòng nhập tối thiểu 10 ký tự nội dung sự vụ..." required>Kính gửi BGH và Giáo vụ trường KIDPRO, gia đình cần xin giấy xác nhận bé Đặng Gia Khiêm đang theo học Lớp Mầm 1 để bổ sung hồ sơ xin thị thực du lịch Nhật Bản tháng 11/2026.</textarea>
+                        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #64748B; margin-top: 3px;">
+                            <span>Tối thiểu 10 ký tự theo quy định BR-048</span>
+                            <span id="charCount">174 ký tự</span>
+                        </div>
+                    </div>
+
+                    <!-- DELIVERY METHOD -->
+                    <div style="margin-bottom: 12px;">
+                        <label style="font-size: 11.5px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">Hình thức nhận kết quả</label>
+                        <div style="display: flex; gap: 8px;">
+                            <label style="flex: 1; display: flex; align-items: center; gap: 6px; font-size: 11px; padding: 8px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: #FAFDFB;">
+                                <input type="radio" name="deliveryMethod" value="digital" checked>
+                                <span>Bản PDF ký số qua App (Nhanh nhất)</span>
+                            </label>
+                            <label style="flex: 1; display: flex; align-items: center; gap: 6px; font-size: 11px; padding: 8px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+                                <input type="radio" name="deliveryMethod" value="paper">
+                                <span>Bản cứng dấu đỏ tại văn phòng</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- ATTACHMENT UPLOAD -->
+                    <div style="margin-bottom: 14px;">
+                        <label style="font-size: 11.5px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">Đính kèm tài liệu liên quan (Hộ chiếu, vé máy bay...)</label>
+                        <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 10px; text-align: center; background: #F8FAF9; font-size: 11px; color: #64748B;">
+                            <i class="bi bi-paperclip" style="font-size: 14px; color: var(--primary);"></i>
+                            <span>ho_chieu_dang_gia_khiem.pdf (1.2 MB)</span>
+                            <a href="#" style="color: #DC2626; margin-left: 8px; text-decoration: none;" onclick="event.preventDefault(); alert('Đã hủy tệp đính kèm');"><i class="bi bi-x-circle"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BUTTON (MSG-200 / MSG-201) -->
+                    <button type="submit" class="btn-m btn-m-primary" style="width: 100%; font-size: 13px; font-weight: 800; justify-content: center;">
+                        <i class="bi bi-send-fill"></i> Gửi Đơn Sự Vụ Đến Giáo Vụ (MSG-200)
+                    </button>
+                </form>
+            </div>
+
+            <script>
+                function submitPetition(e) {
+                    e.preventDefault();
+                    const text = document.getElementById('petitionDetails').value.trim();
+                    if (text.length < 10) {
+                        alert('[MSG-201]: Lỗi! Nội dung đơn yêu cầu sự vụ phải có tối thiểu 10 ký tự để nhà trường thẩm định.');
+                        return;
+                    }
+                    alert('[MSG-200]: Nộp đơn yêu cầu sự vụ thành công!\n\n' +
+                          '• Mã theo dõi hồ sơ: PET-2026-0843\n' +
+                          '• Học sinh: Đặng Gia Khiêm (Lớp Mầm 1)\n' +
+                          '• SLA cam kết: Nhà trường sẽ xử lý và trả kết quả trong vòng 48 giờ làm việc (trước 07/10/2026 17:00).\n' +
+                          '• Tiến trình sẽ được cập nhật liên tục qua thông báo PUSH của App.');
+                }
+            </script>
         </div>
 
         <!-- BOTTOM NAVIGATION -->

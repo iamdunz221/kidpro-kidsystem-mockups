@@ -87,14 +87,168 @@
 
         <!-- MAIN BODY CONTENT -->
         <div class="app-body">
-            
-    <div class="m-card">
-        <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 8px;">Thông Báo Ban Giám Hiệu</h4>
-        <div style="font-size: 12px; color: #475569; line-height: 1.5;">
-            Trường Mầm Non Thực Nghiệm Tân Bình thông báo kế hoạch khám sức khỏe định kỳ Học kỳ 1 vào ngày 15/10/2026.
-        </div>
-    </div>
-    
+            <!-- SURVEY HEADER CARD -->
+            <div class="m-card" style="background: linear-gradient(135deg, #275A4E 0%, #1E4D40 100%); color: #FFF; border: none; border-radius: 14px; padding: 16px; margin-bottom: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <span class="status-pill" style="background: rgba(255,255,255,0.2); color: #FFF; font-size: 10px; margin-bottom: 6px;">
+                            <i class="bi bi-star-fill" style="color: #FCD34D;"></i> Đợt Khảo Sát Quý 3/2026
+                        </span>
+                        <h3 style="font-size: 16px; font-weight: 800; margin-top: 4px;">Khảo Sát Ý Kiến & Đánh Giá Dịch Vụ</h3>
+                        <p style="font-size: 11px; opacity: 0.9; margin-top: 2px;">Góp phần cùng BGH nâng cao chất lượng chăm sóc bé Đặng Gia Khiêm.</p>
+                    </div>
+                    <div style="font-size: 28px; color: #FCD34D;"><i class="bi bi-chat-heart-fill"></i></div>
+                </div>
+            </div>
+
+            <!-- UC-068 SURVEY FORM -->
+            <div class="m-card" style="margin-bottom: 14px;">
+                <form id="surveyForm" onsubmit="submitSurvey(event)">
+                    <!-- 1. Bữa ăn bán trú -->
+                    <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; font-weight: 700; color: #1C2D27;">
+                                1. Chất lượng Bữa ăn Bán trú <span style="color: #DC2626;">*</span>
+                            </label>
+                            <span id="starScore1" style="font-size: 11px; font-weight: 800; color: #D97706;">5/5 Sao</span>
+                        </div>
+                        <div style="font-size: 10.5px; color: #64748B; margin-bottom: 8px;">Độ tươi ngon, thực đơn cân bằng dinh dưỡng, an toàn vệ sinh</div>
+                        <div style="display: flex; gap: 8px; font-size: 22px; color: #E5A93C; cursor: pointer;">
+                            <i class="bi bi-star-fill" onclick="setStars(1, 1)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(1, 2)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(1, 3)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(1, 4)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(1, 5)"></i>
+                        </div>
+                    </div>
+
+                    <!-- 2. Thái độ giáo viên -->
+                    <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; font-weight: 700; color: #1C2D27;">
+                                2. Sự Tận Tâm của Giáo Viên <span style="color: #DC2626;">*</span>
+                            </label>
+                            <span id="starScore2" style="font-size: 11px; font-weight: 800; color: #D97706;">5/5 Sao</span>
+                        </div>
+                        <div style="font-size: 10.5px; color: #64748B; margin-bottom: 8px;">Tình yêu thương, thái độ chăm sóc ân cần, giải đáp chu đáo</div>
+                        <div style="display: flex; gap: 8px; font-size: 22px; color: #E5A93C; cursor: pointer;">
+                            <i class="bi bi-star-fill" onclick="setStars(2, 1)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(2, 2)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(2, 3)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(2, 4)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(2, 5)"></i>
+                        </div>
+                    </div>
+
+                    <!-- 3. Vệ sinh & Cơ sở vật chất -->
+                    <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; font-weight: 700; color: #1C2D27;">
+                                3. Vệ Sinh & An Toàn CSVC <span style="color: #DC2626;">*</span>
+                            </label>
+                            <span id="starScore3" style="font-size: 11px; font-weight: 800; color: #D97706;">5/5 Sao</span>
+                        </div>
+                        <div style="font-size: 10.5px; color: #64748B; margin-bottom: 8px;">Khuôn viên sạch sẽ, lớp học thoáng khí, đồ chơi an toàn</div>
+                        <div style="display: flex; gap: 8px; font-size: 22px; color: #E5A93C; cursor: pointer;">
+                            <i class="bi bi-star-fill" onclick="setStars(3, 1)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(3, 2)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(3, 3)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(3, 4)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(3, 5)"></i>
+                        </div>
+                    </div>
+
+                    <!-- 4. Tính kịp thời thông tin -->
+                    <div style="border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; font-weight: 700; color: #1C2D27;">
+                                4. Tính Kịp Thời & Minh Bạch <span style="color: #DC2626;">*</span>
+                            </label>
+                            <span id="starScore4" style="font-size: 11px; font-weight: 800; color: #D97706;">5/5 Sao</span>
+                        </div>
+                        <div style="font-size: 10.5px; color: #64748B; margin-bottom: 8px;">Điểm danh FaceID tức thời, nhật ký ảnh lớp, hóa đơn PayOS</div>
+                        <div style="display: flex; gap: 8px; font-size: 22px; color: #E5A93C; cursor: pointer;">
+                            <i class="bi bi-star-fill" onclick="setStars(4, 1)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(4, 2)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(4, 3)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(4, 4)"></i>
+                            <i class="bi bi-star-fill" onclick="setStars(4, 5)"></i>
+                        </div>
+                    </div>
+
+                    <!-- FREEFORM COMMENT BOX -->
+                    <div style="margin-bottom: 14px;">
+                        <label style="font-size: 12px; font-weight: 700; color: #1C2D27; display: block; margin-bottom: 4px;">
+                            Ý kiến đóng góp xây dựng chân thành
+                        </label>
+                        <textarea id="surveyComment" class="form-control" rows="3" style="font-size: 11.5px; line-height: 1.5; resize: none;" placeholder="Chia sẻ cảm nhận hoặc đề xuất cải tiến của gia đình...">Gia đình rất hài lòng với sự tận tâm của các cô lớp Mầm 1. Đề xuất nhà trường bổ sung thêm nước ép trái cây tươi và rau xanh hữu cơ trong thực đơn bữa trưa.</textarea>
+                    </div>
+
+                    <!-- PRIVACY & CONFIDENTIALITY OPTIONS -->
+                    <div style="background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 14px; font-size: 11.5px; display: flex; flex-direction: column; gap: 10px;">
+                        <!-- ANONYMOUS TOGGLE -->
+                        <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <i class="bi bi-incognito" style="font-size: 16px; color: #64748B;"></i>
+                                <div>
+                                    <span style="font-weight: 700; color: #1C2D27;">Gửi dưới dạng ẩn danh</span>
+                                    <div style="font-size: 10px; color: #64748B;">Không hiển thị tên phụ huynh và mã học sinh</div>
+                                </div>
+                            </div>
+                            <input type="checkbox" id="anonCheck" style="width: 16px; height: 16px; accent-color: var(--primary);">
+                        </label>
+
+                        <!-- BRANCH A1: SECRET MAILBOX TO PRINCIPAL -->
+                        <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; border-top: 1px dashed #CBD5E1; padding-top: 8px;">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <i class="bi bi-lock-fill" style="font-size: 16px; color: #D97706;"></i>
+                                <div>
+                                    <span style="font-weight: 800; color: #B45309;">[A1] Hòm Thư Bí Mật Gửi Riêng Hiệu Trưởng</span>
+                                    <div style="font-size: 10px; color: #64748B;">Chỉ duy nhất Hiệu trưởng được quyền đọc nội dung này</div>
+                                </div>
+                            </div>
+                            <input type="checkbox" id="secretCheck" style="width: 16px; height: 16px; accent-color: #D97706;">
+                        </label>
+                    </div>
+
+                    <!-- SUBMIT BUTTON (MSG-293) -->
+                    <button type="submit" class="btn-m btn-m-primary" style="width: 100%; font-size: 13px; font-weight: 800; justify-content: center;">
+                        <i class="bi bi-send-fill"></i> Gửi Đánh Giá Dịch Vụ (MSG-293)
+                    </button>
+                </form>
+            </div>
+
+            <!-- GENERAL SCHOOL ANNOUNCEMENTS -->
+            <div class="m-card">
+                <h4 style="font-size: 13px; font-weight: 800; margin-bottom: 8px; color: #1C2D27;"><i class="bi bi-megaphone-fill" style="color: var(--primary);"></i> Bản Tin Nhà Trường</h4>
+                <div style="font-size: 11.5px; color: #475569; line-height: 1.5;">
+                    Trường Mầm Non Thực Nghiệm Tân Bình thông báo kế hoạch khám sức khỏe định kỳ Học kỳ 1 vào ngày 15/10/2026. Quý phụ huynh vui lòng theo dõi chỉ số chiều cao, cân nặng trên App.
+                </div>
+            </div>
+
+            <script>
+                function setStars(criteriaId, starCount) {
+                    document.getElementById('starScore' + criteriaId).innerText = starCount + '/5 Sao';
+                }
+                function submitSurvey(e) {
+                    e.preventDefault();
+                    const isSecret = document.getElementById('secretCheck').checked;
+                    const isAnon = document.getElementById('anonCheck').checked;
+
+                    let msg = '[MSG-293]: Cảm ơn quý phụ huynh đã đóng góp ý kiến quý báu!\n\n' +
+                              '• Đã ghi nhận điểm số của cả 4 nhóm tiêu chí dịch vụ (BR-074).\n';
+                    if (isAnon) {
+                        msg += '• Danh tính phụ huynh: ĐÃ ĐƯỢC ẨN DANH AN TOÀN.\n';
+                    }
+                    if (isSecret) {
+                        msg += '• [A1 Hòm Thư Bí Mật]: Đóng dấu mật, chuyển tiếp trực tiếp vào Hòm thư riêng của Cô Hiệu trưởng Nguyễn Thúy Hằng.\n';
+                    } else {
+                        msg += '• Kết quả được tổng hợp tự động vào Bảng Điều khiển Quản lý Chất lượng của BGH.\n';
+                    }
+                    msg += '\nĐánh giá của quý vị giúp nhà trường ngày càng hoàn thiện hơn!';
+                    alert(msg);
+                }
+            </script>
         </div>
 
         <!-- BOTTOM NAVIGATION -->

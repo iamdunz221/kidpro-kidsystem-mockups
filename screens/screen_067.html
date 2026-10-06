@@ -182,26 +182,332 @@
         </header>
 
         <main class="content-area">
-            
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title"><i class="bi bi-cpu"></i> Không Gian Quyết Toán Động Học Phí Tháng 10/2026</div>
-            <button class="btn btn-primary btn-sm"><i class="bi bi-play-circle"></i> Chạy thuật toán quét dữ liệu</button>
-        </div>
-        <div class="card-body">
-            <div style="background: #EBF7F4; border-radius: 10px; padding: 14px; margin-bottom: 20px; font-size: 13px; color: var(--primary-dark);">
-                Thuật toán sẽ tự động đối chiếu: (Học phí chuẩn) + (Tiền ăn tháng này) - (Tiền ăn đã nghỉ có phép tháng 9) - (Miễn giảm anh chị em).
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px; border: 1px solid var(--border); border-radius: 8px;">
+            <!-- HEADER BREADCRUMB & ACTIONS -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
                 <div>
-                    <strong>Tiến trình tính toán:</strong> 450 / 450 học sinh đã tính toán xong số dư.
-                    <div style="font-size: 12px; color: #10B981; margin-top: 2px;">Tổng tiền ăn hoàn trả toàn trường: 28.500.000 đ (570 ngày nghỉ hợp lệ tháng 9).</div>
+                    <div style="font-size: 12px; color: #5D7268; margin-bottom: 4px;">Tài chính & Thu phí / <span style="color: var(--primary); font-weight: 700;">UC-035 & UC-036 Quyết toán Học phí Động</span></div>
+                    <h2 style="font-size: 20px; font-weight: 800; color: #1C2D27;">Không Gian Quyết Toán Động Học Phí Tháng 10/2026</h2>
+                    <p style="font-size: 13px; color: #5D7268; margin-top: 2px;">Tự động quét 16 lớp học, đối soát chuyên cần FaceID, hoàn tiền ăn và sinh 450 dự thảo hóa đơn.</p>
                 </div>
-                <a href="screen_068.html" class="btn btn-primary btn-sm">Xem bảng dự thảo & Phát hành</a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="screen_065.html" class="btn btn-outline"><i class="bi bi-gear-fill"></i> Cấu hình tỷ lệ hoàn tiền ăn (UC-036)</a>
+                    <button class="btn btn-outline" onclick="alert('Đã xuất file bảng kê học phí VAS sang Excel!')"><i class="bi bi-file-earmark-spreadsheet-fill" style="color: #10B981;"></i> Xuất Excel Bảng Kê</button>
+                    <a href="screen_068.html" class="btn btn-primary"><i class="bi bi-qr-code-scan"></i> Chuyển sang Phát hành PayOS (UC-037)</a>
+                </div>
             </div>
-        </div>
-    </div>
-    
+
+            <!-- UC-035 CONTROLS & BILLING ENGINE TRIGGER -->
+            <div class="card" style="border-left: 4px solid var(--primary);">
+                <div class="card-header" style="background: #FAFDFB;">
+                    <div class="card-title"><i class="bi bi-cpu-fill" style="color: var(--primary);"></i> <strong>UC-035: Động Cơ Sinh Bảng Kê Học Phí Tự Động (Billing Run Engine)</strong></div>
+                    <span class="status-pill success"><i class="bi bi-check-circle-fill"></i> Chu kỳ: Tháng 10/2026</span>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) 180px; gap: 14px; align-items: flex-end;">
+                        <div>
+                            <label class="form-label">Kỳ thu học phí</label>
+                            <select class="form-control" style="font-weight: 700;">
+                                <option selected>Tháng 10/2026 (Kỳ chính)</option>
+                                <option>Tháng 11/2026 (Kế tiếp)</option>
+                                <option>Tháng 09/2026 (Đã đóng)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Phạm vi áp dụng</label>
+                            <select class="form-control">
+                                <option selected>Toàn trường (16 Lớp • 450 Trẻ)</option>
+                                <option>Khối Mầm (4 Lớp • 110 Trẻ)</option>
+                                <option>Khối Chồi (6 Lớp • 165 Trẻ)</option>
+                                <option>Khối Lá (6 Lớp • 175 Trẻ)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Đơn giá tiền ăn ngày</label>
+                            <input type="text" class="form-control" value="50.000 đ / ngày" readonly style="background: #F8FAF9; font-weight: 700;">
+                        </div>
+                        <div>
+                            <label class="form-label">Số ngày học tháng mới</label>
+                            <input type="text" class="form-control" value="22 ngày (1.100.000 đ)" readonly style="background: #F8FAF9; font-weight: 700;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="width: 100%; justify-content: center; height: 38px;" onclick="runBillingSimulation()">
+                                <i class="bi bi-play-circle-fill"></i> Chạy lại động cơ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- REAL-TIME CALCULATION PROGRESS & LOGS -->
+                    <div style="margin-top: 18px; padding: 14px; background: #F8FAF9; border-radius: 10px; border: 1px solid var(--border);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 13px; font-weight: 700; color: #1C2D27;"><i class="bi bi-hdd-network"></i> Tiến trình quét cơ sở dữ liệu PostgreSQL & AI FaceID</span>
+                            <span style="font-size: 12.5px; font-weight: 800; color: #10B981;">100% Hoàn tất (450 / 450 Học sinh)</span>
+                        </div>
+                        <div style="height: 8px; width: 100%; background: #E2E8F0; border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
+                            <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #10B981, #275A4E); border-radius: 4px;"></div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; font-size: 12px; color: #475569;">
+                            <div><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Quét <code>attendance_records</code> tháng 9: <strong>9.900 lượt</strong></div>
+                            <div><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Xác thực hoàn tiền ăn UC-036: <strong>570 ngày hợp lệ</strong></div>
+                            <div><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Áp dụng miễn giảm anh em ruột (15%): <strong>38 học sinh</strong></div>
+                            <div><i class="bi bi-check2-circle" style="color: #10B981; font-weight: 800;"></i> Khấu trừ tiền cọc nhập học: <strong>12 học sinh</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- NOTIFICATION BANNER MSG-144 & MSG-146 -->
+                    <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="background: #E8F5E9; border-left: 4px solid #10B981; padding: 10px 14px; border-radius: 6px; font-size: 12.5px; color: #1B5E20; display: flex; align-items: center; justify-content: space-between;">
+                            <div><i class="bi bi-check-circle-fill" style="margin-right: 6px;"></i> <strong>[MSG-144]:</strong> Sinh bảng kê học phí dự thảo thành công cho <strong>450/450</strong> học sinh. Tổng số tiền dự kiến thu: <strong>2.385.500.000 VNĐ</strong>.</div>
+                            <span style="font-size: 11px; background: #C8E6C9; padding: 2px 8px; border-radius: 10px; font-weight: 700;">Hợp lệ 100%</span>
+                        </div>
+                        <div style="background: #FFFBEB; border-left: 4px solid #F59E0B; padding: 10px 14px; border-radius: 6px; font-size: 12.5px; color: #92400E; display: flex; align-items: center; justify-content: space-between;">
+                            <div><i class="bi bi-info-circle-fill" style="margin-right: 6px;"></i> <strong>[MSG-146]:</strong> Lớp Chồi 2 có 1 học sinh gửi đơn xin nghỉ sau 07:30 sáng - Hệ thống đã loại trừ theo quy chuẩn <code>BR-034</code>.</div>
+                            <a href="screen_065.html" style="font-size: 11px; color: #92400E; text-decoration: underline; font-weight: 700;">Xem chi tiết quy chuẩn &raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINANCIAL KPI OVERVIEW CARDS -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-bottom: 22px;">
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;">
+                    <div style="font-size: 11.5px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Tổng học phí chuẩn</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #1C2D27; margin: 4px 0;">1.980.000.000 đ</div>
+                    <div style="font-size: 11.5px; color: #5D7268;">450 học sinh toàn trường</div>
+                </div>
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;">
+                    <div style="font-size: 11.5px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Tiền ăn bán trú mới</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #0284C7; margin: 4px 0;">+495.000.000 đ</div>
+                    <div style="font-size: 11.5px; color: #5D7268;">22 ngày x 50.000 đ / ngày</div>
+                </div>
+                <div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 14px 18px;">
+                    <div style="font-size: 11.5px; font-weight: 700; color: #991B1B; text-transform: uppercase;">UC-036: Hoàn tiền ăn tháng 9</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #DC2626; margin: 4px 0;">-28.500.000 đ</div>
+                    <div style="font-size: 11.5px; color: #991B1B;">570 ngày nghỉ có phép hợp lệ</div>
+                </div>
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;">
+                    <div style="font-size: 11.5px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Miễn giảm anh em & Cọc</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #D97706; margin: 4px 0;">-41.940.000 đ</div>
+                    <div style="font-size: 11.5px; color: #5D7268;">38 bé giảm 15% + 12 hoàn cọc</div>
+                </div>
+                <div style="background: #EBF7F4; border: 1px solid #A7F3D0; border-radius: 10px; padding: 14px 18px;">
+                    <div style="font-size: 11.5px; font-weight: 700; color: var(--primary); text-transform: uppercase;">Thực thu dự thảo</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--primary); margin: 4px 0;">2.404.560.000 đ</div>
+                    <div style="font-size: 11.5px; color: var(--primary);">Bao gồm CSVC 157.500.000 đ</div>
+                </div>
+            </div>
+
+            <!-- UC-036 EXPLAINER ACCORDION / HIGHLIGHT CARD -->
+            <div class="card" style="background: #FCFDFE; border: 1px solid #BAE6FD;">
+                <div class="card-header" style="background: #F0F9FF;">
+                    <div class="card-title" style="color: #0369A1;">
+                        <i class="bi bi-arrow-repeat" style="color: #0284C7;"></i>
+                        <strong>Chi Tiết Cơ Chế Tính Hoàn Tiền Ăn Tự Động (UC-036 & BR-034)</strong>
+                    </div>
+                    <span class="status-pill info"><i class="bi bi-shield-check"></i> Đã kích hoạt đối soát FaceID</span>
+                </div>
+                <div class="card-body" style="font-size: 13px; color: #334155; line-height: 1.6;">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: center;">
+                        <div>
+                            <p><strong>Công thức quyết toán học phí tự động:</strong></p>
+                            <div style="background: #FFF; padding: 10px 14px; border: 1px dashed #0284C7; border-radius: 8px; font-family: monospace; font-size: 13px; color: #0369A1; margin: 6px 0;">
+                                Thực Thu = Học Phí Chuẩn + Tiền Ăn T10 (22 x 50k) - Hoàn Tiền Ăn T9 (Số Ngày x 50k) - Giảm Trừ Anh Em (15%) + CSVC
+                            </div>
+                            <ul style="padding-left: 18px; margin-top: 8px; font-size: 12.5px;">
+                                <li><strong>Điều kiện hoàn tiền ăn:</strong> Đơn xin nghỉ có phép nộp trên App trước <strong>07:30 AM</strong> ngày nghỉ học.</li>
+                                <li><strong>Hủy hoàn tiền ăn:</strong> Nếu đơn nộp sau 07:30 hoặc camera AI phát hiện trẻ vẫn đến trường quẹt FaceID tại cổng điểm danh (MSG-151).</li>
+                            </ul>
+                        </div>
+                        <div style="background: #FFF; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center;">
+                            <div style="font-size: 12px; color: #64748B;">Số tiền hoàn bình quân / trẻ nghỉ:</div>
+                            <div style="font-size: 22px; font-weight: 800; color: #DC2626; margin: 4px 0;">150.000 đ</div>
+                            <div style="font-size: 11px; color: #10B981;"><i class="bi bi-check-all"></i> Đã tự động trừ vào phiếu học phí T10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UC-035 AUDIT TABLE: DETAILED STUDENT BILLING RUN LIST -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i class="bi bi-table"></i> Danh Sách Bảng Kê Dự Thảo Học Phí Học Sinh (Hiển Thị 5 / 450 Bản Ghi Điển Hình)
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="text" placeholder="Tìm tên, mã học sinh, lớp..." class="form-control" style="width: 220px; height: 32px; font-size: 12px;">
+                        <select class="form-control" style="width: 140px; height: 32px; font-size: 12px;">
+                            <option>Tất cả 16 lớp</option>
+                            <option selected>Lớp Mầm 1</option>
+                            <option>Lớp Mầm 2</option>
+                            <option>Lớp Chồi 1</option>
+                            <option>Lớp Lá 2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <div style="overflow-x: auto;">
+                        <table class="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Mã HS</th>
+                                    <th>Họ & Tên Trẻ</th>
+                                    <th>Lớp Học</th>
+                                    <th>Học Phí Chuẩn</th>
+                                    <th>Tiền Ăn T10</th>
+                                    <th>Hoàn Tiền Ăn T9 (UC-036)</th>
+                                    <th>Miễn Giảm / Cọc</th>
+                                    <th>Phí CSVC & DV</th>
+                                    <th>Tổng Thực Thu</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>KID-2024-001</strong></td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1C2D27;">Đặng Gia Khiêm</div>
+                                        <div style="font-size: 11px; color: #64748B;">PH: Đặng Văn Hùng (0908 123 456)</div>
+                                    </td>
+                                    <td><span class="status-pill info">Mầm 1</span></td>
+                                    <td>4.200.000 đ</td>
+                                    <td>+1.100.000 đ</td>
+                                    <td>
+                                        <span class="status-pill danger" title="Nghỉ có phép 2 ngày (15/9, 22/9)">-100.000 đ</span>
+                                        <div style="font-size: 10px; color: #64748B;">(2 ngày x 50k)</div>
+                                    </td>
+                                    <td>0 đ</td>
+                                    <td>+350.000 đ</td>
+                                    <td><strong style="color: var(--primary); font-size: 14px;">5.550.000 đ</strong></td>
+                                    <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Sẵn sàng duyệt</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="showInvoiceDetail('Đặng Gia Khiêm', '5.550.000 đ', '-100.000 đ')"><i class="bi bi-eye"></i> Xem phiếu</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KID-2024-015</strong></td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1C2D27;">Lê Hoàng Nam</div>
+                                        <div style="font-size: 11px; color: #64748B;">PH: Trần Thu Hà (0912 345 678)</div>
+                                    </td>
+                                    <td><span class="status-pill info">Mầm 1</span></td>
+                                    <td>4.200.000 đ</td>
+                                    <td>+1.100.000 đ</td>
+                                    <td>
+                                        <span class="status-pill danger" title="Nghỉ ốm sốt 3 ngày (12, 13, 14/9)">-150.000 đ</span>
+                                        <div style="font-size: 10px; color: #64748B;">(3 ngày x 50k)</div>
+                                    </td>
+                                    <td>
+                                        <span class="status-pill warning" title="Anh em ruột theo học">-630.000 đ</span>
+                                        <div style="font-size: 10px; color: #B45309;">(-15% học phí)</div>
+                                    </td>
+                                    <td>+350.000 đ</td>
+                                    <td><strong style="color: var(--primary); font-size: 14px;">4.870.000 đ</strong></td>
+                                    <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Sẵn sàng duyệt</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="showInvoiceDetail('Lê Hoàng Nam', '4.870.000 đ', '-150.000 đ')"><i class="bi bi-eye"></i> Xem phiếu</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KID-2023-088</strong></td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1C2D27;">Vũ Hoàng Yến</div>
+                                        <div style="font-size: 11px; color: #64748B;">PH: Vũ Thành Đạt (0909 333 789)</div>
+                                    </td>
+                                    <td><span class="status-pill info">Chồi 1</span></td>
+                                    <td>4.500.000 đ</td>
+                                    <td>+1.100.000 đ</td>
+                                    <td>
+                                        <span style="color: #64748B; font-size: 12px;">0 đ</span>
+                                        <div style="font-size: 10px; color: #64748B;">(Đi học đủ 100%)</div>
+                                    </td>
+                                    <td>0 đ</td>
+                                    <td>+350.000 đ</td>
+                                    <td><strong style="color: var(--primary); font-size: 14px;">5.950.000 đ</strong></td>
+                                    <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Sẵn sàng duyệt</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="showInvoiceDetail('Vũ Hoàng Yến', '5.950.000 đ', '0 đ')"><i class="bi bi-eye"></i> Xem phiếu</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KID-2023-042</strong></td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1C2D27;">Trần Bảo An</div>
+                                        <div style="font-size: 11px; color: #64748B;">PH: Trần Minh Tú (0988 555 111)</div>
+                                    </td>
+                                    <td><span class="status-pill info">Lá 2</span></td>
+                                    <td>4.800.000 đ</td>
+                                    <td>+1.100.000 đ</td>
+                                    <td>
+                                        <span class="status-pill danger">-50.000 đ</span>
+                                        <div style="font-size: 10px; color: #64748B;">(1 ngày x 50k)</div>
+                                    </td>
+                                    <td>
+                                        <span class="status-pill warning" title="Khấu trừ cọc nhập học">-1.500.000 đ</span>
+                                        <div style="font-size: 10px; color: #B45309;">(Hoàn cọc đợt 1)</div>
+                                    </td>
+                                    <td>+350.000 đ</td>
+                                    <td><strong style="color: var(--primary); font-size: 14px;">4.700.000 đ</strong></td>
+                                    <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Sẵn sàng duyệt</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="showInvoiceDetail('Trần Bảo An', '4.700.000 đ', '-50.000 đ')"><i class="bi bi-eye"></i> Xem phiếu</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KID-2024-104</strong></td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1C2D27;">Nguyễn Mai Chi</div>
+                                        <div style="font-size: 11px; color: #64748B;">PH: Nguyễn Tuấn Anh (0933 777 999)</div>
+                                    </td>
+                                    <td><span class="status-pill info">Mầm 2</span></td>
+                                    <td>4.200.000 đ</td>
+                                    <td>+1.100.000 đ</td>
+                                    <td>
+                                        <span class="status-pill danger">-200.000 đ</span>
+                                        <div style="font-size: 10px; color: #64748B;">(4 ngày x 50k)</div>
+                                    </td>
+                                    <td>0 đ</td>
+                                    <td>+350.000 đ</td>
+                                    <td><strong style="color: var(--primary); font-size: 14px;">5.450.000 đ</strong></td>
+                                    <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Sẵn sàng duyệt</span></td>
+                                    <td>
+                                        <button class="btn btn-outline btn-sm" onclick="showInvoiceDetail('Nguyễn Mai Chi', '5.450.000 đ', '-200.000 đ')"><i class="bi bi-eye"></i> Xem phiếu</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding: 12px 16px; background: #F8FAF9; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #5D7268;">
+                        <div>Hiển thị 5 trong tổng số 450 dự thảo học sinh tháng 10/2026</div>
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn btn-outline btn-sm" disabled>&laquo; Trước</button>
+                            <button class="btn btn-primary btn-sm">1</button>
+                            <button class="btn btn-outline btn-sm">2</button>
+                            <button class="btn btn-outline btn-sm">3</button>
+                            <button class="btn btn-outline btn-sm">...</button>
+                            <button class="btn btn-outline btn-sm">90</button>
+                            <button class="btn btn-outline btn-sm">Sau &raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DRAFT PREVIEW MODAL SCRIPT -->
+            <script>
+                function runBillingSimulation() {
+                    alert('[UC-035]: Động cơ quyết toán đang quét lại 9.900 bản ghi điểm danh và 570 ngày nghỉ có phép...\n\nKết quả: Đã tính toán xong toàn bộ 450 học sinh (MSG-144). Sẵn sàng chuyển tiếp sang UC-037 để phát hành hóa đơn PayOS!');
+                }
+                function showInvoiceDetail(name, total, refund) {
+                    alert('CHI TIẾT DỰ THẢO HỌC PHÍ THÁNG 10/2026 (UC-035 & UC-036)\n\n' +
+                          '• Học sinh: ' + name + '\n' +
+                          '• Học phí chuẩn: 4.200.000 đ\n' +
+                          '• Tiền ăn tháng 10 (22 ngày x 50.000 đ): +1.100.000 đ\n' +
+                          '• Hoàn tiền ăn tháng 9 (UC-036): ' + refund + '\n' +
+                          '• Cơ sở vật chất & Sự kiện kỹ năng: +350.000 đ\n' +
+                          '--------------------------------------\n' +
+                          'TỔNG CỘNG THỰC THU: ' + total + '\n\n' +
+                          'Trạng thái: Hợp lệ theo Thông tư VAS và quy chuẩn BR-034.');
+                }
+            </script>
         </main>
     </div>
 </body>

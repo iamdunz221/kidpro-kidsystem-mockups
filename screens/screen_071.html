@@ -182,20 +182,179 @@
         </header>
 
         <main class="content-area">
-            
-    <div class="card">
-        <div class="card-header"><div class="card-title">Kho Hóa Đơn Điện Tử (Thông tư 78/2021/TT-BTC)</div></div>
-        <div class="card-body" style="padding: 0;">
-            <table class="table-custom">
-                <thead><tr><th>Số hóa đơn</th><th>Kỳ thu</th><th>Học sinh</th><th>Số tiền</th><th>Ngày xuất</th><th>Mã tra cứu CQT</th><th>Tải về</th></tr></thead>
-                <tbody>
-                    <tr><td><code>HD-2026-00418</code></td><td>Tháng 10/2026</td><td>Vũ Hoàng Yến</td><td>4.900.000 đ</td><td>04/10/2026</td><td><code>MTC-78-KID-98421</code></td><td><button class="btn btn-outline btn-sm"><i class="bi bi-file-earmark-pdf"></i> PDF</button></td></tr>
-                    <tr><td><code>HD-2026-00417</code></td><td>Tháng 10/2026</td><td>Lê Minh Quân</td><td>4.850.000 đ</td><td>04/10/2026</td><td><code>MTC-78-KID-98420</code></td><td><button class="btn btn-outline btn-sm"><i class="bi bi-file-earmark-pdf"></i> PDF</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
+            <!-- HEADER BREADCRUMB & ACTIONS -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <div style="font-size: 12px; color: #5D7268; margin-bottom: 4px;">Quyết toán & Thu học phí / <span style="color: var(--primary); font-weight: 700;">UC-049 Kho Biên Lai & Hóa Đơn Điện Tử</span></div>
+                    <h2 style="font-size: 20px; font-weight: 800; color: #1C2D27;">Kho Lưu Trữ Biên Lai Thu Tiền Điện Tử (Thông Tư 78)</h2>
+                    <p style="font-size: 13px; color: #5D7268; margin-top: 2px;">Quản lý toàn bộ biên lai số hóa, mã số thuế 0318928391, tra cứu Cục Thuế và đồng bộ PayOS.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-outline" onclick="alert('Đang kết xuất tệp XML/PDF bảng kê hóa đơn gửi Cục Thuế TP.HCM...')"><i class="bi bi-cloud-arrow-up-fill" style="color: var(--primary);"></i> Truyền dữ liệu CQT</button>
+                    <button class="btn btn-primary" onclick="alert('Đang nén ZIP tải về toàn bộ 418 biên lai đã ký điện tử...')"><i class="bi bi-file-earmark-zip-fill"></i> Tải hàng loạt (ZIP PDF)</button>
+                </div>
+            </div>
+
+            <!-- KPI STATUS CARDS -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Biên lai đã ký số</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--primary); margin: 4px 0;">418 / 450</div>
+                    <div style="font-size: 11px; color: #10B981;"><i class="bi bi-check-circle"></i> Đã cấp mã CQT thành công</div>
+                </div>
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Doanh thu hóa đơn T10</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #0284C7; margin: 4px 0;">2.215.350.000 đ</div>
+                    <div style="font-size: 11px; color: #64748B;">Đã đối soát qua PayOS VietQR</div>
+                </div>
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Đang chờ phụ huynh nộp</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #D97706; margin: 4px 0;">32 hóa đơn</div>
+                    <div style="font-size: 11px; color: #D97706;"><i class="bi bi-clock-history"></i> Chưa xuất biên lai (MSG-197)</div>
+                </div>
+                <div style="background: #FFF; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268; text-transform: uppercase;">Chữ ký số Token HSM</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #10B981; margin: 4px 0;">Sẵn sàng</div>
+                    <div style="font-size: 11px; color: #64748B;">Viettel-CA • Hạn dùng 2028</div>
+                </div>
+            </div>
+
+            <!-- SEARCH & FILTER BAR -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body" style="padding: 14px 20px;">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 12px; align-items: center;">
+                        <input type="text" placeholder="Tìm số biên lai (HD-2026-...), mã tra cứu, họ tên học sinh..." class="form-control" style="font-size: 12.5px;">
+                        <select class="form-control" style="font-size: 12.5px;">
+                            <option selected>Kỳ: Tháng 10/2026</option>
+                            <option>Kỳ: Tháng 09/2026</option>
+                            <option>Tất cả kỳ thu</option>
+                        </select>
+                        <select class="form-control" style="font-size: 12.5px;">
+                            <option selected>Tất cả 16 lớp</option>
+                            <option>Khối Mầm</option>
+                            <option>Khối Chồi</option>
+                            <option>Khối Lá</option>
+                        </select>
+                        <select class="form-control" style="font-size: 12.5px;">
+                            <option selected>Đã cấp mã CQT</option>
+                            <option>Đã ký nội bộ</option>
+                            <option>Đang chờ gửi CQT</option>
+                        </select>
+                        <button class="btn btn-primary"><i class="bi bi-search"></i> Lọc</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INVOICE ARCHIVE TABLE -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="bi bi-receipt-cutoff"></i> Danh Sách Biên Lai Thu Tiền Điện Tử Hợp Pháp</div>
+                    <span class="status-pill success"><i class="bi bi-shield-check"></i> Thông tư 78/2021/TT-BTC</span>
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>Số Biên Lai</th>
+                                <th>Học Sinh & Lớp</th>
+                                <th>Phụ Huynh</th>
+                                <th>Tổng Tiền</th>
+                                <th>Ngày Giờ Thu</th>
+                                <th>Mã Tra Cứu CQT</th>
+                                <th>Trạng Thái Thuế</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: var(--primary);">HD-2026-00418</strong></td>
+                                <td>
+                                    <strong>Đặng Gia Khiêm</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Mầm 1 (KID-2024-001)</div>
+                                </td>
+                                <td>Đặng Văn Hùng (0908 123 456)</td>
+                                <td><strong style="color: var(--primary);">5.550.000 đ</strong></td>
+                                <td>04/10/2026 10:14</td>
+                                <td><code>MTC-78-KID-98421</code></td>
+                                <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Đã cấp mã</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 6px;">
+                                        <button class="btn btn-outline btn-sm" onclick="previewAccountantInvoice('HD-2026-00418', 'Đặng Gia Khiêm', '5.550.000 đ', 'MTC-78-KID-98421')"><i class="bi bi-eye"></i> Xem</button>
+                                        <button class="btn btn-outline btn-sm" onclick="alert('[MSG-196]: Tải file PDF biên lai HD-2026-00418 thành công.')"><i class="bi bi-file-earmark-pdf" style="color: #DC2626;"></i> PDF</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--primary);">HD-2026-00417</strong></td>
+                                <td>
+                                    <strong>Lê Hoàng Nam</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Mầm 1 (KID-2024-015)</div>
+                                </td>
+                                <td>Trần Thu Hà (0912 345 678)</td>
+                                <td><strong style="color: var(--primary);">4.870.000 đ</strong></td>
+                                <td>04/10/2026 09:42</td>
+                                <td><code>MTC-78-KID-98420</code></td>
+                                <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Đã cấp mã</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 6px;">
+                                        <button class="btn btn-outline btn-sm" onclick="previewAccountantInvoice('HD-2026-00417', 'Lê Hoàng Nam', '4.870.000 đ', 'MTC-78-KID-98420')"><i class="bi bi-eye"></i> Xem</button>
+                                        <button class="btn btn-outline btn-sm" onclick="alert('[MSG-196]: Tải file PDF biên lai HD-2026-00417 thành công.')"><i class="bi bi-file-earmark-pdf" style="color: #DC2626;"></i> PDF</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--primary);">HD-2026-00416</strong></td>
+                                <td>
+                                    <strong>Vũ Hoàng Yến</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Chồi 1 (KID-2023-088)</div>
+                                </td>
+                                <td>Vũ Thành Đạt (0909 333 789)</td>
+                                <td><strong style="color: var(--primary);">5.950.000 đ</strong></td>
+                                <td>03/10/2026 16:20</td>
+                                <td><code>MTC-78-KID-98419</code></td>
+                                <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Đã cấp mã</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 6px;">
+                                        <button class="btn btn-outline btn-sm" onclick="previewAccountantInvoice('HD-2026-00416', 'Vũ Hoàng Yến', '5.950.000 đ', 'MTC-78-KID-98419')"><i class="bi bi-eye"></i> Xem</button>
+                                        <button class="btn btn-outline btn-sm" onclick="alert('[MSG-196]: Tải file PDF biên lai HD-2026-00416 thành công.')"><i class="bi bi-file-earmark-pdf" style="color: #DC2626;"></i> PDF</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: var(--primary);">HD-2026-00415</strong></td>
+                                <td>
+                                    <strong>Trần Bảo An</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Lá 2 (KID-2023-042)</div>
+                                </td>
+                                <td>Trần Minh Tú (0988 555 111)</td>
+                                <td><strong style="color: var(--primary);">4.700.000 đ</strong></td>
+                                <td>03/10/2026 14:15</td>
+                                <td><code>MTC-78-KID-98418</code></td>
+                                <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Đã cấp mã</span></td>
+                                <td>
+                                    <div style="display: flex; gap: 6px;">
+                                        <button class="btn btn-outline btn-sm" onclick="previewAccountantInvoice('HD-2026-00415', 'Trần Bảo An', '4.700.000 đ', 'MTC-78-KID-98418')"><i class="bi bi-eye"></i> Xem</button>
+                                        <button class="btn btn-outline btn-sm" onclick="alert('[MSG-196]: Tải file PDF biên lai HD-2026-00415 thành công.')"><i class="bi bi-file-earmark-pdf" style="color: #DC2626;"></i> PDF</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <script>
+                function previewAccountantInvoice(invNo, pupil, amount, taxCode) {
+                    alert('HÓA ĐƠN ĐIỆN TỬ HỢP PHÁP (THÔNG TƯ 78/2021/TT-BTC)\n\n' +
+                          '• Số biên lai: ' + invNo + '\n' +
+                          '• Mã CQT: ' + taxCode + '\n' +
+                          '• Đơn vị phát hành: CÔNG TY CP GIÁO DỤC MẦM NON KIDPRO (MST: 0318928391)\n' +
+                          '• Học sinh: ' + pupil + '\n' +
+                          '• Tổng số tiền thu: ' + amount + '\n' +
+                          '• Ký số: Viettel-CA Cloud HSM (Hợp lệ 100%)\n\n' +
+                          'Tình trạng: Phụ huynh có thể tải trực tiếp trên App KIDPRO hoặc tra cứu qua portal.');
+                }
+            </script>
         </main>
     </div>
 </body>

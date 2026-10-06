@@ -1,5 +1,5 @@
-// Dataset 153 Màn hình Hệ thống Quản trị Mầm non KIDPRO (KIDPRO KidSystem)
-// Trích xuất từ Mục 1.4.2 Báo cáo SEP490_G23_Report3_SRS_updated_ready
+// Dataset 153+ Màn hình Hệ thống Quản trị Mầm non KIDPRO (KIDPRO KidSystem)
+// Trích xuất từ Mục 1.4.2 Báo cáo SEP490_G23_Report3_SRS_updated_ready và các Use Case trọng tâm
 const SCREENS_DATA = [
   {
     "stt": 1,
@@ -39,6 +39,8 @@ const SCREENS_DATA = [
     "role": "Quản trị Nền tảng (Super Admin)",
     "role_key": "super_admin",
     "tags": [
+      "⭐ UC-008: Health Monitoring",
+      "Super Admin",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_003.html"
@@ -558,6 +560,8 @@ const SCREENS_DATA = [
     "role": "Cán bộ Giáo vụ (Academic Affairs)",
     "role_key": "academic",
     "tags": [
+      "⭐ UC-053: Cảnh báo Dị ứng",
+      "Giáo vụ",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_040.html"
@@ -740,6 +744,8 @@ const SCREENS_DATA = [
     "role": "Cán bộ Giáo vụ (Academic Affairs)",
     "role_key": "academic",
     "tags": [
+      "⭐ UC-061: Rà soát 5 Lĩnh vực",
+      "Giáo vụ",
       "Bộ GD&ĐT"
     ],
     "mockup_file": "screens/screen_053.html"
@@ -908,6 +914,8 @@ const SCREENS_DATA = [
     "role": "Kế toán Trường học (Accountant)",
     "role_key": "accountant",
     "tags": [
+      "⭐ UC-036: Quy chuẩn hoàn tiền ăn",
+      "Kế toán",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_065.html"
@@ -936,6 +944,8 @@ const SCREENS_DATA = [
     "role": "Kế toán Trường học (Accountant)",
     "role_key": "accountant",
     "tags": [
+      "⭐ UC-035: Quyết toán học phí",
+      "⭐ UC-036: Hoàn tiền ăn",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_067.html"
@@ -992,6 +1002,8 @@ const SCREENS_DATA = [
     "role": "Kế toán Trường học (Accountant)",
     "role_key": "accountant",
     "tags": [
+      "⭐ UC-049: Kho biên lai TT78",
+      "Kế toán",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_071.html"
@@ -1214,6 +1226,8 @@ const SCREENS_DATA = [
     "role": "Giáo viên Mầm non (Teacher)",
     "role_key": "teacher",
     "tags": [
+      "⭐ UC-052: Sự vụ y tế & 115",
+      "Giáo viên",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_086.html"
@@ -1469,6 +1483,8 @@ const SCREENS_DATA = [
     "role": "Giáo viên Mầm non (Teacher)",
     "role_key": "teacher",
     "tags": [
+      "⭐ UC-061: Đánh giá 5 Lĩnh vực",
+      "Giáo viên",
       "Bộ GD&ĐT"
     ],
     "mockup_file": "screens/screen_103.html"
@@ -1874,6 +1890,8 @@ const SCREENS_DATA = [
     "role": "Phụ huynh Học sinh (Parent)",
     "role_key": "parent",
     "tags": [
+      "⭐ UC-050: Đơn sự vụ học sinh 48h",
+      "Phụ huynh",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_130.html"
@@ -1979,6 +1997,8 @@ const SCREENS_DATA = [
     "role": "Phụ huynh Học sinh (Parent)",
     "role_key": "parent",
     "tags": [
+      "⭐ UC-049: Tải biên lai điện tử",
+      "Phụ huynh",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_137.html"
@@ -2039,6 +2059,8 @@ const SCREENS_DATA = [
     "role": "Phụ huynh Học sinh (Parent)",
     "role_key": "parent",
     "tags": [
+      "⭐ UC-068: Khảo sát dịch vụ & Hòm thư Hiệu trưởng",
+      "Phụ huynh",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_141.html"
@@ -2069,6 +2091,8 @@ const SCREENS_DATA = [
     "role": "Nhân viên Bếp Bán trú (Kitchen Staff)",
     "role_key": "kitchen",
     "tags": [
+      "⭐ Role Bếp: Đăng nhập PIN & Quên MK",
+      "Bếp ăn",
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_143.html"
@@ -2222,5 +2246,35 @@ const SCREENS_DATA = [
       "Nghiệp vụ KIDPRO"
     ],
     "mockup_file": "screens/screen_153.html"
+  },
+  {
+    "stt": 154,
+    "type": "web",
+    "platform": "Web Desktop",
+    "subsystem": "Xác thực & Bảo mật Phiên đăng nhập Toàn hệ thống",
+    "name": "Logout Confirmation & Session Termination Screen",
+    "description": "Màn hình đăng xuất tập trung cho toàn bộ 7 vai trò người dùng (UC-003: Đăng xuất Khỏi Hệ thống): thu hồi JWT Access/Refresh Token, hủy session Redis, xóa cache sinh trắc học và hiển thị thông báo xác nhận an toàn MSG-008.",
+    "role": "Tất cả 7 Vai trò (Cross-Role Authentication)",
+    "role_key": "super_admin",
+    "tags": [
+      "⭐ UC-003: Đăng xuất an toàn",
+      "Xác thực"
+    ],
+    "mockup_file": "screens/screen_logout.html"
+  },
+  {
+    "stt": 155,
+    "type": "tablet",
+    "platform": "Tablet",
+    "subsystem": "Bếp ăn Bán trú & An toàn Vệ sinh Thực phẩm",
+    "name": "Kitchen Staff Forgot Password & PIN Recovery Screen",
+    "description": "Màn hình khôi phục mã PIN và mật khẩu dành riêng cho Nhân viên Bếp ăn: quy trình 3 bước xác thực OTP SMS tới số điện thoại Bếp trưởng, tạo mã PIN 6 chữ số cảm ứng và cơ chế mở khóa khẩn cấp từ Hiệu trưởng.",
+    "role": "Nhân viên Bếp ăn (Kitchen Staff)",
+    "role_key": "kitchen",
+    "tags": [
+      "⭐ Role Bếp: Quên mật khẩu/PIN",
+      "Khôi phục mã PIN"
+    ],
+    "mockup_file": "screens/screen_143_forgot.html"
   }
 ];

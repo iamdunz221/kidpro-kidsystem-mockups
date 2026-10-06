@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Xuất Hệ Thống (UC-003) - KIDPRO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary: #275A4E;
+            --primary-dark: #1E4D40;
+            --accent: #E5A93C;
+            --mint-light: #EBF7F4;
+            --bg-page: #F4F7F6;
+            --border: #E1E8E5;
+            --success: #10B981;
+            --danger: #DC3545;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-page); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
+        .logout-container {
+            width: 100%; max-width: 600px; background: #FFF; border-radius: 24px;
+            box-shadow: 0 16px 40px rgba(39, 90, 78, 0.1); border: 1px solid var(--border);
+            padding: 44px 40px; text-align: center;
+        }
+
+        .icon-circle {
+            width: 80px; height: 80px; border-radius: 50%; background: #D1FAE5; color: var(--success);
+            display: flex; align-items: center; justify-content: center; font-size: 38px; margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .title { font-size: 22px; font-weight: 800; color: #1C2D27; margin-bottom: 8px; }
+        .msg-badge {
+            display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
+            background: #EBF7F4; color: var(--primary); border: 1px solid rgba(39, 90, 78, 0.2);
+            border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 20px;
+        }
+
+        .audit-info {
+            background: #F8FAF9; border: 1px solid var(--border); border-radius: 14px;
+            padding: 16px 20px; text-align: left; font-size: 12.5px; color: #475569;
+            margin-bottom: 24px; line-height: 1.6;
+        }
+
+        .audit-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #E2E8F0; }
+        .audit-row:last-child { border-bottom: none; }
+
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 20px; font-size: 13.5px; font-weight: 700; border-radius: 10px;
+            text-decoration: none; border: none; cursor: pointer; transition: 0.15s;
+        }
+        .btn-primary { background: var(--primary); color: #FFF; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid #CBD5E1; color: #1C2D27; }
+        .btn-outline:hover { background: #F1F5F9; }
+
+        .role-switch-box {
+            margin-top: 24px; padding-top: 20px; border-top: 1px solid #EEF3F0;
+        }
+        .role-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+        .role-pill {
+            padding: 5px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 600;
+            background: #F1F5F9; color: #475569; text-decoration: none; border: 1px solid #E2E8F0;
+        }
+        .role-pill:hover { background: var(--primary); color: #FFF; }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <!-- SUCCESS ICON -->
+        <div class="icon-circle">
+            <i class="bi bi-shield-check"></i>
+        </div>
+
+        <h1 class="title">Đăng Xuất Khỏi Hệ Thống An Toàn</h1>
+        <div class="msg-badge">
+            <i class="bi bi-check-circle-fill"></i> MSG-008: Đăng xuất tài khoản thành công. Hẹn gặp lại bạn!
+        </div>
+
+        <p style="font-size: 13.5px; color: #64748B; margin-bottom: 20px;">
+            Phiên làm việc của bạn đã được kết thúc an toàn. Mã truy cập JWT Refresh Token đã được thu hồi trên máy chủ và bộ nhớ xác thực cục bộ đã được xóa sạch theo quy chuẩn <strong>BR-001 (UC-003)</strong>.
+        </p>
+
+        <!-- AUDIT LOG SUMMARY -->
+        <div class="audit-info">
+            <div style="font-weight: 700; color: #1C2D27; margin-bottom: 6px; font-size: 13px;">
+                <i class="bi bi-journal-text" style="color: var(--primary);"></i> Nhật ký kết thúc phiên làm việc:
+            </div>
+            <div class="audit-row">
+                <span>Thời gian đăng xuất:</span>
+                <strong style="color: #1C2D27;">06/10/2026 • 14:15:22</strong>
+            </div>
+            <div class="audit-row">
+                <span>Trạng thái JWT Token:</span>
+                <strong style="color: var(--success);"><i class="bi bi-check-lg"></i> Revoked (Thu hồi hoàn tất)</strong>
+            </div>
+            <div class="audit-row">
+                <span>Bộ nhớ đệm sinh trắc học:</span>
+                <strong style="color: var(--success);"><i class="bi bi-check-lg"></i> Cleared (Đã làm sạch)</strong>
+            </div>
+            <div class="audit-row">
+                <span>Địa chỉ IP phiên:</span>
+                <strong>118.69.182.45 (TP. Hồ Chí Minh)</strong>
+            </div>
+        </div>
+
+        <!-- QUICK BUTTONS -->
+        <div class="btn-grid">
+            <a href="screen_001.html" class="btn btn-primary">
+                <i class="bi bi-box-arrow-in-right"></i> Đăng nhập lại
+            </a>
+            <a href="../index.html" class="btn btn-outline">
+                <i class="bi bi-grid"></i> Về Master Hub
+            </a>
+        </div>
+
+        <!-- SWITCH ROLE QUICK ACCESS -->
+        <div class="role-switch-box">
+            <div style="font-size: 12px; color: #8B9E96; font-weight: 700; text-transform: uppercase;">
+                Đăng nhập với vai trò khác (KIDPRO Roles):
+            </div>
+            <div class="role-pills">
+                <a href="screen_001.html" class="role-pill">Super Admin (#01)</a>
+                <a href="screen_017.html" class="role-pill">Hiệu Trưởng (#17)</a>
+                <a href="screen_031.html" class="role-pill">Giáo Vụ (#31)</a>
+                <a href="screen_057.html" class="role-pill">Kế Toán (#57)</a>
+                <a href="screen_075.html" class="role-pill">Giáo Viên (#75)</a>
+                <a href="screen_110.html" class="role-pill">Phụ Huynh (#110)</a>
+                <a href="screen_143.html" class="role-pill">Bếp Bán Trú (#143)</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

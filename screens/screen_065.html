@@ -182,22 +182,193 @@
         </header>
 
         <main class="content-area">
-            
-    <div class="card" style="max-width: 700px; margin: 0 auto;">
-        <div class="card-header"><div class="card-title">Quy Chuẩn Hoàn Tiền Ăn Tự Động</div></div>
-        <div class="card-body">
-            <div style="background: #FAFDFB; border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
-                <h4 style="font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">Quy tắc thuật toán quyết toán:</h4>
-                <ul style="font-size: 13px; color: #475569; padding-left: 20px; line-height: 1.6;">
-                    <li>Mức tiền ăn 1 ngày: <strong>50.000 VNĐ / ngày</strong> (Bữa sáng 15k, trưa 25k, xế 10k).</li>
-                    <li>Điều kiện được hoàn: Phụ huynh gửi đơn xin nghỉ học qua App KIDPRO và được giáo viên chủ nhiệm phê duyệt trước <strong>07:30 sáng</strong>.</li>
-                    <li>Hình thức hoàn: <strong>Tự động trừ trực tiếp vào hóa đơn học phí của tháng tiếp theo</strong>.</li>
-                </ul>
+            <!-- BREADCRUMB & HEADER -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <div style="font-size: 12px; color: #5D7268; margin-bottom: 4px;">Biểu phí & Miễn giảm / <span style="color: var(--primary); font-weight: 700;">UC-036 Tự Động Tính Tiền Ăn Hoàn Trả</span></div>
+                    <h2 style="font-size: 20px; font-weight: 800; color: #1C2D27;">Cấu Hình & Đối Soát Hoàn Tiền Ăn Bán Trú Tự Động</h2>
+                    <p style="font-size: 13px; color: #5D7268; margin-top: 2px;">Thiết lập định mức hoàn trả 50.000 đ/ngày, mốc thời gian chốt đơn 07:30 và đối chiếu camera AI FaceID.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="screen_067.html" class="btn btn-outline"><i class="bi bi-calculator"></i> Sang Quyết toán Học phí (UC-035)</a>
+                    <button class="btn btn-primary" onclick="saveRefundConfig()"><i class="bi bi-floppy-fill"></i> Lưu cấu hình quy chuẩn (MSG-149)</button>
+                </div>
             </div>
-            <button class="btn btn-primary"><i class="bi bi-check2-circle"></i> Lưu cấu hình quy chuẩn</button>
-        </div>
-    </div>
-    
+
+            <!-- SUCCESS BANNER MSG-149 -->
+            <div id="alertMsg149" style="background: #E8F5E9; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 8px; font-size: 13px; color: #1B5E20; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <i class="bi bi-check-circle-fill" style="margin-right: 8px; font-size: 15px;"></i>
+                    <strong>[MSG-149]:</strong> Cấu hình quy tắc hoàn tiền ăn <strong>UC-036</strong> đang được áp dụng đồng bộ cho toàn bộ <strong>450 học sinh</strong> trong đợt quyết toán tháng 10/2026.
+                </div>
+                <span class="status-pill success">Đang hoạt động</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: start;">
+                <!-- LEFT COLUMN: RULE CONFIGURATION FORM -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><i class="bi bi-sliders"></i> Thông Số Quy Chuẩn Hoàn Tiền Ăn (BR-034 & BR-035)</div>
+                        <span class="status-pill info">Niên khóa 2026 - 2027</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="margin-bottom: 16px;">
+                            <label class="form-label">Mức hoàn tiền ăn toàn phần / ngày vắng mặt có phép</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="number" id="dailyRefundRate" class="form-control" value="50000" style="font-size: 16px; font-weight: 800; color: var(--primary); max-width: 200px;">
+                                <span style="font-weight: 700; color: #5D7268;">VNĐ / Ngày</span>
+                            </div>
+                            <small style="color: #64748B; font-size: 11.5px; display: block; margin-top: 4px;">Áp dụng đồng đều cho cả 3 khối: Khối Mầm, Khối Chồi, Khối Lá.</small>
+                        </div>
+
+                        <!-- MEAL BREAKDOWN -->
+                        <div style="background: #F8FAF9; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 18px;">
+                            <div style="font-size: 12.5px; font-weight: 700; color: #1C2D27; margin-bottom: 10px;"><i class="bi bi-pie-chart-fill" style="color: var(--primary);"></i> Cơ cấu bóc tách định mức 3 bữa ăn hàng ngày:</div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                <div style="background: #FFF; padding: 10px; border-radius: 6px; border: 1px solid var(--border-light); text-align: center;">
+                                    <div style="font-size: 11px; color: #5D7268;">Bữa sáng</div>
+                                    <div style="font-weight: 800; color: #1C2D27; font-size: 14px;">15.000 đ</div>
+                                    <div style="font-size: 10px; color: #10B981;">30% định mức</div>
+                                </div>
+                                <div style="background: #FFF; padding: 10px; border-radius: 6px; border: 1px solid var(--border-light); text-align: center;">
+                                    <div style="font-size: 11px; color: #5D7268;">Bữa trưa chính</div>
+                                    <div style="font-weight: 800; color: #1C2D27; font-size: 14px;">25.000 đ</div>
+                                    <div style="font-size: 10px; color: #10B981;">50% định mức</div>
+                                </div>
+                                <div style="background: #FFF; padding: 10px; border-radius: 6px; border: 1px solid var(--border-light); text-align: center;">
+                                    <div style="font-size: 11px; color: #5D7268;">Bữa xế chiều</div>
+                                    <div style="font-weight: 800; color: #1C2D27; font-size: 14px;">10.000 đ</div>
+                                    <div style="font-size: 10px; color: #10B981;">20% định mức</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CUT-OFF TIME & RESTRICTIONS -->
+                        <div style="margin-bottom: 16px;">
+                            <label class="form-label">Mốc giờ chốt tiếp nhận đơn xin nghỉ (Cut-off Time)</label>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="time" class="form-control" value="07:30" style="max-width: 150px; font-weight: 700;">
+                                <span style="font-size: 12px; color: #5D7268;">Trước giờ nhà bếp bắt đầu sơ chế thực phẩm tươi sống buổi sáng</span>
+                            </div>
+                        </div>
+
+                        <!-- AUTOMATED AI FACEID CROSS-CHECK -->
+                        <div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 14px; margin-bottom: 18px;">
+                            <div style="font-weight: 700; color: #991B1B; font-size: 13px; display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                                <i class="bi bi-camera-fill" style="color: #DC2626;"></i> Tự Động Thu Hồi Hoàn Tiền Ăn Bằng AI FaceID (MSG-151)
+                            </div>
+                            <p style="font-size: 12px; color: #7F1D1D; line-height: 1.5;">
+                                Nếu phụ huynh nộp đơn xin nghỉ trước 07:30 AM nhưng camera cổng trường nhận diện khuôn mặt bé có mặt tại trường, hệ thống sẽ tự động hủy quyền hưởng hoàn tiền ăn của ngày hôm đó và kích hoạt thông báo <strong>[MSG-151]</strong>.
+                            </p>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Phương thức cấn trừ vào chu kỳ tài chính</label>
+                            <select class="form-control" style="font-weight: 600;">
+                                <option selected>Tự động khấu trừ trực tiếp vào Học phí tháng tiếp theo (Khuyến nghị)</option>
+                                <option>Hoàn chuyển khoản PayOS định kỳ cuối học kỳ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: INTERACTIVE SIMULATION SANDBOX -->
+                <div>
+                    <div class="card" style="border: 1px solid #BAE6FD;">
+                        <div class="card-header" style="background: #F0F9FF;">
+                            <div class="card-title" style="color: #0369A1;"><i class="bi bi-magic"></i> Hộp Kiểm Thử Thuật Toán Quyết Toán UC-036</div>
+                        </div>
+                        <div class="card-body">
+                            <div style="margin-bottom: 14px;">
+                                <label class="form-label">Chọn học sinh thử nghiệm</label>
+                                <select class="form-control" id="simStudentSelect" onchange="runSimulation()">
+                                    <option value="khiem">Đặng Gia Khiêm (Lớp Mầm 1) - Đơn gửi 07:10 AM</option>
+                                    <option value="nam">Lê Hoàng Nam (Lớp Mầm 1) - Đơn gửi 06:45 AM (Sốt 3 ngày)</option>
+                                    <option value="late">Trần Gia Hân (Lớp Chồi 2) - Đơn gửi muộn 08:05 AM</option>
+                                    <option value="faceid">Phạm Quỳnh Anh (Lớp Lá 1) - Có đơn nhưng quẹt FaceID</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 14px;">
+                                <label class="form-label">Số ngày nghỉ hợp lệ</label>
+                                <input type="number" id="simDays" class="form-control" value="2" min="0" max="22" oninput="runSimulation()">
+                            </div>
+
+                            <div id="simResultBox" style="background: #FAFDFB; border: 1px solid #A7F3D0; border-radius: 8px; padding: 14px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <span style="font-size: 12.5px; font-weight: 700; color: #1C2D27;">Kết quả thuật toán hoàn tiền ăn:</span>
+                                    <span id="simStatusPill" class="status-pill success"><i class="bi bi-check-circle"></i> Đủ điều kiện</span>
+                                </div>
+                                <div style="font-size: 26px; font-weight: 800; color: #DC2626; margin: 6px 0;" id="simAmount">-100.000 VNĐ</div>
+                                <div id="simExplanation" style="font-size: 12px; color: #5D7268; line-height: 1.5;">
+                                    2 ngày nghỉ có phép x 50.000 đ = 100.000 đ. Sẽ được tự động trừ vào hóa đơn tháng 10/2026.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AUDIT LOG CARD -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title"><i class="bi bi-clock-history"></i> Nhật Ký Điều Chỉnh & Quyết Toán Gần Nhất</div>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div style="padding: 12px 16px; border-bottom: 1px solid var(--border-light); font-size: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                                    <strong>Chạy quyết toán Tháng 9/2026</strong>
+                                    <span style="color: #64748B;">01/10/2026 08:30</span>
+                                </div>
+                                <div style="color: #5D7268;">Hoàn tiền cho 570 ngày nghỉ hợp lệ. Tổng tiền: <strong>28.500.000 đ</strong>.</div>
+                            </div>
+                            <div style="padding: 12px 16px; font-size: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                                    <strong>Cập nhật định mức 50.000 đ</strong>
+                                    <span style="color: #64748B;">15/08/2026 14:15</span>
+                                </div>
+                                <div style="color: #5D7268;">Kế toán trưởng Nguyễn Thị Bích Ngọc phê duyệt áp dụng theo Nghị quyết BGH.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMULATION JAVASCRIPT -->
+            <script>
+                function runSimulation() {
+                    const student = document.getElementById('simStudentSelect').value;
+                    const days = parseInt(document.getElementById('simDays').value) || 0;
+                    const resultBox = document.getElementById('simResultBox');
+                    const amountEl = document.getElementById('simAmount');
+                    const statusEl = document.getElementById('simStatusPill');
+                    const expEl = document.getElementById('simExplanation');
+
+                    if (student === 'late') {
+                        amountEl.innerText = "0 VNĐ";
+                        statusEl.className = "status-pill danger";
+                        statusEl.innerHTML = "<i class='bi bi-x-circle'></i> Vi phạm 07:30 AM";
+                        expEl.innerHTML = "Đơn xin nghỉ nộp lúc 08:05 AM (sau giờ cut-off 07:30 AM). Bếp đã chuẩn bị phần ăn tươi sống nên không được hoàn tiền theo BR-034.";
+                        resultBox.style.borderColor = "#FECACA";
+                    } else if (student === 'faceid') {
+                        amountEl.innerText = "0 VNĐ (Thu hồi)";
+                        statusEl.className = "status-pill danger";
+                        statusEl.innerHTML = "<i class='bi bi-camera'></i> Phát hiện FaceID tại trường";
+                        expEl.innerHTML = "[MSG-151]: Camera AI cổng chính nhận diện học sinh lúc 07:45 AM. Học sinh thực tế đi học nên quyền hoàn tiền bị thu hồi tự động.";
+                        resultBox.style.borderColor = "#FECACA";
+                    } else {
+                        const total = days * 50000;
+                        amountEl.innerText = "-" + total.toLocaleString('vi-VN') + " VNĐ";
+                        statusEl.className = "status-pill success";
+                        statusEl.innerHTML = "<i class='bi bi-check-circle'></i> Đủ điều kiện hoàn";
+                        expEl.innerHTML = days + " ngày nghỉ hợp lệ x 50.000 đ = " + total.toLocaleString('vi-VN') + " đ. Tự động cấn trừ vào hóa đơn học phí T10.";
+                        resultBox.style.borderColor = "#A7F3D0";
+                    }
+                }
+
+                function saveRefundConfig() {
+                    const rate = document.getElementById('dailyRefundRate').value;
+                    alert('[MSG-149]: Lưu cấu hình thành công!\n\nĐơn giá hoàn tiền ăn: ' + parseInt(rate).toLocaleString('vi-VN') + ' VNĐ/ngày.\nGiờ chốt: 07:30 AM.\nĐồng bộ tới cơ sở dữ liệu quyết toán của toàn bộ 16 lớp học.');
+                }
+            </script>
         </main>
     </div>
 </body>

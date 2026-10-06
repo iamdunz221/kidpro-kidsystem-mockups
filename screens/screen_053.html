@@ -300,35 +300,155 @@
         </header>
 
         <main class="content-area">
-            
-    <div class="card">
-        <div class="card-header"><div class="card-title">Khung Rà soát 5 Lĩnh vực Phát triển (Thông tư 51/2020/TT-BGDĐT)</div></div>
-        <div class="card-body">
-            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;">
-                <div style="padding: 12px; background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; text-align:center;">
-                    <div style="font-weight:700; color:var(--primary);">1. Thể chất</div>
-                    <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Vận động thô & tinh</div>
+            <!-- BREADCRUMB & HEADER -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <div style="font-size: 12px; color: #5D7268; margin-bottom: 4px;">Chuyên môn & Giáo vụ / <span style="color: var(--primary); font-weight: 700;">UC-061 Thẩm Định Đánh Giá 5 Lĩnh Vực</span></div>
+                    <h2 style="font-size: 20px; font-weight: 800; color: #1C2D27;">Thẩm Định & Tổng Hợp 5 Lĩnh Vực Phát Triển (TT 28 & TT 51)</h2>
+                    <p style="font-size: 13px; color: #5D7268; margin-top: 2px;">Rà soát biểu đồ mạng nhện, chỉ số phát triển và lưu kết quả vào PostgreSQL <code>developmental_assessments</code>.</p>
                 </div>
-                <div style="padding: 12px; background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; text-align:center;">
-                    <div style="font-weight:700; color:var(--primary);">2. Nhận thức</div>
-                    <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Toán & STEAM</div>
-                </div>
-                <div style="padding: 12px; background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; text-align:center;">
-                    <div style="font-weight:700; color:var(--primary);">3. Ngôn ngữ</div>
-                    <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Giao tiếp & Chữ cái</div>
-                </div>
-                <div style="padding: 12px; background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; text-align:center;">
-                    <div style="font-weight:700; color:var(--primary);">4. Tình cảm - KNXH</div>
-                    <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Tự phục vụ & Hợp tác</div>
-                </div>
-                <div style="padding: 12px; background: #FAFDFB; border: 1px solid var(--border); border-radius: 8px; text-align:center;">
-                    <div style="font-weight:700; color:var(--primary);">5. Thẩm mỹ</div>
-                    <div style="font-size: 11px; color: #64748B; margin-top: 4px;">Âm nhạc & Tạo hình</div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-outline" onclick="alert('Đang kết xuất báo cáo thống kê 5 lĩnh vực theo mẫu chuẩn Thông tư 28/2016 của Sở GD&ĐT...')"><i class="bi bi-file-earmark-pdf-fill" style="color: #DC2626;"></i> Báo Cáo Sở GD&ĐT</button>
+                    <button class="btn btn-primary" onclick="alert('[MSG-262]: Đã phê duyệt chính thức 22 bản đánh giá đang chờ! Đồng bộ kết quả sang tài khoản Phụ huynh.')"><i class="bi bi-check-all"></i> Phê duyệt hàng loạt</button>
                 </div>
             </div>
-        </div>
-    </div>
-    
+
+            <!-- DOMAIN METRIC CARDS -->
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px;">
+                <div style="padding: 14px; background: #FFF; border: 1px solid var(--border); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268;">1. Thể Chất</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--primary); margin: 4px 0;">92.4%</div>
+                    <div style="font-size: 10.5px; color: #10B981;"><i class="bi bi-arrow-up-short"></i> +3.1% so T9</div>
+                </div>
+                <div style="padding: 14px; background: #FFF; border: 1px solid var(--border); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268;">2. Nhận Thức</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #0284C7; margin: 4px 0;">88.6%</div>
+                    <div style="font-size: 10.5px; color: #10B981;"><i class="bi bi-arrow-up-short"></i> +1.5% so T9</div>
+                </div>
+                <div style="padding: 14px; background: #FFF; border: 1px solid var(--border); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268;">3. Ngôn Ngữ</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #7C3AED; margin: 4px 0;">85.2%</div>
+                    <div style="font-size: 10.5px; color: #10B981;"><i class="bi bi-arrow-up-short"></i> +2.0% so T9</div>
+                </div>
+                <div style="padding: 14px; background: #FFF; border: 1px solid var(--border); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268;">4. Tình Cảm - KNXH</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #D97706; margin: 4px 0;">94.1%</div>
+                    <div style="font-size: 10.5px; color: #10B981;"><i class="bi bi-arrow-up-short"></i> +4.2% so T9</div>
+                </div>
+                <div style="padding: 14px; background: #FFF; border: 1px solid var(--border); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 11px; font-weight: 700; color: #5D7268;">5. Thẩm Mỹ</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #DB2777; margin: 4px 0;">89.8%</div>
+                    <div style="font-size: 10.5px; color: #10B981;"><i class="bi bi-arrow-up-short"></i> +1.8% so T9</div>
+                </div>
+            </div>
+
+            <!-- AUDIT TABLE: RECENT STUDENT ASSESSMENTS -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><i class="bi bi-table"></i> Danh Sách Hồ Sơ Đánh Giá Chờ Thẩm Định (Học Kỳ 1 - Tháng 10/2026)</div>
+                    <div style="display: flex; gap: 8px;">
+                        <select class="form-control" style="font-size: 12px; width: 140px; height: 32px;">
+                            <option>Tất cả 16 lớp</option>
+                            <option selected>Lớp Mầm 1</option>
+                            <option>Lớp Mầm 2</option>
+                            <option>Lớp Chồi 1</option>
+                        </select>
+                        <select class="form-control" style="font-size: 12px; width: 150px; height: 32px;">
+                            <option selected>Chờ giáo vụ duyệt</option>
+                            <option>Đã phê duyệt</option>
+                            <option>Cần can thiệp sớm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>Học Sinh</th>
+                                <th>Lớp & Giáo Viên</th>
+                                <th>Tổng Điểm 5 Trục</th>
+                                <th>Chỉ Số Đạt</th>
+                                <th>Nhận Xét Sư Phạm Nổi Bật</th>
+                                <th>Trạng Thái</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Lê Hoàng Nam</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Mã: KID-2024-015</div>
+                                </td>
+                                <td>
+                                    <div>Lớp Mầm 1</div>
+                                    <div style="font-size: 11px; color: #64748B;">Cô Nguyễn Mai Anh</div>
+                                </td>
+                                <td>
+                                    <span class="status-pill success" style="font-size: 12px; font-weight: 800;">88% Chuẩn</span>
+                                </td>
+                                <td>10 / 10 Tiêu chí</td>
+                                <td><span style="font-size: 12px; color: #334155;">Vận động thô xuất sắc; cần rèn luyện phát âm chữ L/N</span></td>
+                                <td><span class="status-pill warning"><i class="bi bi-clock"></i> Chờ duyệt</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" onclick="approveAssessment('Lê Hoàng Nam')"><i class="bi bi-check2"></i> Duyệt (MSG-262)</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Đặng Gia Khiêm</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Mã: KID-2024-001</div>
+                                </td>
+                                <td>
+                                    <div>Lớp Mầm 1</div>
+                                    <div style="font-size: 11px; color: #64748B;">Cô Nguyễn Mai Anh</div>
+                                </td>
+                                <td>
+                                    <span class="status-pill success" style="font-size: 12px; font-weight: 800;">94% Chuẩn</span>
+                                </td>
+                                <td>10 / 10 Tiêu chí</td>
+                                <td><span style="font-size: 12px; color: #334155;">Nhận thức và tư duy toán học rất nhanh, tự lập tốt</span></td>
+                                <td><span class="status-pill success"><i class="bi bi-check-circle"></i> Đã duyệt</span></td>
+                                <td>
+                                    <button class="btn btn-outline btn-sm" onclick="alert('Đã xem biểu đồ mạng nhện của bé Đặng Gia Khiêm')"><i class="bi bi-eye"></i> Xem radar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Trần Gia Hân</strong>
+                                    <div style="font-size: 11px; color: #64748B;">Mã: KID-2024-033</div>
+                                </td>
+                                <td>
+                                    <div>Lớp Chồi 2</div>
+                                    <div style="font-size: 11px; color: #64748B;">Cô Lê Thị Dung</div>
+                                </td>
+                                <td>
+                                    <span class="status-pill danger" style="font-size: 12px; font-weight: 800;">45% Chưa Đạt</span>
+                                </td>
+                                <td>4 / 10 Tiêu chí</td>
+                                <td><span style="font-size: 12px; color: #DC2626; font-weight: 600;">[MSG-265]: Có dấu hiệu chậm phát triển ngôn ngữ & giao tiếp</span></td>
+                                <td><span class="status-pill danger"><i class="bi bi-exclamation-octagon"></i> Cần can thiệp</span></td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" onclick="openInterventionConsultation('Trần Gia Hân')"><i class="bi bi-heart-pulse"></i> Hội chẩn</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <script>
+                function approveAssessment(name) {
+                    alert('[MSG-262]: Phê duyệt đánh giá phát triển thành công!\n\n' +
+                          '• Học sinh: ' + name + '\n' +
+                          '• Dữ liệu đã được ghi vào bảng developmental_assessments trong PostgreSQL.\n' +
+                          '• Đã gửi thông báo kết quả và biểu đồ mạng nhện tới App Phụ huynh.');
+                }
+                function openInterventionConsultation(name) {
+                    alert('[MSG-265 Can Thiệp Sớm]:\n\n' +
+                          'Học sinh ' + name + ' có kết quả Chưa đạt trên 70% các chỉ số ngôn ngữ.\n' +
+                          'Hệ thống đề xuất kích hoạt buổi tư vấn tâm lý học đường cùng Phụ huynh và Chuyên gia can thiệp sớm.');
+                }
+            </script>
         </main>
     </div>
 </body>
