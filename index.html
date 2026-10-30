@@ -272,6 +272,7 @@
     }
 
     .viewport-controls {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -360,6 +361,7 @@
     /* MOCK FRAMES */
     /* 1. Desktop Browser Frame */
     .frame-desktop {
+      flex-shrink: 0;
       width: 100%;
       max-width: 1440px;
       background: #fff;
@@ -411,6 +413,7 @@
 
     .desktop-iframe-container {
       width: 100%;
+      min-height: 480px;
       background: #fff;
       position: relative;
       overflow: hidden;
@@ -419,6 +422,7 @@
     #desktopIframe {
       width: 100%;
       height: 820px;
+      min-height: 480px;
       border: none;
       background: #fff;
       display: block;
@@ -427,6 +431,7 @@
 
     /* 2. Phone Frame */
     .frame-phone {
+      flex-shrink: 0;
       width: 380px;
       min-height: 720px;
       background: #fff;
@@ -450,6 +455,7 @@
 
     /* DETAILS CARD */
     .screen-details-card {
+      flex-shrink: 0;
       width: 100%;
       max-width: 1440px;
       background: #fff;
@@ -945,11 +951,12 @@
         if (mIframe) mIframe.src = screenUrl;
       } else {
         if (currentResMode === 'mobile') {
-          currentResMode = '1440';
+          setResolutionMode('1440');
+        } else {
+          applyResolutionMode();
         }
         const dIframe = document.getElementById('desktopIframe');
         if (dIframe) dIframe.src = screenUrl;
-        applyResolutionMode();
       }
     }
 
@@ -996,10 +1003,13 @@
         if (controls) controls.style.maxWidth = '100%';
         iframe.style.width = '100%';
         iframe.style.height = '820px';
+        iframe.style.minHeight = '780px';
         iframe.style.transform = 'none';
         iframe.style.transformOrigin = 'top left';
         container.style.height = '820px';
+        container.style.minHeight = '780px';
         container.style.overflow = 'visible';
+        fd.style.minHeight = '860px';
         if (scaleIndicator) scaleIndicator.innerText = '↔️ Vừa màn hình (100% Fit)';
         if (viewportBadge) viewportBadge.innerText = '💻 Web Desktop (Fit 100%)';
       } else if (currentResMode === '1440') {
@@ -1013,18 +1023,25 @@
           const scale = containerW / targetW;
           iframe.style.width = targetW + 'px';
           iframe.style.height = baseH + 'px';
+          iframe.style.minHeight = baseH + 'px';
           iframe.style.transform = `scale(${scale})`;
           iframe.style.transformOrigin = 'top left';
-          container.style.height = Math.round(baseH * scale) + 'px';
+          const scaledH = Math.round(baseH * scale);
+          container.style.height = scaledH + 'px';
+          container.style.minHeight = scaledH + 'px';
           container.style.overflow = 'hidden';
+          fd.style.minHeight = (scaledH + 40) + 'px';
           if (scaleIndicator) scaleIndicator.innerText = `🔍 Tỉ lệ ${Math.round(scale * 100)}% (Chuẩn 1440px)`;
           if (viewportBadge) viewportBadge.innerText = `🖥️ Desktop 1440px (${Math.round(scale * 100)}%)`;
         } else {
           iframe.style.width = '100%';
           iframe.style.height = baseH + 'px';
+          iframe.style.minHeight = baseH + 'px';
           iframe.style.transform = 'none';
           container.style.height = baseH + 'px';
+          container.style.minHeight = baseH + 'px';
           container.style.overflow = 'visible';
+          fd.style.minHeight = (baseH + 40) + 'px';
           if (scaleIndicator) scaleIndicator.innerText = '100% (1440px)';
           if (viewportBadge) viewportBadge.innerText = '🖥️ Desktop 1440px';
         }
@@ -1039,18 +1056,25 @@
           const scale = containerW / targetW;
           iframe.style.width = targetW + 'px';
           iframe.style.height = baseH + 'px';
+          iframe.style.minHeight = baseH + 'px';
           iframe.style.transform = `scale(${scale})`;
           iframe.style.transformOrigin = 'top left';
-          container.style.height = Math.round(baseH * scale) + 'px';
+          const scaledH = Math.round(baseH * scale);
+          container.style.height = scaledH + 'px';
+          container.style.minHeight = scaledH + 'px';
           container.style.overflow = 'hidden';
+          fd.style.minHeight = (scaledH + 40) + 'px';
           if (scaleIndicator) scaleIndicator.innerText = `🔍 Tỉ lệ ${Math.round(scale * 100)}% (Chuẩn 1200px)`;
           if (viewportBadge) viewportBadge.innerText = `💻 Laptop 1200px (${Math.round(scale * 100)}%)`;
         } else {
           iframe.style.width = '100%';
           iframe.style.height = baseH + 'px';
+          iframe.style.minHeight = baseH + 'px';
           iframe.style.transform = 'none';
           container.style.height = baseH + 'px';
+          container.style.minHeight = baseH + 'px';
           container.style.overflow = 'visible';
+          fd.style.minHeight = (baseH + 40) + 'px';
           if (scaleIndicator) scaleIndicator.innerText = '100% (1200px)';
           if (viewportBadge) viewportBadge.innerText = '💻 Laptop 1200px';
         }
