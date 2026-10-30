@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KIDPRO System - Mockup Suite 153 Màn Hình Quản Trị Mầm Non</title>
+  <title>KIDPRO System - Mockup Suite 155 Màn Hình Quản Trị Mầm Non</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
     .master-header {
       background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-forest) 100%);
       color: #fff;
-      padding: 20px 32px;
+      padding: 18px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -63,7 +63,7 @@
     }
 
     .nav-tab-btn {
-      padding: 16px 8px;
+      padding: 14px 8px;
       border: none;
       background: transparent;
       font-size: 13px;
@@ -84,7 +84,8 @@
       flex: 1;
       display: flex;
       overflow: hidden;
-      height: calc(100vh - 145px);
+      height: calc(100vh - 135px);
+      position: relative;
     }
 
     /* LEFT SCREEN LIST */
@@ -95,6 +96,64 @@
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      position: relative;
+      z-index: 10;
+    }
+    .screen-sidebar.collapsed {
+      margin-left: -420px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* FLOATING SIDEBAR TOGGLE BUTTON */
+    .floating-sidebar-btn {
+      position: fixed;
+      top: 145px;
+      left: 0;
+      z-index: 99;
+      background: var(--primary-deep);
+      color: #fff;
+      border: 1.5px solid var(--accent-gold);
+      border-left: none;
+      border-radius: 0 12px 12px 0;
+      padding: 9px 15px;
+      font-size: 12px;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 2px 6px 16px rgba(0, 0, 0, 0.18);
+      transition: all 0.2s;
+    }
+    .floating-sidebar-btn:hover {
+      background: var(--primary-dark);
+      padding-right: 20px;
+    }
+    .floating-sidebar-btn.visible {
+      display: flex;
+    }
+
+    .btn-toggle-sidebar {
+      background: #EBF7F2;
+      color: var(--primary-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-toggle-sidebar:hover {
+      background: var(--primary-dark);
+      color: #fff;
+      border-color: var(--primary-dark);
     }
 
     .filter-bar {
@@ -160,8 +219,10 @@
       flex-direction: column;
       background: #E5EBE8;
       overflow-y: auto;
-      padding: 24px;
+      padding: 20px 24px;
       align-items: center;
+      min-width: 0;
+      width: 100%;
     }
 
     .viewport-controls {
@@ -169,25 +230,99 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 960px;
-      margin-bottom: 18px;
+      max-width: 1440px;
+      margin-bottom: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .device-switcher { display: flex; background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 4px; gap: 4px; }
-    .dev-btn { padding: 6px 14px; border: none; background: transparent; font-size: 12px; font-weight: 700; border-radius: 6px; cursor: pointer; color: var(--text-muted); }
+    .viewport-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .viewport-title-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: #E2ECE7;
+      color: var(--primary-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .viewport-title-text {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .viewport-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .device-switcher {
+      display: flex;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .dev-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .dev-btn:hover { color: var(--primary-dark); background: #F4F7F6; }
     .dev-btn.active { background: var(--primary-dark); color: #fff; }
+
+    .btn-open-tab {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .btn-open-tab:hover {
+      background: var(--primary-dark);
+      color: #fff;
+      border-color: var(--primary-dark);
+    }
 
     /* MOCK FRAMES */
     /* 1. Desktop Browser Frame */
     .frame-desktop {
       width: 100%;
-      max-width: 960px;
+      max-width: 1440px;
       background: #fff;
       border-radius: 14px;
       border: 1px solid #CBD5E1;
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       overflow: hidden;
       margin-bottom: 24px;
+      transition: max-width 0.25s ease;
     }
 
     .browser-bar {
@@ -213,6 +348,35 @@
       font-size: 11px;
       color: #64748B;
       font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .scale-indicator {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: #E2ECE7;
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .desktop-iframe-container {
+      width: 100%;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #desktopIframe {
+      width: 100%;
+      height: 820px;
+      border: none;
+      background: #fff;
+      display: block;
+      transition: transform 0.15s ease;
     }
 
     /* 2. Phone Frame */
@@ -241,12 +405,13 @@
     /* DETAILS CARD */
     .screen-details-card {
       width: 100%;
-      max-width: 960px;
+      max-width: 1440px;
       background: #fff;
       border-radius: 16px;
       border: 1px solid var(--border-color);
       padding: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: max-width 0.25s ease;
     }
 
     .detail-tag {
@@ -312,6 +477,20 @@
       transition: all 0.2s;
     }
     .btn-launch:hover { background: var(--primary-deep); }
+
+    @media (max-width: 992px) {
+      .screen-sidebar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+      }
+      .device-viewport-area {
+        padding: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -328,7 +507,7 @@
 
     <div class="header-stats">
       <div class="stat-badge">
-        <div class="num" id="statTotalScreens">153</div>
+        <div class="num" id="statTotalScreens">155</div>
         <div class="txt">Tổng Màn Hình</div>
       </div>
       <div class="stat-badge">
@@ -345,7 +524,7 @@
   <!-- NAVIGATION TABS -->
   <nav class="main-nav">
     <button class="nav-tab-btn active" onclick="switchMainTab('explorer')">
-      <span>📱💻</span> Khám Phá Chi Tiết 153 Màn Hình (Interactive Explorer)
+      <span>📱💻</span> Khám Phá Chi Tiết 155 Màn Hình (Interactive Explorer)
     </button>
     <button class="nav-tab-btn" onclick="switchMainTab('prototypes')">
       <span>🚀</span> 7 Phân Hệ Chạy Mẫu Trực Tiếp (Core Prototypes)
@@ -355,11 +534,25 @@
     </button>
   </nav>
 
+  <!-- FLOATING SIDEBAR TOGGLE BUTTON (Appears when sidebar is collapsed) -->
+  <button id="floatingSidebarBtn" class="floating-sidebar-btn" onclick="toggleSidebar()" title="Mở danh sách màn hình">
+    <span>☰</span> <span>155 Màn Hình</span>
+  </button>
+
   <!-- TAB 1: INTERACTIVE EXPLORER -->
   <div class="page-container" id="tabExplorer">
     <!-- LEFT SIDEBAR: LIST OF SCREENS -->
     <aside class="screen-sidebar">
       <div class="filter-bar">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <span style="font-size: 12px; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.5px;">
+            Danh Sách Màn Hình
+          </span>
+          <button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Thu gọn danh mục để mở rộng không gian xem toàn màn hình">
+            ◀ Thu gọn
+          </button>
+        </div>
+
         <input type="text" id="screenSearch" class="search-input" placeholder="🔍 Tìm kiếm theo tên màn hình, từ khóa..." oninput="handleSearch()">
         
         <!-- SPECIAL USE CASES QUICK-FILTER BANNER -->
@@ -401,12 +594,24 @@
     <!-- RIGHT: DEVICE VIEWPORT PREVIEW -->
     <main class="device-viewport-area">
       <div class="viewport-controls">
-        <div style="font-size: 13px; font-weight: 700; color: var(--primary-dark);" id="viewportTitle">
-          💻 Cổng Web Quản Trị Hệ Thống (Desktop 1440px)
+        <div class="viewport-title-group">
+          <button class="btn-toggle-sidebar" id="btnToggleSidebar" onclick="toggleSidebar()" title="Ẩn/Hiện danh mục màn hình">
+            <span id="sidebarToggleIcon">◀</span> <span id="sidebarToggleLabel">Thu gọn danh mục</span>
+          </button>
+          <span class="viewport-title-badge" id="viewportBadge">💻 Web Desktop</span>
+          <span class="viewport-title-text" id="viewportTitle">1. Login Screen</span>
         </div>
-        <div class="device-switcher">
-          <button class="dev-btn active" id="btnDevDesktop" onclick="setDeviceView('desktop')">💻 Desktop</button>
-          <button class="dev-btn" id="btnDevMobile" onclick="setDeviceView('mobile')">📱 Mobile</button>
+
+        <div class="viewport-actions">
+          <div class="device-switcher">
+            <button class="dev-btn active" id="btnRes1440" onclick="setResolutionMode('1440')">🖥️ Desktop 1440px</button>
+            <button class="dev-btn" id="btnRes1200" onclick="setResolutionMode('1200')">💻 Laptop 1200px</button>
+            <button class="dev-btn" id="btnResFit" onclick="setResolutionMode('fit')">↔️ Vừa màn hình (Fit)</button>
+            <button class="dev-btn" id="btnResMobile" onclick="setResolutionMode('mobile')">📱 Mobile 375px</button>
+          </div>
+          <a id="btnOpenNewTab" href="screens/screen_001.html" target="_blank" class="btn-open-tab" title="Mở màn hình này độc lập trong tab trình duyệt mới (không bị khung che)">
+            ↗ Mở Tab Mới
+          </a>
         </div>
       </div>
 
@@ -419,8 +624,11 @@
             <span class="dot green"></span>
           </div>
           <div class="address-bar" id="mockBrowserUrl">https://admin.kidpro.edu.vn/auth/login</div>
+          <div class="scale-indicator" id="scaleIndicator">100% (1440px)</div>
         </div>
-        <iframe id="desktopIframe" src="screens/screen_001.html" style="width: 100%; height: 680px; border: none; background: #fff; display: block;"></iframe>
+        <div class="desktop-iframe-container" id="desktopIframeContainer">
+          <iframe id="desktopIframe" src="screens/screen_001.html"></iframe>
+        </div>
       </div>
 
       <!-- MOBILE PHONE FRAME -->
@@ -609,6 +817,32 @@
     let selectedScreenIndex = 0;
     let activePlatform = 'all';
     let activeRole = 'all';
+    let isSidebarCollapsed = false;
+    let currentResMode = '1440'; // '1440' | '1200' | 'fit' | 'mobile'
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.screen-sidebar');
+      const floatingBtn = document.getElementById('floatingSidebarBtn');
+      const toggleBtnIcon = document.getElementById('sidebarToggleIcon');
+      const toggleBtnLabel = document.getElementById('sidebarToggleLabel');
+
+      isSidebarCollapsed = !isSidebarCollapsed;
+
+      if (isSidebarCollapsed) {
+        sidebar.classList.add('collapsed');
+        if (floatingBtn) floatingBtn.classList.add('visible');
+        if (toggleBtnIcon) toggleBtnIcon.innerText = '☰';
+        if (toggleBtnLabel) toggleBtnLabel.innerText = 'Hiện danh mục';
+      } else {
+        sidebar.classList.remove('collapsed');
+        if (floatingBtn) floatingBtn.classList.remove('visible');
+        if (toggleBtnIcon) toggleBtnIcon.innerText = '◀';
+        if (toggleBtnLabel) toggleBtnLabel.innerText = 'Thu gọn danh mục';
+      }
+
+      // Re-calculate iframe scale after animation finishes
+      setTimeout(applyResolutionMode, 320);
+    }
 
     function renderScreenList() {
       const container = document.getElementById('screenListContainer');
@@ -650,39 +884,126 @@
 
       const screenUrl = s.mockup_file || `screens/screen_${String(s.stt).padStart(3, '0')}.html`;
       document.getElementById('detailOpenBtn').href = screenUrl;
+      document.getElementById('btnOpenNewTab').href = screenUrl;
       document.getElementById('mockBrowserUrl').innerText = `https://admin.kidpro.edu.vn/${screenUrl}`;
+      document.getElementById('viewportTitle').innerText = `${s.stt}. ${s.name}`;
 
       // Automatically switch device frame & update iframe src
       if (s.platform === 'Mobile App') {
-        setDeviceView('mobile');
+        setResolutionMode('mobile');
         const mIframe = document.getElementById('mobileIframe');
         if (mIframe) mIframe.src = screenUrl;
       } else {
-        setDeviceView('desktop');
+        if (currentResMode === 'mobile') {
+          currentResMode = '1440';
+        }
         const dIframe = document.getElementById('desktopIframe');
         if (dIframe) dIframe.src = screenUrl;
+        applyResolutionMode();
       }
     }
 
-    function setDeviceView(dev) {
+    function setResolutionMode(mode) {
+      currentResMode = mode;
+
+      ['1440', '1200', 'fit', 'mobile'].forEach(m => {
+        const btn = document.getElementById('btnRes' + (m.charAt(0).toUpperCase() + m.slice(1)));
+        if (btn) {
+          if (m === mode) btn.classList.add('active');
+          else btn.classList.remove('active');
+        }
+      });
+
+      applyResolutionMode();
+    }
+
+    function applyResolutionMode() {
       const fd = document.getElementById('frameDesktop');
       const fm = document.getElementById('frameMobile');
-      const bd = document.getElementById('btnDevDesktop');
-      const bm = document.getElementById('btnDevMobile');
-      const title = document.getElementById('viewportTitle');
+      const iframe = document.getElementById('desktopIframe');
+      const container = document.getElementById('desktopIframeContainer');
+      const scaleIndicator = document.getElementById('scaleIndicator');
+      const detailsCard = document.querySelector('.screen-details-card');
+      const viewportBadge = document.getElementById('viewportBadge');
+      const controls = document.querySelector('.viewport-controls');
 
-      if (dev === 'mobile') {
+      if (currentResMode === 'mobile') {
         fd.style.display = 'none';
         fm.style.display = 'flex';
-        bd.classList.remove('active');
-        bm.classList.add('active');
-        title.innerText = '📱 Giao Diện Ứng Dụng Di Động (iPhone 15 Frame)';
-      } else {
-        fd.style.display = 'block';
-        fm.style.display = 'none';
-        bd.classList.add('active');
-        bm.classList.remove('active');
-        title.innerText = '💻 Cổng Web Quản Trị Hệ Thống (Desktop 1440px)';
+        if (viewportBadge) viewportBadge.innerText = '📱 Mobile 375px';
+        return;
+      }
+
+      fd.style.display = 'block';
+      fm.style.display = 'none';
+
+      // Width available inside the browser frame
+      const containerW = fd.clientWidth || fd.offsetWidth;
+
+      if (currentResMode === 'fit') {
+        fd.style.maxWidth = '100%';
+        if (detailsCard) detailsCard.style.maxWidth = '100%';
+        if (controls) controls.style.maxWidth = '100%';
+        iframe.style.width = '100%';
+        iframe.style.height = '820px';
+        iframe.style.transform = 'none';
+        iframe.style.transformOrigin = 'top left';
+        container.style.height = '820px';
+        container.style.overflow = 'visible';
+        if (scaleIndicator) scaleIndicator.innerText = '↔️ Vừa màn hình (100% Fit)';
+        if (viewportBadge) viewportBadge.innerText = '💻 Web Desktop (Fit 100%)';
+      } else if (currentResMode === '1440') {
+        fd.style.maxWidth = '1440px';
+        if (detailsCard) detailsCard.style.maxWidth = '1440px';
+        if (controls) controls.style.maxWidth = '1440px';
+        const targetW = 1440;
+        const baseH = 880;
+
+        if (containerW > 0 && containerW < targetW) {
+          const scale = containerW / targetW;
+          iframe.style.width = targetW + 'px';
+          iframe.style.height = baseH + 'px';
+          iframe.style.transform = `scale(${scale})`;
+          iframe.style.transformOrigin = 'top left';
+          container.style.height = Math.round(baseH * scale) + 'px';
+          container.style.overflow = 'hidden';
+          if (scaleIndicator) scaleIndicator.innerText = `🔍 Tỉ lệ ${Math.round(scale * 100)}% (Chuẩn 1440px)`;
+          if (viewportBadge) viewportBadge.innerText = `🖥️ Desktop 1440px (${Math.round(scale * 100)}%)`;
+        } else {
+          iframe.style.width = '100%';
+          iframe.style.height = baseH + 'px';
+          iframe.style.transform = 'none';
+          container.style.height = baseH + 'px';
+          container.style.overflow = 'visible';
+          if (scaleIndicator) scaleIndicator.innerText = '100% (1440px)';
+          if (viewportBadge) viewportBadge.innerText = '🖥️ Desktop 1440px';
+        }
+      } else if (currentResMode === '1200') {
+        fd.style.maxWidth = '1200px';
+        if (detailsCard) detailsCard.style.maxWidth = '1200px';
+        if (controls) controls.style.maxWidth = '1200px';
+        const targetW = 1200;
+        const baseH = 850;
+
+        if (containerW > 0 && containerW < targetW) {
+          const scale = containerW / targetW;
+          iframe.style.width = targetW + 'px';
+          iframe.style.height = baseH + 'px';
+          iframe.style.transform = `scale(${scale})`;
+          iframe.style.transformOrigin = 'top left';
+          container.style.height = Math.round(baseH * scale) + 'px';
+          container.style.overflow = 'hidden';
+          if (scaleIndicator) scaleIndicator.innerText = `🔍 Tỉ lệ ${Math.round(scale * 100)}% (Chuẩn 1200px)`;
+          if (viewportBadge) viewportBadge.innerText = `💻 Laptop 1200px (${Math.round(scale * 100)}%)`;
+        } else {
+          iframe.style.width = '100%';
+          iframe.style.height = baseH + 'px';
+          iframe.style.transform = 'none';
+          container.style.height = baseH + 'px';
+          container.style.overflow = 'visible';
+          if (scaleIndicator) scaleIndicator.innerText = '100% (1200px)';
+          if (viewportBadge) viewportBadge.innerText = '💻 Laptop 1200px';
+        }
       }
     }
 
@@ -742,11 +1063,26 @@
       document.getElementById('tabExplorer').style.display = tab === 'explorer' ? 'flex' : 'none';
       document.getElementById('tabPrototypes').style.display = tab === 'prototypes' ? 'block' : 'none';
       document.getElementById('tabDesignSystem').style.display = tab === 'design_system' ? 'block' : 'none';
+
+      if (tab === 'explorer') {
+        setTimeout(applyResolutionMode, 100);
+      }
     }
 
+    // Auto-scale on window resize
+    window.addEventListener('resize', () => {
+      applyResolutionMode();
+    });
+
     // Initialize
+    document.getElementById('statTotalScreens').innerText = SCREENS_DATA.length;
     renderScreenList();
     selectScreen(0);
+
+    if (window.innerWidth < 992) {
+      toggleSidebar();
+    }
+    setTimeout(applyResolutionMode, 200);
   </script>
 </body>
 </html>
